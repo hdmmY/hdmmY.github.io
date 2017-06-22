@@ -8,19 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>A* 寻路算法 | 东明的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 原文链接：这里">
+  <meta name="description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A 算法，它包括了 A 算法 的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A* 寻路算法">
 <meta property="og:url" content="http://yoursite.com/2017/06/22/A-寻路算法/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 原文链接：这里">
+<meta property="og:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A 算法，它包括了 A 算法 的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/mv20m7yq89cuv61jjgz4qedm/image_1bj82c7e21fioig619ni1v2o1sha13.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/t94ujp2v52ob9187dhrofq3c/image_1bj8090rr15op1qfcur7s4tsr99.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/f0wpk02dagw0lqgm2lnzzx94/image_1bj81q7qs8nmjd61inhtao1ct4m.png">
-<meta property="og:updated_time" content="2017-06-22T14:07:20.767Z">
+<meta property="og:updated_time" content="2017-06-22T14:13:27.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A* 寻路算法">
-<meta name="twitter:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 原文链接：这里">
-<meta name="twitter:image" content="http://static.zybuluo.com/HandY/t94ujp2v52ob9187dhrofq3c/image_1bj8090rr15op1qfcur7s4tsr99.png">
+<meta name="twitter:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A 算法，它包括了 A 算法 的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。">
+<meta name="twitter:image" content="http://static.zybuluo.com/HandY/mv20m7yq89cuv61jjgz4qedm/image_1bj82c7e21fioig619ni1v2o1sha13.png">
   
     <link rel="alternative" href="/atom.xml" title="东明的Blog" type="application/atom+xml">
   
@@ -170,9 +171,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。</p>
-<p>原文链接：<a href="https://www.raywenderlich.com/4946/introduction-to-a-pathfinding" target="_blank" rel="external">这里</a></p>
+        <p><img src="http://static.zybuluo.com/HandY/mv20m7yq89cuv61jjgz4qedm/image_1bj82c7e21fioig619ni1v2o1sha13.png" alt="image_1bj82c7e21fioig619ni1v2o1sha13.png-48.5kB"></p>
+<p>因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。</p>
+<p>这次要介绍的是 A<em> 算法，它包括了 A</em> 算法 的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。</p>
 <a id="more"></a>
+<p>原文链接：<a href="https://www.raywenderlich.com/4946/introduction-to-a-pathfinding" target="_blank" rel="external">这里</a></p>
 <h2 id="简要介绍-A-寻路算法"><a href="#简要介绍-A-寻路算法" class="headerlink" title="简要介绍 A* 寻路算法"></a>简要介绍 A* 寻路算法</h2><p>你想拥有一个，能让怪物或玩家移动到一个特定的点上，同时避免撞到墙和障碍物上的游戏吗？</p>
 <p>如果你想拥有的话，读读这篇文章，我们将会向你展示你怎样用 <strong>A* 寻路算法</strong> 做到这一点！</p>
 <p>网上已经有许多关于 A* 寻路算法 的文章了，但是它们中的大多数都是写给那些已经有经验的、懂得基本原理的开发者们的。</p>
@@ -403,11 +406,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">书</a>
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
             
             <div class="clearfix"></div>
