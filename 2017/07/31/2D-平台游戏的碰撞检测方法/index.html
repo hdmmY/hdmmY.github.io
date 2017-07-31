@@ -6,14 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 东明的Blog</title>
+  <title>2D 平台游戏的碰撞检测方法 | 东明的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="东明的Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="声明： 该文章来源于 http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，是由我们反向推断得到的。 基于网格（简单）在基于网格的2D场景中，人物移动受限于网格，人物永远不可能站在两个网格的中间。动画能使人物的移动看起">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2D 平台游戏的碰撞检测方法">
+<meta property="og:url" content="http://yoursite.com/2017/07/31/2D-平台游戏的碰撞检测方法/index.html">
 <meta property="og:site_name" content="东明的Blog">
+<meta property="og:description" content="声明： 该文章来源于 http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，是由我们反向推断得到的。 基于网格（简单）在基于网格的2D场景中，人物移动受限于网格，人物永远不可能站在两个网格的中间。动画能使人物的移动看起">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png">
+<meta property="og:updated_time" content="2017-07-31T07:57:31.975Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="东明的Blog">
+<meta name="twitter:title" content="2D 平台游戏的碰撞检测方法">
+<meta name="twitter:description" content="声明： 该文章来源于 http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，是由我们反向推断得到的。 基于网格（简单）在基于网格的2D场景中，人物移动受限于网格，人物永远不可能站在两个网格的中间。动画能使人物的移动看起">
+<meta name="twitter:image" content="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png">
   
     <link rel="alternative" href="/atom.xml" title="东明的Blog" type="application/atom+xml">
   
@@ -145,37 +151,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-2D-平台游戏的碰撞检测方法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      2D 平台游戏的碰撞检测方法
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/31/2D-平台游戏的碰撞检测方法/" class="archive-article-date">
+
+        
+        <a href="/2017/07/31/2D-平台游戏的碰撞检测方法/" class="archive-article-date">
   	<time datetime="2017-07-31T07:55:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-31</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/31/2D-平台游戏的碰撞检测方法/">2D 平台游戏的碰撞检测方法</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>声明：</strong> 该文章来源于 <a href="http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，是由我们反向推断得到的。" target="_blank" rel="external">http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，是由我们反向推断得到的。</a></p>
+<h2 id="基于网格（简单）"><a href="#基于网格（简单）" class="headerlink" title="基于网格（简单）"></a>基于网格（简单）</h2><p>在基于网格的2D场景中，人物移动受限于网格，人物永远不可能站在两个网格的中间。动画能使人物的移动看起来更平滑。</p>
+<p>这是最简单的一种平台游戏的实现方式，但是这种方式对于人物控制有着很多限制，所以它不适合大多是基于动作的游戏，但是它很适合解谜类平台游戏。</p>
+<p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
+<p>例子：波斯王子、闪回、淘金者（Lode Runner）、小鸡快跑</p>
+<h3 id="它是如何实现的"><a href="#它是如何实现的" class="headerlink" title="它是如何实现的"></a>它是如何实现的</h3>
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -188,300 +197,87 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/31/2D-平台游戏的碰撞检测方法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-w">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/03/程式生成mesh/" class="archive-article-date">
-  	<time datetime="2017-07-03T15:21:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/03/程式生成mesh/">程式生成mesh</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/2017-07/" class="article-tag-list-link color3">2017-07</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/暑假-TOFEL-学习计划/" class="archive-article-date">
-  	<time datetime="2017-06-30T02:47:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/暑假-TOFEL-学习计划/">暑假 TOFEL 学习计划</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/2017-06/" class="article-tag-list-link color3">2017-06</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/30/暑假学习计划/" class="archive-article-date">
-  	<time datetime="2017-06-30T02:08:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/30/暑假学习计划/">暑假学习计划</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/2017-06/" class="article-tag-list-link color3">2017-06</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/22/A-寻路算法/" class="archive-article-date">
-  	<time datetime="2017-06-22T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/22/A-寻路算法/">A* 寻路算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/2017-06/" class="article-tag-list-link color3">2017-06</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/17/起风了/" class="archive-article-date">
-  	<time datetime="2017-06-17T11:14:22.079Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/17/起风了/">《起风了》</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">书</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/2017-06/" class="article-tag-list-link color3">2017-06</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/06/16/暑假旅行-涠洲岛/" class="archive-article-date">
-  	<time datetime="2017-06-16T04:06:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/06/16/暑假旅行-涠洲岛/">暑假旅行 -- 涠洲岛</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">旅行</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/2017-06/" class="article-tag-list-link color3">2017-06</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/07/03/程式生成mesh/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">程式生成mesh</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -504,8 +300,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
