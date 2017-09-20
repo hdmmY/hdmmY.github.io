@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>2D 平台游戏的碰撞检测方法 | 东明的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在这篇文章里，介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。">
+  <meta name="description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2D 平台游戏的碰撞检测方法">
 <meta property="og:url" content="http://yoursite.com/2017/07/31/2D-平台游戏的碰撞检测方法/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="在这篇文章里，介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。">
+<meta property="og:description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/xuh418s4x7mflubm0cwp0nbp/image_1bmdulkgp13d71q187kmq2i13gk9.png">
-<meta property="og:updated_time" content="2017-08-01T05:33:04.763Z">
+<meta property="og:updated_time" content="2017-08-01T05:34:42.657Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2D 平台游戏的碰撞检测方法">
-<meta name="twitter:description" content="在这篇文章里，介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。">
+<meta name="twitter:description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。">
 <meta name="twitter:image" content="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png">
   
     <link rel="alternative" href="/atom.xml" title="东明的Blog" type="application/atom+xml">
@@ -174,7 +174,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
-<p>在这篇文章里，介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。</p>
+<p>这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。</p>
 <a id="more"></a>
 <p><strong>声明：</strong> 我大部分内容是参考了这篇文章 <a href="http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/" target="_blank" rel="external">这里</a>，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。</p>
 <h3 id="第一种：基于网格（简单）"><a href="#第一种：基于网格（简单）" class="headerlink" title="第一种：基于网格（简单）"></a>第一种：基于网格（简单）</h3><p>在基于网格的2D场景中，人物移动受限于网格，人物永远不可能站在两个网格的中间。动画能使人物的移动看起来更平滑。</p>
@@ -200,7 +200,7 @@
 <h3 id="它是如何实现的-1"><a href="#它是如何实现的-1" class="headerlink" title="它是如何实现的"></a>它是如何实现的</h3><p>和简单的基于网格的碰撞一样，它的地图信息也是储存于一个二维数组里的，唯一的不同之处就是玩家和背景的交互方式。 玩家的碰撞盒现在是一个 AABB 包围盒（Axis-Aligned Bounding Box, 一个无法旋转的矩形)，而且，一般来说，是网格大小的整数倍。通常的大小有一个网格宽，加上一个网格（小马里奥，变形的球型的银河战士）、两个网格（大马里奥，洛克人，蹲下的银河战士）、或者三个网格（站着的银河战士）高。大多数情况下，人物精灵的大小会比碰撞盒大。在上面的图片中，你会发现，角色精灵的在 X 方向上的大小是两个网格宽，但是它的包围盒是一个网格宽。</p>
 <p>假设现在没有斜坡和单向平台（one-way platform），移动的算法很直接：</p>
 <ol>
-<li>将移动分解为水平方向的移动和竖直方向的移动，一次移动一个方向。如果你想要实现沿着斜坡移动的话，先向水平方向上移动，然后是竖直方向。否则的话，移动次序没有要求。<br> 然后，在每个方向上：</li>
+<li>将移动分解为水平方向的移动和竖直方向的移动，一次移动一个方向。如果你想要实现沿着斜坡移动的话，先向水平方向上移动，然后是竖直方向。否则的话，移动次序没有要求。 然后，在每个方向上：</li>
 <li>得到面向前方的碰撞盒边缘的点的坐标。例如：如果向左走，那么就是碰撞盒的左边那条线的 X 坐标。如果向右边走，就是右边那条线的 X 坐标。如果向上走，就是上面那条线的 Y 坐标。</li>
 <li>确定碰撞盒会与哪些网格相交。例如，如果我们在向左边走，有可能玩家会与水平方向上的第32、33、34 个网格相交（也就是说，Y 轴坐标为 32 <em> TS、33 </em> TS、34 * TS 的网格，其中 TS = 网格大小）。</li>
 <li>沿着移动方向遍历这些网格，找到一个离你最近的的静态碰撞体。然后遍历所有的移动的碰撞体。最后确定离你最近的，而且在你的移动方向上的碰撞体。</li>
@@ -289,6 +289,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/09/20/程序组实习任务-Super-Meat-Boy/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          程序组实习任务 -- Super Meat Boy
+        
+      </div>
+    </a>
   
   
     <a href="/2017/07/03/程式生成mesh/" id="article-nav-older" class="article-nav-link-wrap">
@@ -419,6 +428,10 @@ MathJax.Hub.Queue(function() {
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计划</a>
