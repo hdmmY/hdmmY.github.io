@@ -147,6 +147,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-最近游戏开发方面学习的一些杂事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/27/最近游戏开发方面学习的一些杂事/">最近游戏开发方面学习的一些杂事</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/27/最近游戏开发方面学习的一些杂事/" class="archive-article-date">
+  	<time datetime="2017-09-27T15:05:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下：</p>
+<h4 id="1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。"><a href="#1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。" class="headerlink" title="1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。"></a>1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</h4><p>轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解</p>
+<p><img src="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png" alt="原始图案"> <img src="http://static.zybuluo.com/HandY/dwo2acht4vdvrz3x4d5lie5z/image_1br1su8jt159q7c173sbb6rdam.png" alt="描绘整个图形的轮廓"> <img src="http://static.zybuluo.com/HandY/eeaso70fnv5xrdniid8aaj9j/image_1br1t20nh1tcrm4u12rli8lir41g.png" alt="描绘物体的线条"></p>
+<p>在实现过程中，我顺便学习了 Unity Sprite Default Shader 的源码，了解了 PerRendererData 这个属性，还有采用高斯核进行轮廓判断的方法。</p>
+<h4 id="2-纪念碑谷的简单实现"><a href="#2-纪念碑谷的简单实现" class="headerlink" title="2. 纪念碑谷的简单实现"></a>2. 纪念碑谷的简单实现</h4><p>因为我们组的新人实习任务中有实现纪念碑谷这道题，加之我认为纪念碑谷的逻辑应该不是很复杂，就想着实现一下。</p>
+<p>现在做了简单的，不含楼梯、曲面的路径规划。</p>
+<p>我是这么想的：将每个正方体分解为六个面，每个面有着“是否可以行走”和“当前玩家是否可以到达”这两个属性。对于这个面是否可以行走，这个在我们设计关卡的时候就预先设置好（见图中灰色圆圈，代表可以行走）；对于玩家是否可以到达这个面，这个在玩家进行移动的时候进行动态更新（见图中蓝色图标，代表这个面玩家可以到达）。</p>
+<p>做这个的时候参考了纪念碑谷团队在GDC上面的演讲（可以在Youtobe上找到）。</p>
+<p><img src="http://static.zybuluo.com/HandY/6mliomml5bpszgy617l5qe75/image_1br1tpt6oqtn19q21vu498kb29.png" alt="纪念碑谷编辑器视图"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">杂谈, 书</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/2017-06/" class="article-tag-list-link color3">2017-06</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/27/最近游戏开发方面学习的一些杂事/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-自学绘画二三事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -634,77 +712,6 @@
 
 
   
-    <article id="post-起风了" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/17/起风了/">《起风了》</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/17/起风了/" class="archive-article-date">
-  	<time datetime="2017-06-17T11:14:22.079Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://static.zybuluo.com/HandY/2k6pk9nb4q4ju7hbmlf9q5yp/maxresdefault.jpg" alt="起风了"></p>
-<h2 id="序曲"><a href="#序曲" class="headerlink" title="序曲"></a>序曲</h2><p>&ensp;&ensp;&ensp;&ensp; 记得那个夏天，你站在芒草丛生的原野上，专心地画画。我总是躺在你身旁一颗白桦树的树荫里。到了傍晚，你结束工作来到我身边，我们把手搭在彼此的肩头，依偎在一起眺望着远方的地平线。天际覆盖着边缘被夕阳染红的厚厚的积雨云，仿佛在终于迎来黄昏的地平线的另一边，有什么将要诞生……<br>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">书</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/2017-06/" class="article-tag-list-link color3">2017-06</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/17/起风了/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -822,15 +829,15 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">杂谈, 书</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">书</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -838,11 +845,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">游戏制作</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">书</a>
+                <a href="javascript:void(0)" class="js-tag color3">旅行</a>
               </li>
             
             <div class="clearfix"></div>
