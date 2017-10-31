@@ -147,86 +147,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-网格投影法的海面的生成" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/31/网格投影法的海面的生成/">网格投影法的海面的生成</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/31/网格投影法的海面的生成/" class="archive-article-date">
-  	<time datetime="2017-10-31T10:37:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h2 id="1-背景知识"><a href="#1-背景知识" class="headerlink" title="1 背景知识"></a>1 背景知识</h2><h3 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h3><p>实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。</p>
-<p>在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。</p>
-<p>相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：</p>
-<ul>
-<li>它是动态的。由于海面在每一帧的每一个点的高度都不一样，同时还会因为与其他物体接触而产生形变，所以计算每一帧的海面的高度是复杂的。</li>
-<li>它的表面积很大。这个无需多言。</li>
-<li>它的表面表现形式在很大程度上要依赖于光线的折射和反射效果。海面每一点的反射和折射比例在很大程度上取决于摄像机的位置。而且海面的折射和反射效果直接决定了海面的真实程度。</li>
-</ul>
-<p>由于海面渲染是如此之复杂，所以很多游戏中对它进行了简化处理。如：减小海面的表面积，甚至将海面改为水池或水缸。如：简化海面的与其他的物体的交互，甚至根本没有交互。如：简化海面的波浪多少，甚至到海面根本没有波浪，仅仅只由shader实现波纹效果。</p>
-<p>这一节的下面部分会大致介绍海面渲染是如何实现的。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/2017-10/" class="article-tag-list-link color3">2017-10</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/31/网格投影法的海面的生成/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-学习二三事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -725,6 +645,67 @@
 
 
   
+    <article id="post-A-寻路算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/22/A-寻路算法/">A* 寻路算法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/22/A-寻路算法/" class="archive-article-date">
+  	<time datetime="2017-06-22T13:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://static.zybuluo.com/HandY/od1axb73vcje0gjwij4sqh7m/image_1bj82j1ft1f7va841qtnnf915r41t.png" alt="image_1bj82j1ft1f7va841qtnnf915r41t.png-117.9kB"></p>
+<p>因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。</p>
+<p>这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/2017-06/" class="article-tag-list-link color3">2017-06</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/22/A-寻路算法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -842,11 +823,11 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color3">计划</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">计划</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
