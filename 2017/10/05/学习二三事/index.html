@@ -79,21 +79,21 @@
 
 
 
-<meta name="description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!--more--&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Default">
+<meta name="description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!-- more --&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Defau">
 <meta name="keywords" content="杂谈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习二三事">
 <meta property="og:url" content="http://yoursite.com/2017/10/05/学习二三事/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!--more--&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Default">
+<meta property="og:description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!-- more --&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Defau">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/dwo2acht4vdvrz3x4d5lie5z/image_1br1su8jt159q7c173sbb6rdam.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/eeaso70fnv5xrdniid8aaj9j/image_1br1t20nh1tcrm4u12rli8lir41g.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/6mliomml5bpszgy617l5qe75/image_1br1tpt6oqtn19q21vu498kb29.png">
-<meta property="og:updated_time" content="2017-10-31T13:27:19.228Z">
+<meta property="og:updated_time" content="2017-11-02T07:47:36.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习二三事">
-<meta name="twitter:description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!--more--&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Default">
+<meta name="twitter:description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!-- more --&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Defau">
 <meta name="twitter:image" content="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png">
 
 
@@ -371,7 +371,7 @@
 <h4>1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</h4>
 <p>轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：</p>
 <p><img src="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png" alt="原始图案"> <img src="http://static.zybuluo.com/HandY/dwo2acht4vdvrz3x4d5lie5z/image_1br1su8jt159q7c173sbb6rdam.png" alt="描绘整个图形的轮廓"> <img src="http://static.zybuluo.com/HandY/eeaso70fnv5xrdniid8aaj9j/image_1br1t20nh1tcrm4u12rli8lir41g.png" alt="描绘物体的线条"></p>
-<p>&lt;!--more--&gt;</p>
+<p>&lt;!-- more --&gt;</p>
 <p>在实现过程中，我顺便学习了 Unity Sprite Default Shader 的源码，了解了 PerRendererData 这个属性，还有采用高斯核进行轮廓判断的方法。</p>
 <p>还有消融效果，感觉实现起来蛮简单的，就是噪声图+AlphaTest嘛。但我实现的是随机点的消融，如果要实现特定的消融效果应该还是蛮难的，比如沿着一条线扩散消融这种。最近项目好像也不需要这种效果，暂时先放着吧。</p>
 <h4>2. 纪念碑谷的简单实现</h4>
@@ -641,11 +641,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-
-
-  <span class="post-meta-divider">|</span>
 
 
 

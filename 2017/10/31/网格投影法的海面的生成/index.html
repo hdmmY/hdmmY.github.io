@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://static.zybuluo.com/HandY/rmxa687sik1hl2mirrmfj2sw/image_1bttn10e04531nhhagfqci16lr2j.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/k2ztcfqa3y6cltavaldx03lk/image_1bttn1cuh1utl3he1s831asud1h30.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/2dki733xlpzn0jqvkomyc3e9/image_1bttne9g51in3114k19r81icm5ng3q.png">
-<meta property="og:updated_time" content="2017-11-02T07:16:47.233Z">
+<meta property="og:updated_time" content="2017-11-02T07:44:39.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网格投影法的海面的生成">
 <meta name="twitter:description" content="1 背景知识 1.1 简介 实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。 在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。 相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：  它是动态的。由于海面在每一帧的每一">
@@ -385,6 +385,7 @@
 </ul>
 <p>由于海面渲染是如此之复杂，所以很多游戏中对它进行了简化处理。如：减小海面的表面积，甚至将海面改为水池或水缸。如：简化海面的与其他的物体的交互，甚至根本没有交互。如：简化海面的波浪多少，甚至到海面根本没有波浪，仅仅只由shader实现波纹效果。</p>
 <p>这一节的下面部分会大致介绍海面渲染是如何实现的。</p>
+<p>&lt;!-- more --&gt;</p>
 <p>blablabla ...... （待会处理）</p>
 <h2>2. 网格投影法的基本概念</h2>
 <h3>2.1 渲染中的空间变换</h3>
@@ -520,8 +521,12 @@ $$M_{projector} = [M_{pclip} * M_{pview}] ^ {-1}$$</li>
 0 &amp; 0 &amp; 1 &amp; 0 \\\
 0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}$$</span><!-- Has MathJax --></li>
 </ol>
-<p>&lt;br&gt;</p>
 <p>$$M_{projector} = M_{range} * [M_{pclip} * M_{pview}] ^ {-1}$$</p>
+<ol start="5">
+<li>创建一个x、y都在 $[0, 1]$的网格。
+6.将网格中的每个点，首先投影到世界空间下，视锥体的近剪裁面上，然后投影到视锥体的远剪裁面上，最终的点就是这两个点组成的线与海平面 $S_{base}$的交点。</li>
+<li>将这个在 $S_{base}$ 上的点，根据高度函数 $f_{HF}$，替换为最终的点。</li>
+</ol>
 
       
     </div>
@@ -766,11 +771,7 @@ $$M_{projector} = [M_{pclip} * M_{pview}] ^ {-1}$$</li>
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-
-
-  <span class="post-meta-divider">|</span>
 
 
 

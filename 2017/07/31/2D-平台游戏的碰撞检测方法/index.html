@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。 &amp;lt;!--more--&amp;gt; 声明： 我大部分内容是参考了这篇文章 这里，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。 第一种：基于网格（简单） 在基于网格的2D场景中，人物移动受限于网格，人">
+<meta name="description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。 &amp;lt;!-- more --&amp;gt; 声明： 我大部分内容是参考了这篇文章 这里，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。 第一种：基于网格（简单） 在基于网格的2D场景中，人物移动受限于网格">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2D 平台游戏的碰撞检测方法">
 <meta property="og:url" content="http://yoursite.com/2017/07/31/2D-平台游戏的碰撞检测方法/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。 &amp;lt;!--more--&amp;gt; 声明： 我大部分内容是参考了这篇文章 这里，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。 第一种：基于网格（简单） 在基于网格的2D场景中，人物移动受限于网格，人">
+<meta property="og:description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。 &amp;lt;!-- more --&amp;gt; 声明： 我大部分内容是参考了这篇文章 这里，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。 第一种：基于网格（简单） 在基于网格的2D场景中，人物移动受限于网格">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/xuh418s4x7mflubm0cwp0nbp/image_1bmdulkgp13d71q187kmq2i13gk9.png">
-<meta property="og:updated_time" content="2017-10-31T13:26:25.296Z">
+<meta property="og:updated_time" content="2017-11-02T07:47:31.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2D 平台游戏的碰撞检测方法">
-<meta name="twitter:description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。 &amp;lt;!--more--&amp;gt; 声明： 我大部分内容是参考了这篇文章 这里，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。 第一种：基于网格（简单） 在基于网格的2D场景中，人物移动受限于网格，人">
+<meta name="twitter:description" content="这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。 &amp;lt;!-- more --&amp;gt; 声明： 我大部分内容是参考了这篇文章 这里，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。 第一种：基于网格（简单） 在基于网格的2D场景中，人物移动受限于网格">
 <meta name="twitter:image" content="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png">
 
 
@@ -368,7 +368,7 @@
       
         <p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
 <p>这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。</p>
-<p>&lt;!--more--&gt;</p>
+<p>&lt;!-- more --&gt;</p>
 <p><strong>声明：</strong> 我大部分内容是参考了这篇文章 <a href="http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/" target="_blank" rel="external">这里</a>，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。</p>
 <h3>第一种：基于网格（简单）</h3>
 <p>在基于网格的2D场景中，人物移动受限于网格，人物永远不可能站在两个网格的中间。动画能使人物的移动看起来更平滑。</p>
@@ -652,11 +652,7 @@
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
-
-
-  <span class="post-meta-divider">|</span>
 
 
 
