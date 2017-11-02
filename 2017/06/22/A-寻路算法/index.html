@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。">
+<meta name="description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。 &amp;lt;!--more--&amp;gt; 原文链接：这里 简要介绍 A* 寻路算法 你想拥有一个，能让怪物或玩家移动到一个特定的点上，同时避免撞到墙和障碍物上的游戏吗？ 如果你想拥有的话，读读这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="A* 寻路算法">
 <meta property="og:url" content="http://yoursite.com/2017/06/22/A-寻路算法/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。">
+<meta property="og:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。 &amp;lt;!--more--&amp;gt; 原文链接：这里 简要介绍 A* 寻路算法 你想拥有一个，能让怪物或玩家移动到一个特定的点上，同时避免撞到墙和障碍物上的游戏吗？ 如果你想拥有的话，读读这">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/od1axb73vcje0gjwij4sqh7m/image_1bj82j1ft1f7va841qtnnf915r41t.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/t94ujp2v52ob9187dhrofq3c/image_1bj8090rr15op1qfcur7s4tsr99.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/f0wpk02dagw0lqgm2lnzzx94/image_1bj81q7qs8nmjd61inhtao1ct4m.png">
@@ -106,7 +106,7 @@
 <meta property="og:updated_time" content="2017-07-03T15:22:27.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A* 寻路算法">
-<meta name="twitter:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。">
+<meta name="twitter:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。 &amp;lt;!--more--&amp;gt; 原文链接：这里 简要介绍 A* 寻路算法 你想拥有一个，能让怪物或玩家移动到一个特定的点上，同时避免撞到墙和障碍物上的游戏吗？ 如果你想拥有的话，读读这">
 <meta name="twitter:image" content="http://static.zybuluo.com/HandY/od1axb73vcje0gjwij4sqh7m/image_1bj82j1ft1f7va841qtnnf915r41t.png">
 
 
@@ -383,27 +383,31 @@
         <p><img src="http://static.zybuluo.com/HandY/od1axb73vcje0gjwij4sqh7m/image_1bj82j1ft1f7va841qtnnf915r41t.png" alt="image_1bj82j1ft1f7va841qtnnf915r41t.png-117.9kB"></p>
 <p>因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。</p>
 <p>这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。</p>
-<a id="more"></a>
+<p>&lt;!--more--&gt;</p>
 <p>原文链接：<a href="https://www.raywenderlich.com/4946/introduction-to-a-pathfinding" target="_blank" rel="external">这里</a></p>
-<h2 id="简要介绍-A-寻路算法"><a href="#简要介绍-A-寻路算法" class="headerlink" title="简要介绍 A* 寻路算法"></a>简要介绍 A* 寻路算法</h2><p>你想拥有一个，能让怪物或玩家移动到一个特定的点上，同时避免撞到墙和障碍物上的游戏吗？</p>
-<p>如果你想拥有的话，读读这篇文章，我们将会向你展示你怎样用 <strong>A* 寻路算法</strong> 做到这一点！</p>
+<h2>简要介绍 A* 寻路算法</h2>
+<p>你想拥有一个，能让怪物或玩家移动到一个特定的点上，同时避免撞到墙和障碍物上的游戏吗？</p>
+<p>如果你想拥有的话，读读这篇文章，我们将会向你展示你怎样用 <em><em>A</em> 寻路算法</em>* 做到这一点！</p>
 <p>网上已经有许多关于 A* 寻路算法 的文章了，但是它们中的大多数都是写给那些已经有经验的、懂得基本原理的开发者们的。</p>
 <p>这篇教程采用从基本原理入手的方法来讲解。我们讲一步一步的讲解 A* 算法 是如何实现的，包含了大量的图片和例子来用图解法讲解这个过程。</p>
-<p>不管你是用的什么编程语言，或者是什么平台，你都会发现这篇教程很有用 – 因为它以一种通用语言格式来解释算法的。</p>
+<p>不管你是用的什么编程语言，或者是什么平台，你都会发现这篇教程很有用 -- 因为它以一种通用语言格式来解释算法的。</p>
 <p>那么，现在先找到一条最短的到达含咖啡因饮料喝美味小食的路径，让我们开始吧！ :]</p>
-<h3 id="一只寻路的猫"><a href="#一只寻路的猫" class="headerlink" title="一只寻路的猫"></a>一只寻路的猫</h3><p>让我们开始想象我们有一个这样的游戏：一只猫想要找到一条通往一根骨头的路。</p>
+<h3>一只寻路的猫</h3>
+<p>让我们开始想象我们有一个这样的游戏：一只猫想要找到一条通往一根骨头的路。</p>
 <p>“为什么世界上会有一只猫想要得到一根骨头呢？”你可能会这么想。好吧，在我们的游戏里，这是一只聪明的猫，他想捡起骨头给狗狗，去避免使它自己被狗狗们咬！ :]</p>
 <p>那么，让我们想象下面这张图片里的猫想要找到通往骨头的最短路径。</p>
 <p><img src="http://static.zybuluo.com/HandY/t94ujp2v52ob9187dhrofq3c/image_1bj8090rr15op1qfcur7s4tsr99.png" alt="image_1bj8090rr15op1qfcur7s4tsr99.png-40.1kB"></p>
 <p>令人悲伤的事，猫咪不能直接从他目前的位置走到骨头所在的位置，因为有一面墙挡住了路，而他在游戏中也不是一个无实体的鬼魂！</p>
 <p>我们游戏里的这只猫也很懒，所以他一般来说想要找到一条最短的路径，这样当他会家面对他的妻子的时候就不会很疲倦了。</p>
 <p>那么现在我们怎么才能写出一个算法去找到猫咪应该走的最短路径呢？ A* 就是解救方法。</p>
-<h3 id="将搜索区域简单化"><a href="#将搜索区域简单化" class="headerlink" title="将搜索区域简单化"></a>将搜索区域简单化</h3><p>在寻路过程中，我们要做的第一步就是讲搜索区域简化为一些我们能够很荣易管理的东西。</p>
+<h3>将搜索区域简单化</h3>
+<p>在寻路过程中，我们要做的第一步就是讲搜索区域简化为一些我们能够很荣易管理的东西。</p>
 <p>具体怎么去做这个取决于你的游戏。例如：我们可以将搜索区域分隔成一个一个的像素，但是这个对于我们这种基于瓷砖（tile）的游戏来说，像素这个单位太小了。</p>
 <p>所以，我们将用瓷砖（正方形）作为基本单位在寻路算法中使用。其他形状的也可以（例如三角形或六边形），但是正方形是最符合我们需要的，而且也是最简单的。</p>
-<p>像这样分隔开来，我们的搜索区域就可以被简单的表示为一个二维数组。所以当我们的关卡有 25 <em> 25 的瓷砖时，我们的搜索区域就是一个有着625个正方形的数组。如果我们将我们的地图以像素分隔开来时，我们的搜索区域就将会是一个有着 6400,000 个正方形的数组（一个瓷砖有 32 </em> 32 个像素）！</p>
+<p>像这样分隔开来，我们的搜索区域就可以被简单的表示为一个二维数组。所以当我们的关卡有 25 * 25 的瓷砖时，我们的搜索区域就是一个有着625个正方形的数组。如果我们将我们的地图以像素分隔开来时，我们的搜索区域就将会是一个有着 6400,000 个正方形的数组（一个瓷砖有 32 * 32 个像素）！</p>
 <p><img src="http://static.zybuluo.com/HandY/f0wpk02dagw0lqgm2lnzzx94/image_1bj81q7qs8nmjd61inhtao1ct4m.png" alt="image_1bj81q7qs8nmjd61inhtao1ct4m.png-56.9kB"></p>
-<h3 id="开放表和闭合表"><a href="#开放表和闭合表" class="headerlink" title="开放表和闭合表"></a>开放表和闭合表</h3><p>现在我们已经建立一个简单的搜索区域，让我们来讨论 A* 算法 是怎么实现的。</p>
+<h3>开放表和闭合表</h3>
+<p>现在我们已经建立一个简单的搜索区域，让我们来讨论 A* 算法 是怎么实现的。</p>
 <p>我们的猫咪除了懒惰，记性也不好，所以他将需要两个表：</p>
 <ol>
 <li>一个表用于记录所有正在被考虑、用于找到最短路径的方格（我们叫它<strong>开放表</strong>）</li>
@@ -412,40 +416,46 @@
 <p>猫咪开始于将它目前的位置（我们将称呼这个开始的点为点“A”）加入闭合表中。然后，他将所有邻近他的、可以行走的方格加入开放表中。</p>
 <p>这儿有一个例子展示了如果猫咪站在一个开放位置，应该怎么做（绿色代表开放表）</p>
 <p><img src="http://static.zybuluo.com/HandY/9037yvv52c6g4ainbhiqh8an/image_1bjahelih1218175g168k1c101niam.png" alt="image_1bjahelih1218175g168k1c101niam.png-49.2kB"></p>
-<h3 id="路径代价"><a href="#路径代价" class="headerlink" title="路径代价"></a>路径代价</h3><p> 我们将给每一个方格一个分数：<strong>G</strong> + <strong>H</strong></p>
+<h3>路径代价</h3>
+<p>我们将给每一个方格一个分数：<strong>G</strong> + <strong>H</strong></p>
 <ul>
 <li><strong>G</strong> 代表着从开始点“A”到目前所在方格的代价。所以，对于一个邻近开始点“A”的点来说，代价就是1, 但是当我们离开始点越远时，代价就会增加。</li>
-<li><strong>H</strong> 代表着从当前点到目的地点的预计代价（我们将把骨头所在的点称为点“B”）。这个代价通常是尝试性的计算得出的 – 因为我们不知道真正的代价是多少，这仅仅是一个估计。</li>
+<li><strong>H</strong> 代表着从当前点到目的地点的预计代价（我们将把骨头所在的点称为点“B”）。这个代价通常是尝试性的计算得出的 -- 因为我们不知道真正的代价是多少，这仅仅是一个估计。</li>
 </ul>
-<p>你可能会想，“移动代价”的含义是什么。其实在游戏中这个相当简单 – 仅仅只是方格的数量罢了。</p>
+<p>你可能会想，“移动代价”的含义是什么。其实在游戏中这个相当简单 -- 仅仅只是方格的数量罢了。</p>
 <p>然而，记住在我们的游戏中，你可以赋予它不同的含义。例如：</p>
 <ul>
 <li>如果你允许对角线移动的话，你可能会将对角线移动的代价设置得略高一点。</li>
 <li>如果你有几种不同的地形，你可能会设置不同的移动代价在不同的地形上。</li>
 </ul>
-<p>这就是大致的想法 – 现在让我们深入来更具体的计算 G 和 H 吧。</p>
-<h3 id="关于-G"><a href="#关于-G" class="headerlink" title="关于 G"></a>关于 G</h3><p>为了计算 G，我们需要将上一个 G （我们来的那个方格）再加上1。因此，每一个方格的 G 值将代表从 A 点沿路径到这个方格的总代价。</p>
+<p>这就是大致的想法 -- 现在让我们深入来更具体的计算 G 和 H 吧。</p>
+<h3>关于 G</h3>
+<p>为了计算 G，我们需要将上一个 G （我们来的那个方格）再加上1。因此，每一个方格的 G 值将代表从 A 点沿路径到这个方格的总代价。</p>
 <p>例如，下面的图表展示了两条到不同骨头的路径，每一个方格的 G 值都已经标记上去了。</p>
 <p><img src="http://static.zybuluo.com/HandY/vnjy3iuh3gfgqffnjkyg5n2b/image_1bjaip5t617kk1f31h9bv0o64e13.png" alt="image_1bjaip5t617kk1f31h9bv0o64e13.png-51.7kB"></p>
-<h3 id="关于-H"><a href="#关于-H" class="headerlink" title="关于 H"></a>关于 H</h3><p>回忆一下：H 是从当前方格到目的地的预计花费。</p>
+<h3>关于 H</h3>
+<p>回忆一下：H 是从当前方格到目的地的预计花费。</p>
 <p>预计花费越接近实际代价，最终的路径就会越准确。如果预计得不够准确，那么生成的路径可能不是最短的（但是它可能会很接近）。这个问题太过于复杂以至于我们将不会在这篇教程中讨论它，但是我还是会在文章末尾给予你一个将它解释得十分详尽的链接。</p>
 <p>为了将它简单化，我们将会用到“曼哈端距离算法”（译注：Manhattan distance method），这个算法仅仅只是计算了当前点到 B 点的水平方向和竖直方向上的方格数，而没有将障碍物或不同地形考虑进来。</p>
 <p>例如，下面用图表展示了在不同起始点下，用“曼哈端距离算法”模拟的 H 值（显示在黑框中）</p>
 <p><img src="http://static.zybuluo.com/HandY/33zt6725jn0u0pfzdadenan6/image_1bjajavniuc6pln153u196k1svh1g.png" alt="image_1bjajavniuc6pln153u196k1svh1g.png-104kB"></p>
-<h3 id="A-算法"><a href="#A-算法" class="headerlink" title="A* 算法"></a>A* 算法</h3><p>那么现在你知道了如何去计算每一个方格的分数（我们将把这个叫做 <strong>F</strong>，它等于 <strong>G + H</strong>）</p>
+<h3>A* 算法</h3>
+<p>那么现在你知道了如何去计算每一个方格的分数（我们将把这个叫做 <strong>F</strong>，它等于 <strong>G + H</strong>）</p>
 <p>猫咪会重复一下步骤来找到最短路径：</p>
 <ul>
 <li>在开放表中拿到一个分数最低的方格，我们将这个方格叫做方格 S</li>
 <li>在开放表中移除方格 S，然后将 S 放入闭合表中</li>
-<li>对于在方格 S 的每一个相邻的方格 T<ul>
+<li>对于在方格 S 的每一个相邻的方格 T
+<ul>
 <li>A. <strong>如果 T 在闭合表中</strong>：忽略它</li>
 <li>B. <strong>如果 T 不在开放表中</strong>：将它加入开放表中，然后计算它的代价</li>
 <li>C. <strong>如果 T 已经在开放表中</strong>：检查如果我们用当前生成的路径到达 F 点的话，F 值会不会更低。如果是的话，那么更新它的数值，然后也更新它的父节点</li>
 </ul>
 </li>
 </ul>
-<p>如果你对它还不太了解的话，别担心 – 我们将通过一个简单的例子来一步一步的演示它是怎样工作的！ :]</p>
-<h3 id="猫咪的路径"><a href="#猫咪的路径" class="headerlink" title="猫咪的路径"></a>猫咪的路径</h3><p>让我们以一个懒猫如何找到骨头的作为例子。</p>
+<p>如果你对它还不太了解的话，别担心 -- 我们将通过一个简单的例子来一步一步的演示它是怎样工作的！ :]</p>
+<h3>猫咪的路径</h3>
+<p>让我们以一个懒猫如何找到骨头的作为例子。</p>
 <p>在下面的表格中，我已经根据如下的方式列出了 <strong>F = G + H</strong> 的值:</p>
 <ul>
 <li><strong>F（每个方格的数值）：</strong> 最左上角</li>
@@ -455,24 +465,30 @@
 <p>除此之外，箭头表示了到达该方格的移动方向。</p>
 <p>最后，每一步的红色方格代表闭合表，绿色方格代表开放表。</p>
 <p>好，让我们开始吧！</p>
-<h3 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h3><p>在第一步，猫咪确定了在离他开始点（点 A）相邻的可行走的方格，计算它们的 F 值，然后将它们加入它的开放表中。</p>
+<h3>Step 1</h3>
+<p>在第一步，猫咪确定了在离他开始点（点 A）相邻的可行走的方格，计算它们的 F 值，然后将它们加入它的开放表中。</p>
 <p><img src="http://static.zybuluo.com/HandY/57ld82m6xgi30rm098xld4xb/image_1bjes5v4cnd91povac4bieh7g9.png" alt="image_1bjes5v4cnd91povac4bieh7g9.png-62.2kB"></p>
 <p>你会发现每个方格的 H 值都已经列出来了（其中两个是6，一个是4）。我建议你以 “曼哈瑞距离算法”来计算每一个方格的 H 值，以便于你理解。</p>
 <p>同样需要提醒的，F 值（在左上角）就仅仅是 G+H 的值。</p>
-<h3 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h3><p>在下一步，猫咪选择了 F 值最低的方格，将它加入闭合表中，然后检索它的邻近方格。</p>
+<h3>Step 2</h3>
+<p>在下一步，猫咪选择了 F 值最低的方格，将它加入闭合表中，然后检索它的邻近方格。</p>
 <p><img src="http://static.zybuluo.com/HandY/bodtncjvj50ad3d6q1hydyna/image_1bjesgsl0lhnbe4mffkdnfr0m.png" alt="image_1bjesgsl0lhnbe4mffkdnfr0m.png-78.5kB"></p>
 <p>在这里你能看到，代价最低的方格是 F 值为 5 的方格。它尝试将所有的相邻方格加入开放表中（然后计算它们的数值），要注意到它不能将猫咪所在的方格加入开放表（因为他已经在闭合表中了），那些障碍物方格也不能加入（因为它是不可行走的）。</p>
 <p>需要注意的是：对与两个新加入开放表的方格，它们的 G 值已经加了一，因为它们离初始点有两个方格的距离。你同样也需要用“曼哈瑞距离算法”来确定每个新方格的 H 值。</p>
-<h3 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h3><p>同样的，我们选择了有着最低 F 值的方块，然后继续迭代：</p>
+<h3>Step 3</h3>
+<p>同样的，我们选择了有着最低 F 值的方块，然后继续迭代：</p>
 <p><img src="http://static.zybuluo.com/HandY/wcq2sm2bqhaf47f2s0gsq1wm/image_1bjeui360f9a7q5njq1v85tkg13.png" alt="image_1bjeui360f9a7q5njq1v85tkg13.png-69.8kB"></p>
-<h3 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h3><p>在这里我们有一个有趣的例子。在上一张图片中你可以看到，现在有 4 个方块有着相同的 F 值为 7 — 我们现在应该怎么做？</p>
+<h3>Step 4</h3>
+<p>在这里我们有一个有趣的例子。在上一张图片中你可以看到，现在有 4 个方块有着相同的 F 值为 7 --- 我们现在应该怎么做？</p>
 <p>这里我们有几种方式可以用，但是一个简单的（也是快速的）方式是继续跟着最近一个加入到开放表中的方格。所以我们继续跟着最近一个刚刚加入带开放表中的方格：</p>
 <p><img src="http://static.zybuluo.com/HandY/p54vzhxtdl0eh0gm5j1j4nr1/image_1bjf2pp81rf2c5m1k3e1ton1td61g.png" alt="image_1bjf2pp81rf2c5m1k3e1ton1td61g.png-76.8kB"></p>
 <p>这一次有两个相邻的而且可以行走的方格，我们像以前那样计算它们的分数。</p>
-<h3 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h3><p>像往常一样，我们选择了有着最低分的方格（7），而且为了保持一致我们这次选择了最邻近的一个方格。</p>
+<h3>Step 5</h3>
+<p>像往常一样，我们选择了有着最低分的方格（7），而且为了保持一致我们这次选择了最邻近的一个方格。</p>
 <p><img src="http://static.zybuluo.com/HandY/wgzship79oea0qrrkknb0k0s/image_1bjf6v7ujk0f1l1idfg1s113i51t.png" alt="image_1bjf6v7ujk0f1l1idfg1s113i51t.png-89.8kB"></p>
 <p>这一次只有一种可能性，我们越来越接近了！</p>
-<h3 id="Step-6"><a href="#Step-6" class="headerlink" title="Step 6"></a>Step 6</h3><p>你现在越走越近了！我敢打赌，你会猜测下一步是这样子的：</p>
+<h3>Step 6</h3>
+<p>你现在越走越近了！我敢打赌，你会猜测下一步是这样子的：</p>
 <p><img src="http://static.zybuluo.com/HandY/1ll8yftmibq058jbq7g945aq/image_1bjkpm71716hhb8r1rg51tnrie39.png" alt="image_1bjkpm71716hhb8r1rg51tnrie39.png-92.7kB"></p>
 <p>我们几乎就要到了，但是这次，你可以看见，现在这里我们有两条最短的路径达到目的地，我们可以在这两者之间选择。</p>
 <p><img src="http://static.zybuluo.com/HandY/wvknzur1uiwpjhem9jyblf2c/image_1bjkpoujpe9a4421ug312i11e93m.png" alt="image_1bjkpoujpe9a4421ug312i11e93m.png-66.9kB"></p>
@@ -482,14 +498,17 @@
 <li>1-2-3-4-5-7</li>
 </ul>
 <p>在真正的代码实现中，我们选择哪条路并不重要。</p>
-<h3 id="Step-7"><a href="#Step-7" class="headerlink" title="Step 7"></a>Step 7</h3><p>让我们再次迭代这些方格：</p>
+<h3>Step 7</h3>
+<p>让我们再次迭代这些方格：</p>
 <p><img src="http://static.zybuluo.com/HandY/nqify8df59fyw9lwhnrl4ip8/image_1bjkpts6h1oecalblcp1abq13351j.png" alt="image_1bjkpts6h1oecalblcp1abq13351j.png-97.6kB"></p>
 <p>啊哈，骨头现在在开放表中！</p>
-<h3 id="Step-8"><a href="#Step-8" class="headerlink" title="Step 8"></a>Step 8</h3><p>当我们的目标在开放表中时，算法会将它加入到闭合表中：</p>
+<h3>Step 8</h3>
+<p>当我们的目标在开放表中时，算法会将它加入到闭合表中：</p>
 <p><img src="http://static.zybuluo.com/HandY/bwk77lpi6q2p26srun9mchyj/image_1bjkq0mrn1598rb6labhij9120.png" alt="image_1bjkq0mrn1598rb6labhij9120.png-109kB"></p>
 <p>然后，算法所有需要做的就是返回去，找到最终的路径。</p>
 <p><img src="http://static.zybuluo.com/HandY/3zpc94jbieek5o4m2axlzhrb/image_1bjkq21pk17ahhj425doh2u7v2d.png" alt="image_1bjkq21pk17ahhj425doh2u7v2d.png-112.9kB"></p>
-<h3 id="一个没有眼光的猫咪（A-Non-Visionary-Cat）"><a href="#一个没有眼光的猫咪（A-Non-Visionary-Cat）" class="headerlink" title="一个没有眼光的猫咪（A Non-Visionary Cat）"></a>一个没有眼光的猫咪（A Non-Visionary Cat）</h3><p>在上面这个例子中，我们可以看到，当猫咪在寻找最短路径时，它通常会选择最优的方格（在它的未来是最短路径的上的方格） – 看起来它是一个有眼力的猫咪！（译注：指的应该是贪心的意思）</p>
+<h3>一个没有眼光的猫咪（A Non-Visionary Cat）</h3>
+<p>在上面这个例子中，我们可以看到，当猫咪在寻找最短路径时，它通常会选择最优的方格（在它的未来是最短路径的上的方格） -- 看起来它是一个有眼力的猫咪！（译注：指的应该是贪心的意思）</p>
 <p>但是，当我们的猫咪，没有那么聪明，而且总是选择开放表中 F 最低的方格加入它的闭合表会怎么样呢？</p>
 <p>下图展示了所有在寻找最短路径的过程中所需要的所有方格。你可以看到：猫咪尝试了更多方格，但是它仍然找到了最短路径（和之前展示的不是一样的，但是另一种相等）：</p>
 <p><img src="http://static.zybuluo.com/HandY/4ky28ye285dinbtqn382ba6q/image_1bjkqtvac14v01vjd13viivrrrj3p.png" alt="image_1bjkqtvac14v01vjd13viivrrrj3p.png-124.1kB"></p>
@@ -504,7 +523,7 @@
 <p>下面是一个用图表展示的回溯过程：</p>
 <p><img src="http://static.zybuluo.com/HandY/twfzz786lhr57nalj5e6wd8k/image_1bjkrk8tn13vm1ahml9tv8913du46.png" alt="image_1bjkrk8tn13vm1ahml9tv8913du46.png-121.7kB"></p>
 <p>下面是用伪码实现的算法，其实它是用 Object-C 写的，但其实它可以用任何语言实现。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">[openList add:originalSquare]; // start by adding the original position to the open list</div><div class="line">do &#123;</div><div class="line">	currentSquare = [openList squareWithLowestFScore]; // Get the square with the lowest F score</div><div class="line">	</div><div class="line">	[closedList add:currentSquare]; // add the current square to the closed list</div><div class="line">	[openList remove:currentSquare]; // remove it to the open list</div><div class="line">	</div><div class="line">	if ([closedList contains:destinationSquare]) &#123; // if we added the destination to the closed list, we&apos;ve found a path</div><div class="line">		// PATH FOUND</div><div class="line">		break; // break the loop</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	adjacentSquares = [currentSquare walkableAdjacentSquares]; // Retrieve all its walkable adjacent squares</div><div class="line">	</div><div class="line">	foreach (aSquare in adjacentSquares) &#123;</div><div class="line">		</div><div class="line">		if ([closedList contains:aSquare]) &#123; // if this adjacent square is already in the closed list ignore it</div><div class="line">			continue; // Go to the next adjacent square</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		if (![openList contains:aSquare]) &#123; // if its not in the open list</div><div class="line">			</div><div class="line">			// compute its score, set the parent</div><div class="line">			[openList add:aSquare]; // and add it to the open list</div><div class="line">			</div><div class="line">		&#125; else &#123; // if its already in the open list</div><div class="line">			</div><div class="line">			// test if using the current G score make the aSquare F score lower, if yes update the parent because it means its a better path</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125; while(![openList isEmpty]); // Continue until there is no more available square in the open list (which means there is no path)</div></pre></td></tr></table></figure>
+<p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">[openList add:originalSquare]; // start by adding the original position to the open list</div><div class="line">do &#123;</div><div class="line">	currentSquare = [openList squareWithLowestFScore]; // Get the square with the lowest F score</div><div class="line">	</div><div class="line">	[closedList add:currentSquare]; // add the current square to the closed list</div><div class="line">	[openList remove:currentSquare]; // remove it to the open list</div><div class="line">	</div><div class="line">	if ([closedList contains:destinationSquare]) &#123; // if we added the destination to the closed list, we&apos;ve found a path</div><div class="line">		// PATH FOUND</div><div class="line">		break; // break the loop</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	adjacentSquares = [currentSquare walkableAdjacentSquares]; // Retrieve all its walkable adjacent squares</div><div class="line">	</div><div class="line">	foreach (aSquare in adjacentSquares) &#123;</div><div class="line">		</div><div class="line">		if ([closedList contains:aSquare]) &#123; // if this adjacent square is already in the closed list ignore it</div><div class="line">			continue; // Go to the next adjacent square</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">		if (![openList contains:aSquare]) &#123; // if its not in the open list</div><div class="line">			</div><div class="line">			// compute its score, set the parent</div><div class="line">			[openList add:aSquare]; // and add it to the open list</div><div class="line">			</div><div class="line">		&#125; else &#123; // if its already in the open list</div><div class="line">			</div><div class="line">			// test if using the current G score make the aSquare F score lower, if yes update the parent because it means its a better path</div><div class="line">			</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125; while(![openList isEmpty]); // Continue until there is no more available square in the open list (which means there is no path)</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -717,7 +736,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简要介绍-A-寻路算法"><span class="nav-number">1.</span> <span class="nav-text">简要介绍 A* 寻路算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一只寻路的猫"><span class="nav-number">1.1.</span> <span class="nav-text">一只寻路的猫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将搜索区域简单化"><span class="nav-number">1.2.</span> <span class="nav-text">将搜索区域简单化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#开放表和闭合表"><span class="nav-number">1.3.</span> <span class="nav-text">开放表和闭合表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路径代价"><span class="nav-number">1.4.</span> <span class="nav-text">路径代价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-G"><span class="nav-number">1.5.</span> <span class="nav-text">关于 G</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于-H"><span class="nav-number">1.6.</span> <span class="nav-text">关于 H</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-算法"><span class="nav-number">1.7.</span> <span class="nav-text">A* 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#猫咪的路径"><span class="nav-number">1.8.</span> <span class="nav-text">猫咪的路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-1"><span class="nav-number">1.9.</span> <span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-2"><span class="nav-number">1.10.</span> <span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-3"><span class="nav-number">1.11.</span> <span class="nav-text">Step 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-4"><span class="nav-number">1.12.</span> <span class="nav-text">Step 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-5"><span class="nav-number">1.13.</span> <span class="nav-text">Step 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-6"><span class="nav-number">1.14.</span> <span class="nav-text">Step 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-7"><span class="nav-number">1.15.</span> <span class="nav-text">Step 7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Step-8"><span class="nav-number">1.16.</span> <span class="nav-text">Step 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个没有眼光的猫咪（A-Non-Visionary-Cat）"><span class="nav-number">1.17.</span> <span class="nav-text">一个没有眼光的猫咪（A Non-Visionary Cat）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">简要介绍 A* 寻路算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">一只寻路的猫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">将搜索区域简单化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">开放表和闭合表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">路径代价</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.5.</span> <span class="nav-text">关于 G</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.6.</span> <span class="nav-text">关于 H</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.7.</span> <span class="nav-text">A* 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.8.</span> <span class="nav-text">猫咪的路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.9.</span> <span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.10.</span> <span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.11.</span> <span class="nav-text">Step 3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.12.</span> <span class="nav-text">Step 4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.13.</span> <span class="nav-text">Step 5</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.14.</span> <span class="nav-text">Step 6</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.15.</span> <span class="nav-text">Step 7</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.16.</span> <span class="nav-text">Step 8</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.17.</span> <span class="nav-text">一个没有眼光的猫咪（A Non-Visionary Cat）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -895,24 +914,7 @@
         s.src = 'https://.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
-      </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+      </script>
     
 
   
@@ -959,6 +961,43 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
 

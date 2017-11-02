@@ -365,7 +365,7 @@
         <p>临近冰岩招新，没想到这次我也能负责出题 :)。</p>
 <p>关于新人们的实习任务，我出了一道参考了 Super Meat Boy 的游戏制作题。SMB 是在2D平台跳跃游戏中难得的佳作。其操作手感良好，关卡设计精妙。在实习任务中，我给出了详细的制作方法，但考虑到他们只有8天时间，而且有些新人还没有学习过游戏编程，所以这对于他们来说难度也是很大的。</p>
 <p>我自己也十分喜欢这个游戏，也想写写平台跳跃游戏。我想，在做完“JI”之后，我会尝试着自己做做的。</p>
-<a id="more"></a>
+<p>&lt;!--more--&gt;</p>
 <p>在这里我列出实习任务的内容，以供我之后自己制作：</p>
 <hr>
 <p>参考<em>超级肉食男孩</em>，制作一个类似的2D平台跳跃类游戏。</p>
@@ -385,10 +385,10 @@
 </ul>
 <p><strong>参考资料</strong></p>
 <ul>
-<li>Super Meat Boy 的所有美术资源（仅供学习使用）：<a href="https://www.spriters-resource.com/pc_computer/supermeatboy/sheet/37356/" target="_blank" rel="external">https://www.spriters-resource.com/pc_computer/supermeatboy/sheet/37356/</a></li>
-<li>2D 横版游戏中的摄像机的运镜原理：<a href="https://www.indienova.com/indie-game-development/scroll_back_the_theory_and_practice_of_cameras_in_sidescrollers-ph/" target="_blank" rel="external">https://www.indienova.com/indie-game-development/scroll_back_the_theory_and_practice_of_cameras_in_sidescrollers-ph/</a></li>
-<li>2D 平台跳跃游戏中的碰撞检测方法和基本的跳跃实现方法：<a href="http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/" target="_blank" rel="external">http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/</a></li>
-<li>用Unity制作2D平台跳跃游戏（教学）：<a href="https://www.youtube.com/watch?v=oK_NzdVSxaQ&amp;list=PLq3pyCh4J1B2va_ftIthSpUaQH0LycRA-" target="_blank" rel="external">https://www.youtube.com/watch?v=oK_NzdVSxaQ&amp;list=PLq3pyCh4J1B2va_ftIthSpUaQH0LycRA-</a></li>
+<li>Super Meat Boy 的所有美术资源（仅供学习使用）：https://www.spriters-resource.com/pc_computer/supermeatboy/sheet/37356/</li>
+<li>2D 横版游戏中的摄像机的运镜原理：https://www.indienova.com/indie-game-development/scroll_back_the_theory_and_practice_of_cameras_in_sidescrollers-ph/</li>
+<li>2D 平台跳跃游戏中的碰撞检测方法和基本的跳跃实现方法：http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/</li>
+<li>用Unity制作2D平台跳跃游戏（教学）：https://www.youtube.com/watch?v=oK_NzdVSxaQ&amp;list=PLq3pyCh4J1B2va_ftIthSpUaQH0LycRA-</li>
 </ul>
 
       
@@ -761,24 +761,7 @@
         s.src = 'https://.disqus.com/embed.js';
         s.setAttribute('data-timestamp', '' + +new Date());
         (d.head || d.body).appendChild(s);
-      </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+      </script>
     
 
   
@@ -825,6 +808,43 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
   
 
 

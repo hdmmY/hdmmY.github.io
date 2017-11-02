@@ -362,7 +362,9 @@
       
         
           
-            <h2 id="1-背景知识"><a href="#1-背景知识" class="headerlink" title="1 背景知识"></a>1 背景知识</h2><h3 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h3><p>实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。</p>
+            <h2>1 背景知识</h2>
+<h3>1.1 简介</h3>
+<p>实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。</p>
 <p>在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。</p>
 <p>相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：</p>
 <ul>
@@ -372,41 +374,143 @@
 </ul>
 <p>由于海面渲染是如此之复杂，所以很多游戏中对它进行了简化处理。如：减小海面的表面积，甚至将海面改为水池或水缸。如：简化海面的与其他的物体的交互，甚至根本没有交互。如：简化海面的波浪多少，甚至到海面根本没有波浪，仅仅只由shader实现波纹效果。</p>
 <p>这一节的下面部分会大致介绍海面渲染是如何实现的。</p>
-<p>blablabla …… （待会处理）</p>
-<h2 id="2-网格投影法的基本概念"><a href="#2-网格投影法的基本概念" class="headerlink" title="2. 网格投影法的基本概念"></a>2. 网格投影法的基本概念</h2><h3 id="2-1-渲染中的空间变换"><a href="#2-1-渲染中的空间变换" class="headerlink" title="2.1 渲染中的空间变换"></a>2.1 渲染中的空间变换</h3><p>这一节中的概念是我参考了《Unity Shader入门精要》[^footnote1]一书中第四章的内容。</p>
+<p>blablabla ...... （待会处理）</p>
+<h2>2. 网格投影法的基本概念</h2>
+<h3>2.1 渲染中的空间变换</h3>
+<p>这一节中的概念是我参考了《Unity Shader入门精要》[^footnote1]一书中第四章的内容。</p>
 <p>在渲染流水线中，一个顶点要经历许多坐标空间变化才能被最终画在屏幕上。这个顶点首先在它自己的模型空间中，最终变换到屏幕上的像素点坐标上。</p>
-<h4 id="2-1-1-模型空间"><a href="#2-1-1-模型空间" class="headerlink" title="2.1.1 模型空间"></a>2.1.1 模型空间</h4><p>模型空间以模型的中心为原点的坐标空间。</p>
+<h4>2.1.1 模型空间</h4>
+<p>模型空间以模型的中心为原点的坐标空间。</p>
 <p><img src="http://static.zybuluo.com/HandY/lswilumf3xt5dw91a65g3pjo/image_1btotrqfc1ko1r7hdg81iumrpu9.png" alt="image_1btotrqfc1ko1r7hdg81iumrpu9.png-7.7kB"></p>
 <p>如上图这个正方体，其8个顶点在模型空间的坐标，就是相对正方体的中心（图中坐标轴的原点）的坐标。</p>
-<h4 id="2-1-2-世界空间"><a href="#2-1-2-世界空间" class="headerlink" title="2.1.2 世界空间"></a>2.1.2 世界空间</h4><p>世界空间是我们最熟悉的空间，每个点在世界空间中的坐标可以直接通过查看<em>Unity</em>的<em>Transfrom</em>组件中的<em>position</em>来查看。</p>
+<h4>2.1.2 世界空间</h4>
+<p>世界空间是我们最熟悉的空间，每个点在世界空间中的坐标可以直接通过查看<em>Unity</em>的<em>Transfrom</em>组件中的<em>position</em>来查看。</p>
 <p><img src="http://static.zybuluo.com/HandY/r1mwvpt38h84vmpka62hyoei/image_1btou4020si71sa929s18h9b4m13.png" alt="image_1btou4020si71sa929s18h9b4m13.png-6.4kB"></p>
-<p>将物体从模型空间变换到世界空间的矩阵通常叫 $M_{model}$。其变化的公式为：<br>$$P_{world} = M_{model}P_{model}$$</p>
-<p>其中 $P_{model}$ 为(列向量)：<br>$$P_{model} = \begin{pmatrix}<br>    x \\<br>    y \\<br>    z \\<br>    1<br>    \end{pmatrix}<br>$$</p>
-<h4 id="2-1-3-观察空间（摄像机空间）"><a href="#2-1-3-观察空间（摄像机空间）" class="headerlink" title="2.1.3 观察空间（摄像机空间）"></a>2.1.3 观察空间（摄像机空间）</h4><p>观察空间顾名思义，就是以观察者为原点的空间。在游戏中，它指的是以摄像机为原点，摄像机的前、右、上三个方向为坐标轴的空间。</p>
+<p>将物体从模型空间变换到世界空间的矩阵通常叫 $M_{model}$。其变化的公式为：
+$$P_{world} = M_{model}P_{model}$$</p>
+<p>其中 $P_{model}$ 为(列向量)：
+$$P_{model} = \begin{pmatrix}
+x \<br>
+y \<br>
+z \<br>
+1
+\end{pmatrix}
+$$</p>
+<h4>2.1.3 观察空间（摄像机空间）</h4>
+<p>观察空间顾名思义，就是以观察者为原点的空间。在游戏中，它指的是以摄像机为原点，摄像机的前、右、上三个方向为坐标轴的空间。</p>
 <p><img src="http://static.zybuluo.com/HandY/j6gu0yskf2jqrtvdvrm5kvrm/image_1btoum48mkge8o8l031t7c8ni9.png" alt="image_1btoum48mkge8o8l031t7c8ni9.png-7.7kB"></p>
 <p>需要注意的是，在Unity中，观察空间是右手坐标系，所以观察空间中，x+是摄像机的右方，y+是摄像机的上方，但z+是摄像机的后方。</p>
 <p>如果已知摄像机的三个方向的方向向量在世界坐标系下的表示（可以根据 transfrom.up、tranform.right 和 transfrom.forward 得到），那么可以求出 <em>将物体从世界空间到观察空间的矩阵</em> $M_{view}$:</p>
 <ul>
-<li><p>假设观察空间坐标系方向向量在世界坐标系中分别为（单位向量）: $\overrightarrow {Up}、\overrightarrow {Right}、\overrightarrow {Forward}$<br>摄像机在世界空间中的坐标为：$O_{origin}$</p>
+<li>
+<p>假设观察空间坐标系方向向量在世界坐标系中分别为（单位向量）: $\overrightarrow {Up}、\overrightarrow {Right}、\overrightarrow {Forward}$
+摄像机在世界空间中的坐标为：$O_{origin}$</p>
 </li>
-<li><p>则：<br>  $$M_{view} = M_{negate} * Inverse(M_{viewtoworld})$$</p>
+<li>
+<p>则：
+$$M_{view} = M_{negate} * Inverse(M_{viewtoworld})$$</p>
 </li>
-<li><p>其中，$M_{negate}$ 为因为观察空间是右手坐标系，所以需要对 Z 取反：<br>$$M_{negate} = \begin{pmatrix}<br>  1&amp;0&amp;0&amp;0 \\<br>  0&amp;1&amp;0&amp;0 \\<br>  0&amp;0&amp;-1&amp;0 \\<br>  0&amp;0&amp;0&amp;1<br>  \end{pmatrix}<br>$$</p>
+<li>
+<p>其中，$M_{negate}$ 为因为观察空间是右手坐标系，所以需要对 Z 取反：
+$$M_{negate} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \<br>
+0 &amp; 1 &amp; 0 &amp; 0 \<br>
+0 &amp; 0 &amp; -1 &amp; 0 \<br>
+0 &amp; 0 &amp; 0 &amp;1
+\end{pmatrix}
+$$</p>
 </li>
-<li><p>其中，$M_{viewtoworld}$ 为将物体从观察空间转化到世界坐标系的矩阵：</p>
-<!-- $$M\_{viewtoworld} = \begin{pmatrix} 
-  \overrightarrow {Up}.x & \overrightarrow {Up}.y &
-  \overrightarrow {Up}.z & 0\\\
-  \overrightarrow {Right}.x & \overrightarrow {Right}.y &
-  \overrightarrow {Right}.z & 0\\\
-  \overrightarrow {Forward}.x & \overrightarrow {Forward}.y &
-  \overrightarrow {Forward}.z & 0\\\
-  {O\_{origin}}.x & {O\_{origin}}.y &
-  {O\_{origin}}.z & 0
-  \end{pmatrix}
-$$ --></li>
-<li>其中</li>
+<li>
+<p>其中，$M_{viewtoworld}$ 为将物体从观察空间转化到世界坐标系的矩阵：
+<span>$$M_{viewtoworld} = \begin{pmatrix} 
+    \overrightarrow {Up}.x &amp; \overrightarrow {Up}.y &amp;
+    \overrightarrow {Up}.z &amp; 0\\
+    \overrightarrow {Right}.x &amp; \overrightarrow {Right}.y &amp;
+    \overrightarrow {Right}.z &amp; 0\\
+    \overrightarrow {Forward}.x &amp; \overrightarrow {Forward}.y &amp;
+    \overrightarrow {Forward}.z &amp; 0\\
+    {O_{origin}}.x &amp; {O_{origin}}.y &amp;
+    {O_{origin}}.z &amp; 0
+    \end{pmatrix}$$</span><!-- Has MathJax --></p>
+</li>
+<li>
+<p>其中，$Inverse()$ 的功能是求一个矩阵的逆</p>
+</li>
 </ul>
+<h4>2.1.4 裁剪空间</h4>
+<p>顶点接下来需要从观察空间转化到裁剪空间中，裁剪空间的作用是为了方便剔除渲染图元：完全在这个空间内部的图元会被保留，完全不在这个空间内部的图元会被剔除，和这个空间相交的图元会被剪裁。</p>
+<p>裁剪空间实际上就是一个视锥体：</p>
+<p><img src="http://static.zybuluo.com/HandY/0grfom6r5mw35dl3qydjmuaj/image_1btp6cb0318j91mtv69e18hokbb1j.png" alt="视锥体示意图"></p>
+<p>这个视锥体实际上可以由<em>近剪裁平面距离Near</em>、<em>远剪裁平面距离Far</em>、<em>FOV</em>、*Aspect（宽高比）*这几个参数决定。</p>
+<p><img src="http://static.zybuluo.com/HandY/kw7e54z7x8er0hat9qzhecfx/image_1btp6gqjotkqdu3q3bbqh15s73i.png" alt="视锥体的侧视图"></p>
+<p>将物体从观察空间转换到剪裁空间中的矩阵 $M_{frustum}$ 如下：
+<span>$$M_{frustum} = \begin{pmatrix}
+    \frac{cot(\frac{FOV}{2})}{Aspect} &amp; 0 &amp; 0 &amp; 0\\
+    0 &amp; cot(\frac{FOV}{2}) &amp; 0 &amp; 0\\
+    0 &amp; 0 &amp; - \frac{Far+Near}{Far-Near} &amp; - \frac{2*Near*Far}{Far-Near} \\
+    0 &amp; 0 &amp; -1 &amp; 0
+    \end{pmatrix}$$</span><!-- Has MathJax --></p>
+<p>转换公式如下：</p>
+<p>$$P_{clip} = M_{frustum} * P_{view}$$</p>
+<p><img src="http://static.zybuluo.com/HandY/6o6nuj18xr134fy7mlfba8b9/image_1btp6j80corg13761k4s1e1o1tv13v.png" alt="观察空间下的视锥体坐标点和剪裁空间下的视锥体坐标点"></p>
+<p>上面的左图，是在观察空间的视锥体的四个顶点。上面的右图，经过变换后的视锥体的四个顶点。由图中可以看到，这个转换实际上就是对观察空间中的点做了一次平移+缩放的变换。</p>
+<h4>2.1.5 屏幕空间</h4>
+<p>将顶点从剪裁空间变换到屏幕空间后，就可以得到这个点在屏幕上对应的像素坐标了。由于这个变换在接下来的程序中不是很重要，所以在这里就不过多讲述了。</p>
+<h3>2.2 网格投影的基本原理</h3>
+<h4>2.2.1 基本概念</h4>
+<p>它的基本思想就是，将一个在剪裁空间中的，正对相机的网格，投影到世界空间中的海平面上。</p>
+<p>其直观的算法为：</p>
+<ul>
+<li>在剪裁空间中，创建一个正对摄像机的，正方形的网格。</li>
+<li>将这个网格投影到世界空间的一个平面上。这个平面就是海平面$S_{base}$。</li>
+<li>将这个世界空间中的点，根据高度图（$f_{HF}$），替换为对应的点。</li>
+<li>渲染这个平面。</li>
+</ul>
+<p><img src="http://static.zybuluo.com/HandY/4vublgn8yr591hexyi1e5em0/image_1btpf5df0125f1eh61j2ralu12es4c.png" alt="简易的投影后的网格"></p>
+<h4>2.2.2 一些定义</h4>
+<p><img src="http://static.zybuluo.com/HandY/rmxa687sik1hl2mirrmfj2sw/image_1bttn10e04531nhhagfqci16lr2j.png" alt="2D视角展示定义"></p>
+<p><img src="http://static.zybuluo.com/HandY/k2ztcfqa3y6cltavaldx03lk/image_1bttn1cuh1utl3he1s831asud1h30.png" alt="2D视角展示定义"></p>
+<p><img src="http://static.zybuluo.com/HandY/2dki733xlpzn0jqvkomyc3e9/image_1bttne9g51in3114k19r81icm5ng3q.png" alt="2D视角展示定义"></p>
+<ul>
+<li>
+<p>$S_{base}$：世界坐标系中，被替换前的海面。这个海面上的每个点都将会被$f_{HF}$替换为对应的高度。</p>
+</li>
+<li>
+<p>$S_{upper}$：整个海面被替换后的最高点所在的平面。</p>
+</li>
+<li>
+<p>$S_{lower}$：整个海面被替换后的最低点所在的平面。</p>
+</li>
+<li>
+<p>$f_{HF}$：将海面上每个点替换为对应点的函数。$f_{HF} = f(x, y)$。</p>
+</li>
+<li>
+<p>$V_{displaceable}$：在最高面和最低面之间的长方体。</p>
+</li>
+<li>
+<p>$V_{camera}$：视锥体所形成的平截椎体。</p>
+</li>
+<li>
+<p>$V_{visible}$：视锥体可以看到的体积。其实就是视锥体与海体的相交的部分。</p>
+</li>
+</ul>
+<h4>2.2.3 具体算法</h4>
+<p>生成投影网格的具体算法如下：</p>
+<ol>
+<li>获得摄像机 camera 的位置和方向，以及其他必要的属性。</li>
+<li>确定 $V_{camera}$ 与 $V_{displaceable}$ 是否有交集。如果没有交集，那么说明相机看不到海面，停止一切工作。具体算法在 <em>2.2.3.2</em> 节有。</li>
+<li>重新计算相机 newCam 的位置和方向（这个新相机和实际的相机会有一点点不同），计算得到 newCam 的从世界空间转化到相机空间的矩阵 $M_{pview}$，还有从相机空间转化到剪裁空间的矩阵 $M_{pclip}$。
+我们就可以得到从剪裁空间到相机空间的矩阵 $M_{projector}$：
+$$M_{projector} = [M_{pclip} * M_{pview}] ^ {-1}$$</li>
+<li>考虑到实际的体积 $V_{visible}$ 是 $V_{displaceable}$ 和 $V_{camera}$ 的相交的部分，所以需要计算 $V_{visible}$ 在剪裁空间中的 x 和 y 方向的扩张的部分。构造这样一个矩阵 $M_{range}$，它可以将 [0, 1] 转换到这个扩张的部分。更新投影矩阵 $M_{projector}$：
+<span>$$M_{range} = \begin{pmatrix}
+\frac{xMax - xMin}{2} &amp; 0 &amp; 0 &amp; xMin\\\
+0 &amp; \frac{yMax - yMin}{2} &amp; 0 &amp; yMin\\\
+0 &amp; 0 &amp; 1 &amp; 0 \\\
+0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}$$</span><!-- Has MathJax --></li>
+</ol>
+<p>&lt;br&gt;</p>
+<p>$$M_{projector} = M_{range} * [M_{pclip} * M_{pview}] ^ {-1}$$</p>
 
           
         
@@ -558,16 +662,35 @@ $$ --></li>
 
       
         
-          <p>最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下：</p>
-<h4 id="1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。"><a href="#1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。" class="headerlink" title="1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。"></a>1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</h4><p>轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：</p>
+          
+            <p>最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下：</p>
+<h4>1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</h4>
+<p>轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：</p>
 <p><img src="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png" alt="原始图案"> <img src="http://static.zybuluo.com/HandY/dwo2acht4vdvrz3x4d5lie5z/image_1br1su8jt159q7c173sbb6rdam.png" alt="描绘整个图形的轮廓"> <img src="http://static.zybuluo.com/HandY/eeaso70fnv5xrdniid8aaj9j/image_1br1t20nh1tcrm4u12rli8lir41g.png" alt="描绘物体的线条"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/05/学习二三事/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!--more--&gt;</p>
+<p>在实现过程中，我顺便学习了 Unity Sprite Default Shader 的源码，了解了 PerRendererData 这个属性，还有采用高斯核进行轮廓判断的方法。</p>
+<p>还有消融效果，感觉实现起来蛮简单的，就是噪声图+AlphaTest嘛。但我实现的是随机点的消融，如果要实现特定的消融效果应该还是蛮难的，比如沿着一条线扩散消融这种。最近项目好像也不需要这种效果，暂时先放着吧。</p>
+<h4>2. 纪念碑谷的简单实现</h4>
+<p>因为我们组的新人实习任务中有实现纪念碑谷这道题，加之我认为纪念碑谷的逻辑应该不是很复杂，就想着实现一下。</p>
+<p>现在做了简单的，不含楼梯、曲面的路径规划。</p>
+<p>我是这么想的：将每个正方体分解为六个面，每个面有着“是否可以行走”和“当前玩家是否可以到达”这两个属性。对于这个面是否可以行走，这个在我们设计关卡的时候就预先设置好（见图中灰色圆圈，代表可以行走）；对于玩家是否可以到达这个面，这个在玩家进行移动的时候进行动态更新（见图中蓝色图标，代表这个面玩家可以到达）。</p>
+<p>做这个的时候参考了纪念碑谷团队在GDC上面的演讲（可以在Youtobe上找到）。</p>
+<p><img src="http://static.zybuluo.com/HandY/6mliomml5bpszgy617l5qe75/image_1br1tpt6oqtn19q21vu498kb29.png" alt="纪念碑谷编辑器视图"></p>
+<p>纪念碑谷的带曲面的寻路逻辑我还没有做，而且纪念碑谷还有很多Shader实现得挺好的，这个以后再写吧。应该是过一两个星期的样子，等我作业做完，JI的每周开发任务、种子杯结束，再写。</p>
+<h4>3. 学习噪声函数、Geometry Shader的编写</h4>
+<p>最近看了一篇陈嘉栋的关于大规模草的模拟的文章，我自己尝试实现了一下。</p>
+<p>首先遇到的困难是，我需要一张噪声图来生成地形。因为我自己对噪声函数也不是很了解，所以顺便学习了噪声函数。学习了什么是噪声函数，如何进行噪声的叠加以产生分形效果，几种常用的插值函数，几种常用的平滑噪声的方法。</p>
+<p>生成了大地图后，我接下来看了看别人的 Geometry Shader 的代码，学习了一下 Geometry Shader 的书写格式和在渲染流程中的作用。</p>
+<h4>4. 买了很多书</h4>
+<p>这一周买了：《游戏编程模式》、《Doom启示录》、《Unity 5 实战》。</p>
+<p>其中《游戏编程模式》是我以前就在网上看了电子版的，当时没有看完，最近出笔试题的时候又学习了一下其中的“游戏循环”这一章，感觉还是需要买回来，做做笔记，仔细阅读的。</p>
+<p>《Doom启示录》这本书，我在大二上学期的时候就读过两遍，这次买来，还没来得及阅读完。每次读卡马克和罗梅洛这两个人的传奇经历，都让我特别兴奋。</p>
+<p>卡马克在我脑海中的形象是无比冷静、刻苦、自学成才。他没有接受过正规的计算机教育，所有关于编程方面的知识都是通过看书和每天令人难以置信的编程实践得来。他的天分，完全是因为他的自律、刻苦而得来。</p>
+<p>我十分推崇他的思想：“如果你想动手开发什么全新的技术，不需要几百万美元的资金，只需要在冰箱里放满披萨和可乐，再有一台便宜的计算机和为之献身的决心。”我自开始编程以来（大一下），几乎所有现在所掌握的知识，都是我通过书本、网络自学而来，我也认为，要学好计算机的唯一方法就是多敲代码，多练。</p>
+<p>我也欣赏id的风格：“我们是风！”想要做好一件事，实现一项新的技术，直接开始做就行了，比他人更快的学习能力才是我们的优势所在，要像风一样迅速的开始行动，即使是自己陌生的领域。</p>
+<p>与卡神相比，我的刻苦和自律水平太差了。这一方面是我要重点改变的地方。我决定增加我的学习时间，增加我连续学习的时间（中间不中断）。</p>
+
+          
         
       
     </div>
@@ -717,16 +840,23 @@ $$ --></li>
 
       
         
-          <p>很早就想做一个又会画画，又会代码的程序员了。</p>
+          
+            <p>很早就想做一个又会画画，又会代码的程序员了。</p>
 <p>这样的话，2D 小 demo 不就可以自己做了吗？没事的时候还可以画画美女，消磨时光、陶冶情操。</p>
 <p>下面就开始记录记录自己的绘画作品吧。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/23/自学绘画二三事/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!-- more --&gt;</p>
+<hr>
+<h3>2017.09.23</h3>
+<p><img src="http://static.zybuluo.com/HandY/mvxsmyrkh6h5veiasccu0hsv/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170923195226.jpg" alt="时简和兔女郎"></p>
+<p>第一幅作品~~~</p>
+<p>感觉自己多人脸的把握太差了/(ㄒoㄒ)/~~
+时简：一个帅气的男孩子，脸却被我画歪了，左手感觉也很僵硬。</p>
+<hr>
+<h3>2017.09.23</h3>
+<p><img src="http://static.zybuluo.com/HandY/81n4ge82ygeeyi1wrlo7cfzc/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170923195746.jpg" alt="R姐"></p>
+<p>这次画的是 R姐 （其实我是第一次知道这个人），感觉脸型、眼睛、嘴巴没哟画好。同时，胸也画的不够**。</p>
+
+          
         
       
     </div>
@@ -876,16 +1006,37 @@ $$ --></li>
 
       
         
-          <p>临近冰岩招新，没想到这次我也能负责出题 :)。</p>
+          
+            <p>临近冰岩招新，没想到这次我也能负责出题 :)。</p>
 <p>关于新人们的实习任务，我出了一道参考了 Super Meat Boy 的游戏制作题。SMB 是在2D平台跳跃游戏中难得的佳作。其操作手感良好，关卡设计精妙。在实习任务中，我给出了详细的制作方法，但考虑到他们只有8天时间，而且有些新人还没有学习过游戏编程，所以这对于他们来说难度也是很大的。</p>
 <p>我自己也十分喜欢这个游戏，也想写写平台跳跃游戏。我想，在做完“JI”之后，我会尝试着自己做做的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/20/开发方向实习任务-Super-Meat-Boy/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!--more--&gt;</p>
+<p>在这里我列出实习任务的内容，以供我之后自己制作：</p>
+<hr>
+<p>参考<em>超级肉食男孩</em>，制作一个类似的2D平台跳跃类游戏。</p>
+<p><strong>基本点</strong></p>
+<ul>
+<li>玩家可以在2D地图上行走，跳跃。</li>
+<li>玩家的跳跃分为普通跳跃和冲刺跳跃两种。</li>
+<li>玩家可以依附在墙壁上。</li>
+<li>在经过危险区域（如转轮）时，玩家会死亡</li>
+</ul>
+<p><strong>加分点</strong></p>
+<ul>
+<li>跳跃、移动手感良好。</li>
+<li>有“鲜血四溅”的效果。</li>
+<li>有回放系统。</li>
+<li>摄像机跟随平滑。</li>
+</ul>
+<p><strong>参考资料</strong></p>
+<ul>
+<li>Super Meat Boy 的所有美术资源（仅供学习使用）：https://www.spriters-resource.com/pc_computer/supermeatboy/sheet/37356/</li>
+<li>2D 横版游戏中的摄像机的运镜原理：https://www.indienova.com/indie-game-development/scroll_back_the_theory_and_practice_of_cameras_in_sidescrollers-ph/</li>
+<li>2D 平台跳跃游戏中的碰撞检测方法和基本的跳跃实现方法：http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/</li>
+<li>用Unity制作2D平台跳跃游戏（教学）：https://www.youtube.com/watch?v=oK_NzdVSxaQ&amp;list=PLq3pyCh4J1B2va_ftIthSpUaQH0LycRA-</li>
+</ul>
+
+          
         
       
     </div>
@@ -1035,15 +1186,47 @@ $$ --></li>
 
       
         
-          <p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
+          
+            <p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
 <p>这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/31/2D-平台游戏的碰撞检测方法/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!--more--&gt;</p>
+<p><strong>声明：</strong> 我大部分内容是参考了这篇文章 <a href="http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/" target="_blank" rel="external">这里</a>，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。</p>
+<h3>第一种：基于网格（简单）</h3>
+<p>在基于网格的2D场景中，人物移动受限于网格，人物永远不可能站在两个网格的中间。动画能使人物的移动看起来更平滑。</p>
+<p>这是最简单的一种平台游戏的实现方式，但是这种方式对于人物控制有着很多限制，所以它不适合大多是基于动作的游戏，但是它很适合解谜类的平台游戏。</p>
+<p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
+<p>例子：波斯王子、闪回、淘金者（Lode Runner）、小鸡快跑</p>
+<h3>它是如何实现的</h3>
+<p>整个游戏地图是由一系列的网格组成，每个网格都储存了一系列的信息，比如说：这是否是一个障碍物，它所使用的贴图是什么，行走在这上面的声音是什么，诸如此类。</p>
+<p>玩家和其他人物由一系列的网格组成。例如，在<a href="https://en.wikipedia.org/wiki/Lode_Runner" target="_blank" rel="external">淘金者</a>中，玩家是一个单独的网格。在<a href="http://store.steampowered.com/app/38700/Toki_Tori/" target="_blank" rel="external">小鸡快跑</a>中，玩家是由一个 2X2 的网格组成的。在闪回中，玩家站着的时候，是两个网格宽，五个网格高（看上面的图片）；玩家蹲下的时候，是三个网格高。</p>
+<p>在这类游戏中，玩家几乎不会沿着对角线移动，但是如果他要沿着对角线移动的话，整个移动可以别分解为两个独立的步骤 -- 分别沿着水平和竖直方向移动。同样的，玩家一次性只能移动一个网格，如果要移动多个网格的话，就要分解为多次的一个网格的移动。算法在下面展示出来了：</p>
+<ol>
+<li>在目的地创建一个人物的复制体。例如：要向右移动一个格子的话，你就将玩家所属的每个格子向右移动一格的位置制造一个玩家的复制体。</li>
+<li>在复制体上检查复制体和背景还有其他人物体的碰撞。</li>
+<li>如果检测到一个交互，那么玩家的移动就停止，执行相应的动作。</li>
+<li>否则，将玩家移至目的地，同时做出动画来使得玩家的移动看起来更加平滑。</li>
+</ol>
+<p>这种移动方式非常不适合一般的弧形跳跃 -- 所以在这种游戏中，玩家通常无法跳跃 （小鸡快跑、淘金者）或者只能在竖直方向上跳跃（闪回、波斯王子）。</p>
+<p>这种方式的优点在于其容易实现，而且也很精确。因为场景的确定性很高，所以因碰撞产生的抖动或其他的小故障几乎不会发生，游戏体验能得到更好的控制 -- 因为不太需要基于不同环境去调整数值。尤其是相较于其他复杂的移动方式时， 这种方法在实现一些特定的物理学运动的时候（比如抓住墙壁，单方向的平台）变得十分简单  -- 你需要做的一切就是检查玩家是否以一种特定的方式接近一个特殊的网格，以此来触发一个特殊的动作。</p>
+<p>从理论上来说，这种方式不允许玩家移动的距离小于一个网格，但是我们有一些方法来减轻这个限制。比如：网格大小可以小于玩家大小（就像：玩家是 2X6 大小）；或者，你可以用一种仅仅只是视觉上的表现去让玩家站在格子中间，而不影响碰撞逻辑。</p>
+<h3>第二种：基于网格（平滑）</h3>
+<p>碰撞仍然由网格进行检测，但是人物可以在游戏世界中进行平滑移动（一般来说一次移动是以像素为基本单位的，由整数控制，但是在文章最后会介绍一种平滑移动的方式）。这种移动方式通常是实现 8-bit 或 16-bit 的平台游戏的实现方式，但是在现在仍然很受欢迎，因为它的实现十分简单，而且能够使关卡编辑简化。它也允许斜坡和平滑的跳跃轨迹。</p>
+<p>如果你不太确定你想要实现什么种类的平台游戏，但你想做一个动作游戏，那么这种方法是一个很好的选择。它非常灵活，也很容易实现。在介绍的四种方式中，这种方式会给你最多的控制权。毫无疑问，大部分的动作游戏都是基于这种类型的。</p>
+<p><img src="http://static.zybuluo.com/HandY/xuh418s4x7mflubm0cwp0nbp/image_1bmdulkgp13d71q187kmq2i13gk9.png" alt="“洛克人”， 展示了网格边框和玩家的碰撞盒"></p>
+<p>例子：超级马里奥、刺猬索尼克、洛克人、超级银河战士、魂斗罗、合金弹头、还有几乎所有的 16-bit 的平台游戏。</p>
+<h3>它是如何实现的</h3>
+<p>和简单的基于网格的碰撞一样，它的地图信息也是储存于一个二维数组里的，唯一的不同之处就是玩家和背景的交互方式。 玩家的碰撞盒现在是一个 AABB 包围盒（Axis-Aligned Bounding Box, 一个无法旋转的矩形)，而且，一般来说，是网格大小的整数倍。通常的大小有一个网格宽，加上一个网格（小马里奥，变形的球型的银河战士）、两个网格（大马里奥，洛克人，蹲下的银河战士）、或者三个网格（站着的银河战士）高。大多数情况下，人物精灵的大小会比碰撞盒大。在上面的图片中，你会发现，角色精灵的在 X 方向上的大小是两个网格宽，但是它的包围盒是一个网格宽。</p>
+<p>假设现在没有斜坡和单向平台（one-way platform），移动的算法很直接：</p>
+<ol>
+<li>将移动分解为水平方向的移动和竖直方向的移动，一次移动一个方向。如果你想要实现沿着斜坡移动的话，先向水平方向上移动，然后是竖直方向。否则的话，移动次序没有要求。 然后，在每个方向上：</li>
+<li>得到面向前方的碰撞盒边缘的点的坐标。例如：如果向左走，那么就是碰撞盒的左边那条线的 X 坐标。如果向右边走，就是右边那条线的 X 坐标。如果向上走，就是上面那条线的 Y 坐标。</li>
+<li>确定碰撞盒会与哪些网格相交。例如，如果我们在向左边走，有可能玩家会与水平方向上的第32、33、34 个网格相交（也就是说，Y 轴坐标为 32 * TS、33 * TS、34 * TS 的网格，其中 TS = 网格大小）。</li>
+<li>沿着移动方向遍历这些网格，找到一个离你最近的的静态碰撞体。然后遍历所有的移动的碰撞体。最后确定离你最近的，而且在你的移动方向上的碰撞体。</li>
+<li>玩家的最终沿着该方向的移动距离就是：玩家到最近碰撞体的距离和玩家想要移动的距离的最小值。</li>
+<li>将玩家移动到一个新位置。在到了进行下一个方向上的移动。</li>
+</ol>
+
+          
         
       
     </div>
@@ -1194,10 +1377,11 @@ $$ --></li>
       
         
           
-            <h4 id="网站："><a href="#网站：" class="headerlink" title="网站："></a>网站：</h4><ul>
-<li>Procedural Mesh Examples: <a href="https://github.com/parahunter/mesh-presentation" target="_blank" rel="external">https://github.com/parahunter/mesh-presentation</a></li>
-<li>Unity’s Procedural Mesh Examples: <a href="https://www.assetstore.unity3d.com/en/#!/content/5141" target="_blank" rel="external">https://www.assetstore.unity3d.com/en/#!/content/5141</a></li>
-<li>Triangle.NET for Unity : <a href="https://github.com/parahunter/triangle-net-for-unity" target="_blank" rel="external">https://github.com/parahunter/triangle-net-for-unity</a></li>
+            <h4>网站：</h4>
+<ul>
+<li>Procedural Mesh Examples: https://github.com/parahunter/mesh-presentation</li>
+<li>Unity's Procedural Mesh Examples: https://www.assetstore.unity3d.com/en/#!/content/5141</li>
+<li>Triangle.NET for Unity : https://github.com/parahunter/triangle-net-for-unity</li>
 </ul>
 
           
@@ -1350,21 +1534,89 @@ $$ --></li>
 
       
         
-          <p>这个暑假打算好好学习学习英语，将 TOFEL 考试给考过，以下是我暑假 7-8 月的一个月时间的英语学习计划。</p>
-<h3 id="考试和题型"><a href="#考试和题型" class="headerlink" title="考试和题型"></a>考试和题型</h3><p>考试由四部分组成：阅读（Reading）、听力（Listening）、口语（Speaking)、写作（Writing）</p>
+          
+            <p>这个暑假打算好好学习学习英语，将 TOFEL 考试给考过，以下是我暑假 7-8 月的一个月时间的英语学习计划。</p>
+<h3>考试和题型</h3>
+<p>考试由四部分组成：阅读（Reading）、听力（Listening）、口语（Speaking)、写作（Writing）</p>
 <ul>
 <li>每部分满分30分，整个试题满分120分，考试时间3-4个小时，阅读约为1个小时，听力时间50分钟，口试时间20分钟，写作时间1个小时。</li>
 <li>阅读和听力可能遇到加试，口语和写作没有加试。</li>
 <li>考试时应提前半个小时到考场，一般是8点半进场，9点开考。</li>
 <li>考试时携带有效证件和从官网打印的报名确认回执。</li>
 </ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/30/暑假-TOFEL-学习计划/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!--more--&gt;</p>
+<p>&lt;br&gt;
+<strong>阅读方面（Reading）</strong>
+阅读共有 3 篇文章，700-800 单词/篇，12-14 个题目/篇</p>
+<ul>
+<li>文章分类
+<ul>
+<li>自然科学（地质、人文）</li>
+<li>生物科学（植物、动物、生态、环境）</li>
+<li>社会科学（艺术、建筑、生理/心理、历史/考古......）</li>
+</ul>
+</li>
+<li>备考
+<ul>
+<li>每天至少做两篇阅读</li>
+<li>按题型练习，每天至少做完一篇 TPO</li>
+<li>自己控制时间，20分钟完成一整篇的练习</li>
+</ul>
+</li>
+<li>注意事项
+<ul>
+<li>除了最后一道试题外，其他的试题都是针对文章某一部分进行提问，试题出现的顺序和段落顺序一致。</li>
+<li>在做题时养成分段阅读的习惯</li>
+</ul>
+</li>
+</ul>
+<p>&lt;br&gt;
+<strong>听力方面（Listening）</strong>
+听力共有 2-3 段对话，4-6 个讲座(lecture)，考试时间为 40-60 分钟。</p>
+<p>特点：</p>
+<ul>
+<li>主要测试考生能否听懂北美和其他英语国家人的英语口语</li>
+<li>考试尽量采用真实的学术语言</li>
+<li>每段对话后有5个问题，讲座后会有6个问题</li>
+<li>整个听力考试过程中，考生都可以记笔记</li>
+<li>在准备和答题时，屏幕上会显示倒计时的时钟(可关闭）</li>
+</ul>
+<p>&lt;br&gt;
+听写练习：</p>
+<ul>
+<li>听写1分钟以内的材料（重点听语音和语速），科学60s是不错的材料</li>
+<li>反复听背词汇书的音频（特别是相应的分类词汇)，跟读和模仿</li>
+<li>关键词听写训练，在听完录音后写出录音中出现的关键词</li>
+</ul>
+<p>&lt;br&gt;
+<strong>写作方面</strong>
+综合写作 + 独立写作 (Integratedwriting + Independentwriting)</p>
+<ul>
+<li>
+<p>综合写作：就某一话题阐述自己的观点，300 字以上</p>
+</li>
+<li>
+<p>独立写作：首先阅读一篇文章，五分钟以后，文章隐去，播放一段与文章有关的课堂演讲。课堂演讲列举了一些论据反驳文章中的论点、论据。随后要求考生在20分钟内写一篇作文，总结课堂演讲的论点、论据，并陈述这些论点、论据是如何反驳文章的论点、论据的，字数要求为150字到225字之间。在写作时，文章会重新显示在屏幕上。这篇作文不要求考生阐述自己的观点。</p>
+</li>
+<li>
+<p>主要考察：用英文论述和阐述观点的能力</p>
+</li>
+</ul>
+<p>&lt;br&gt;
+练习方法：</p>
+<ul>
+<li>每个星期写两篇文章</li>
+<li>每天抄写范文</li>
+</ul>
+<h3>词汇</h3>
+<p>我目前的单词水平，应该是在四级和六级之间，应该说和考试要求的词汇量还是有不少差距。新托福阅读的最低要求词汇量是<strong>8千左右</strong>。</p>
+<p>单词计划：</p>
+<ul>
+<li>TOFEL核心词汇21天突破 - 2轮</li>
+<li>平时注意记忆在试卷中出现过的高频单词。</li>
+</ul>
+
+          
         
       
     </div>
@@ -1514,15 +1766,50 @@ $$ --></li>
 
       
         
-          <p>我大二下学期过得模模糊糊的，每天不知道要干些什么，结果到了学期结束，发现自己的成绩下滑得很厉害，而且专业知识也没怎么学好，深感愧疚。这个暑假有两个月长，我又参加了冰岩的夏令营，决定在技术方面好好规划一下，寻求突破。同时，为了准备下学期可能的交换资格，我也打算在暑假里好好学学英语。</p>
+          
+            <p>我大二下学期过得模模糊糊的，每天不知道要干些什么，结果到了学期结束，发现自己的成绩下滑得很厉害，而且专业知识也没怎么学好，深感愧疚。这个暑假有两个月长，我又参加了冰岩的夏令营，决定在技术方面好好规划一下，寻求突破。同时，为了准备下学期可能的交换资格，我也打算在暑假里好好学学英语。</p>
 <p>这里是我对暑假的前一个月的规划：</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/30/暑假学习计划/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!--more--&gt;</p>
+<h3>英语学习</h3>
+<ul>
+<li>周一至周五每天学习英语 2 到 3 个小时， 周六周日每天学习 6 个小时</li>
+<li>主要以托福试卷和单词书为主进行复习</li>
+</ul>
+<h3>游戏项目</h3>
+<p>周一至周五每天的 14 点到 21 点在冰岩做项目，同时可以看看书、学习一下课外知识。</p>
+<h3>暑假要看的书</h3>
+<ul>
+<li>《Unity着色器和屏幕特效开发秘笈》 &amp;&amp; 《Unity Shader 入门精要》</li>
+<li>《数据结构和算法描述 C语言版》</li>
+<li>《游戏设计全景探秘》</li>
+</ul>
+<p>关于读书计划：</p>
+<ul>
+<li>
+<p>《Unity Shader 入门精要》 &amp;&amp; 《Unity着色器和屏幕特效开发秘笈》</p>
+<ul>
+<li>每两天天读完一个章节，重写全部的代码。</li>
+<li>读书的预计耗时：2小时，写代码耗时：2小时</li>
+<li>两天的学习中，第一天一般要读完几乎全部的内容，第二天做一些实践工作</li>
+<li>《Unity Shader 入门精要》 这本书一定要读完，而且精读，可以读几遍；《Unity着色器和屏幕特效开发秘笈》 这本书，可以略读，将它作为一本工具书来读，有Shader需要的话，就看看。</li>
+</ul>
+</li>
+<li>
+<p>《数据结构和算法描述 C语言版》</p>
+<ul>
+<li>这本书作为算法方面的入门书，是在这个暑假必须要读完的。</li>
+<li>考虑到这本书的内容比较多，有些知识不是很容易理解，我决定每<strong>两天花两个小时</strong>阅读。如果在一个月里面无法学习完的话，就下个月继续学习。</li>
+</ul>
+</li>
+<li>
+<p>《游戏设计全景探秘》</p>
+<ul>
+<li>这本书是一本关于游戏设计方面的书，建议每天的闲暇时间看，为了避免自己太懒，决定接下来用一篇文章记录自己的阅读感受。</li>
+</ul>
+</li>
+</ul>
+
+          
         
       
     </div>
@@ -1907,9 +2194,9 @@ $$ --></li>
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+    <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+  MathJax.Hub.Config("");
 </script>
 
 <script type="text/x-mathjax-config">
@@ -1921,7 +2208,7 @@ $$ --></li>
   });
 </script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+<script type="text/javascript" src="custom_mathjax_source">
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
