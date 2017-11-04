@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="1 背景知识 1.1 简介 实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。 在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。 相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：  它是动态的。由于海面在每一帧的每一">
+<meta name="description" content="1 背景知识1.1 简介实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。 在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。 相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：  它是动态的。由于海面在每一帧的每一个点">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网格投影法的海面的生成">
 <meta property="og:url" content="http://yoursite.com/2017/10/31/网格投影法的海面的生成/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="1 背景知识 1.1 简介 实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。 在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。 相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：  它是动态的。由于海面在每一帧的每一">
+<meta property="og:description" content="1 背景知识1.1 简介实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。 在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。 相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：  它是动态的。由于海面在每一帧的每一个点">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/lswilumf3xt5dw91a65g3pjo/image_1btotrqfc1ko1r7hdg81iumrpu9.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/r1mwvpt38h84vmpka62hyoei/image_1btou4020si71sa929s18h9b4m13.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/j6gu0yskf2jqrtvdvrm5kvrm/image_1btoum48mkge8o8l031t7c8ni9.png">
@@ -96,10 +96,10 @@
 <meta property="og:image" content="http://static.zybuluo.com/HandY/rmxa687sik1hl2mirrmfj2sw/image_1bttn10e04531nhhagfqci16lr2j.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/k2ztcfqa3y6cltavaldx03lk/image_1bttn1cuh1utl3he1s831asud1h30.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/2dki733xlpzn0jqvkomyc3e9/image_1bttne9g51in3114k19r81icm5ng3q.png">
-<meta property="og:updated_time" content="2017-11-02T07:44:39.491Z">
+<meta property="og:updated_time" content="2017-11-04T05:28:42.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网格投影法的海面的生成">
-<meta name="twitter:description" content="1 背景知识 1.1 简介 实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。 在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。 相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：  它是动态的。由于海面在每一帧的每一">
+<meta name="twitter:description" content="1 背景知识1.1 简介实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。 在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。 相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：  它是动态的。由于海面在每一帧的每一个点">
 <meta name="twitter:image" content="http://static.zybuluo.com/HandY/lswilumf3xt5dw91a65g3pjo/image_1btotrqfc1ko1r7hdg81iumrpu9.png">
 
 
@@ -373,9 +373,7 @@
       
 
       
-        <h2>1 背景知识</h2>
-<h3>1.1 简介</h3>
-<p>实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。</p>
+        <h2 id="1-背景知识"><a href="#1-背景知识" class="headerlink" title="1 背景知识"></a>1 背景知识</h2><h3 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h3><p>实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。</p>
 <p>在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。</p>
 <p>相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：</p>
 <ul>
@@ -385,55 +383,29 @@
 </ul>
 <p>由于海面渲染是如此之复杂，所以很多游戏中对它进行了简化处理。如：减小海面的表面积，甚至将海面改为水池或水缸。如：简化海面的与其他的物体的交互，甚至根本没有交互。如：简化海面的波浪多少，甚至到海面根本没有波浪，仅仅只由shader实现波纹效果。</p>
 <p>这一节的下面部分会大致介绍海面渲染是如何实现的。</p>
-<p>&lt;!-- more --&gt;</p>
-<p>blablabla ...... （待会处理）</p>
-<h2>2. 网格投影法的基本概念</h2>
-<h3>2.1 渲染中的空间变换</h3>
-<p>这一节中的概念是我参考了《Unity Shader入门精要》[^footnote1]一书中第四章的内容。</p>
+<a id="more"></a>
+<p>blablabla …… （待会处理）</p>
+<h2 id="2-网格投影法的基本概念"><a href="#2-网格投影法的基本概念" class="headerlink" title="2. 网格投影法的基本概念"></a>2. 网格投影法的基本概念</h2><h3 id="2-1-渲染中的空间变换"><a href="#2-1-渲染中的空间变换" class="headerlink" title="2.1 渲染中的空间变换"></a>2.1 渲染中的空间变换</h3><p>这一节中的概念是我参考了《Unity Shader入门精要》[^footnote1]一书中第四章的内容。</p>
 <p>在渲染流水线中，一个顶点要经历许多坐标空间变化才能被最终画在屏幕上。这个顶点首先在它自己的模型空间中，最终变换到屏幕上的像素点坐标上。</p>
-<h4>2.1.1 模型空间</h4>
-<p>模型空间以模型的中心为原点的坐标空间。</p>
+<h4 id="2-1-1-模型空间"><a href="#2-1-1-模型空间" class="headerlink" title="2.1.1 模型空间"></a>2.1.1 模型空间</h4><p>模型空间以模型的中心为原点的坐标空间。</p>
 <p><img src="http://static.zybuluo.com/HandY/lswilumf3xt5dw91a65g3pjo/image_1btotrqfc1ko1r7hdg81iumrpu9.png" alt="image_1btotrqfc1ko1r7hdg81iumrpu9.png-7.7kB"></p>
 <p>如上图这个正方体，其8个顶点在模型空间的坐标，就是相对正方体的中心（图中坐标轴的原点）的坐标。</p>
-<h4>2.1.2 世界空间</h4>
-<p>世界空间是我们最熟悉的空间，每个点在世界空间中的坐标可以直接通过查看<em>Unity</em>的<em>Transfrom</em>组件中的<em>position</em>来查看。</p>
+<h4 id="2-1-2-世界空间"><a href="#2-1-2-世界空间" class="headerlink" title="2.1.2 世界空间"></a>2.1.2 世界空间</h4><p>世界空间是我们最熟悉的空间，每个点在世界空间中的坐标可以直接通过查看<em>Unity</em>的<em>Transfrom</em>组件中的<em>position</em>来查看。</p>
 <p><img src="http://static.zybuluo.com/HandY/r1mwvpt38h84vmpka62hyoei/image_1btou4020si71sa929s18h9b4m13.png" alt="image_1btou4020si71sa929s18h9b4m13.png-6.4kB"></p>
-<p>将物体从模型空间变换到世界空间的矩阵通常叫 $M_{model}$。其变化的公式为：
-$$P_{world} = M_{model}P_{model}$$</p>
-<p>其中 $P_{model}$ 为(列向量)：
-$$P_{model} = \begin{pmatrix}
-x \<br>
-y \<br>
-z \<br>
-1
-\end{pmatrix}
-$$</p>
-<h4>2.1.3 观察空间（摄像机空间）</h4>
-<p>观察空间顾名思义，就是以观察者为原点的空间。在游戏中，它指的是以摄像机为原点，摄像机的前、右、上三个方向为坐标轴的空间。</p>
+<p>将物体从模型空间变换到世界空间的矩阵通常叫 $M_{model}$。其变化的公式为：<br>$$P_{world} = M_{model}P_{model}$$</p>
+<p>其中 $P_{model}$ 为(列向量)：<br>$$P_{model} = \begin{pmatrix}<br>    x \\<br>    y \\<br>    z \\<br>    1<br>    \end{pmatrix}<br>$$</p>
+<h4 id="2-1-3-观察空间（摄像机空间）"><a href="#2-1-3-观察空间（摄像机空间）" class="headerlink" title="2.1.3 观察空间（摄像机空间）"></a>2.1.3 观察空间（摄像机空间）</h4><p>观察空间顾名思义，就是以观察者为原点的空间。在游戏中，它指的是以摄像机为原点，摄像机的前、右、上三个方向为坐标轴的空间。</p>
 <p><img src="http://static.zybuluo.com/HandY/j6gu0yskf2jqrtvdvrm5kvrm/image_1btoum48mkge8o8l031t7c8ni9.png" alt="image_1btoum48mkge8o8l031t7c8ni9.png-7.7kB"></p>
 <p>需要注意的是，在Unity中，观察空间是右手坐标系，所以观察空间中，x+是摄像机的右方，y+是摄像机的上方，但z+是摄像机的后方。</p>
 <p>如果已知摄像机的三个方向的方向向量在世界坐标系下的表示（可以根据 transfrom.up、tranform.right 和 transfrom.forward 得到），那么可以求出 <em>将物体从世界空间到观察空间的矩阵</em> $M_{view}$:</p>
 <ul>
-<li>
-<p>假设观察空间坐标系方向向量在世界坐标系中分别为（单位向量）: $\overrightarrow {Up}、\overrightarrow {Right}、\overrightarrow {Forward}$
-摄像机在世界空间中的坐标为：$O_{origin}$</p>
+<li><p>假设观察空间坐标系方向向量在世界坐标系中分别为（单位向量）: $\overrightarrow {Up}、\overrightarrow {Right}、\overrightarrow {Forward}$<br>摄像机在世界空间中的坐标为：$O_{origin}$</p>
 </li>
-<li>
-<p>则：
-$$M_{view} = M_{negate} * Inverse(M_{viewtoworld})$$</p>
+<li><p>则：<br>  $$M_{view} = M_{negate} * Inverse(M_{viewtoworld})$$</p>
 </li>
-<li>
-<p>其中，$M_{negate}$ 为因为观察空间是右手坐标系，所以需要对 Z 取反：
-$$M_{negate} = \begin{pmatrix}
-1 &amp; 0 &amp; 0 &amp; 0 \<br>
-0 &amp; 1 &amp; 0 &amp; 0 \<br>
-0 &amp; 0 &amp; -1 &amp; 0 \<br>
-0 &amp; 0 &amp; 0 &amp;1
-\end{pmatrix}
-$$</p>
+<li><p>其中，$M_{negate}$ 为因为观察空间是右手坐标系，所以需要对 Z 取反：<br>$$M_{negate} = \begin{pmatrix}<br>  1 &amp; 0 &amp; 0 &amp; 0 \\<br>  0 &amp; 1 &amp; 0 &amp; 0 \\<br>  0 &amp; 0 &amp; -1 &amp; 0 \\<br>  0 &amp; 0 &amp; 0 &amp;1<br>  \end{pmatrix}<br>$$</p>
 </li>
-<li>
-<p>其中，$M_{viewtoworld}$ 为将物体从观察空间转化到世界坐标系的矩阵：
+<li><p>其中，$M_{viewtoworld}$ 为将物体从观察空间转化到世界坐标系的矩阵：</p>
 <span>$$M_{viewtoworld} = \begin{pmatrix} 
     \overrightarrow {Up}.x &amp; \overrightarrow {Up}.y &amp;
     \overrightarrow {Up}.z &amp; 0\\
@@ -443,34 +415,26 @@ $$</p>
     \overrightarrow {Forward}.z &amp; 0\\
     {O_{origin}}.x &amp; {O_{origin}}.y &amp;
     {O_{origin}}.z &amp; 0
-    \end{pmatrix}$$</span><!-- Has MathJax --></p>
-</li>
-<li>
-<p>其中，$Inverse()$ 的功能是求一个矩阵的逆</p>
-</li>
+    \end{pmatrix}$$</span><!-- Has MathJax --></li>
+<li>其中，$Inverse()$ 的功能是求一个矩阵的逆</li>
 </ul>
-<h4>2.1.4 裁剪空间</h4>
-<p>顶点接下来需要从观察空间转化到裁剪空间中，裁剪空间的作用是为了方便剔除渲染图元：完全在这个空间内部的图元会被保留，完全不在这个空间内部的图元会被剔除，和这个空间相交的图元会被剪裁。</p>
+<h4 id="2-1-4-裁剪空间"><a href="#2-1-4-裁剪空间" class="headerlink" title="2.1.4 裁剪空间"></a>2.1.4 裁剪空间</h4><p>顶点接下来需要从观察空间转化到裁剪空间中，裁剪空间的作用是为了方便剔除渲染图元：完全在这个空间内部的图元会被保留，完全不在这个空间内部的图元会被剔除，和这个空间相交的图元会被剪裁。</p>
 <p>裁剪空间实际上就是一个视锥体：</p>
 <p><img src="http://static.zybuluo.com/HandY/0grfom6r5mw35dl3qydjmuaj/image_1btp6cb0318j91mtv69e18hokbb1j.png" alt="视锥体示意图"></p>
-<p>这个视锥体实际上可以由<em>近剪裁平面距离Near</em>、<em>远剪裁平面距离Far</em>、<em>FOV</em>、*Aspect（宽高比）*这几个参数决定。</p>
+<p>这个视锥体实际上可以由<em>近剪裁平面距离Near</em>、<em>远剪裁平面距离Far</em>、<em>FOV</em>、<em>Aspect（宽高比）</em>这几个参数决定。</p>
 <p><img src="http://static.zybuluo.com/HandY/kw7e54z7x8er0hat9qzhecfx/image_1btp6gqjotkqdu3q3bbqh15s73i.png" alt="视锥体的侧视图"></p>
-<p>将物体从观察空间转换到剪裁空间中的矩阵 $M_{frustum}$ 如下：
-<span>$$M_{frustum} = \begin{pmatrix}
+<p>将物体从观察空间转换到剪裁空间中的矩阵 $M_{frustum}$ 如下：<br><span>$$M_{frustum} = \begin{pmatrix}
     \frac{cot(\frac{FOV}{2})}{Aspect} &amp; 0 &amp; 0 &amp; 0\\
     0 &amp; cot(\frac{FOV}{2}) &amp; 0 &amp; 0\\
     0 &amp; 0 &amp; - \frac{Far+Near}{Far-Near} &amp; - \frac{2*Near*Far}{Far-Near} \\
     0 &amp; 0 &amp; -1 &amp; 0
     \end{pmatrix}$$</span><!-- Has MathJax --></p>
 <p>转换公式如下：</p>
-<p>$$P_{clip} = M_{frustum} * P_{view}$$</p>
+<p>$$P<em>{clip} = M</em>{frustum} * P_{view}$$</p>
 <p><img src="http://static.zybuluo.com/HandY/6o6nuj18xr134fy7mlfba8b9/image_1btp6j80corg13761k4s1e1o1tv13v.png" alt="观察空间下的视锥体坐标点和剪裁空间下的视锥体坐标点"></p>
 <p>上面的左图，是在观察空间的视锥体的四个顶点。上面的右图，经过变换后的视锥体的四个顶点。由图中可以看到，这个转换实际上就是对观察空间中的点做了一次平移+缩放的变换。</p>
-<h4>2.1.5 屏幕空间</h4>
-<p>将顶点从剪裁空间变换到屏幕空间后，就可以得到这个点在屏幕上对应的像素坐标了。由于这个变换在接下来的程序中不是很重要，所以在这里就不过多讲述了。</p>
-<h3>2.2 网格投影的基本原理</h3>
-<h4>2.2.1 基本概念</h4>
-<p>它的基本思想就是，将一个在剪裁空间中的，正对相机的网格，投影到世界空间中的海平面上。</p>
+<h4 id="2-1-5-屏幕空间"><a href="#2-1-5-屏幕空间" class="headerlink" title="2.1.5 屏幕空间"></a>2.1.5 屏幕空间</h4><p>将顶点从剪裁空间变换到屏幕空间后，就可以得到这个点在屏幕上对应的像素坐标了。由于这个变换在接下来的程序中不是很重要，所以在这里就不过多讲述了。</p>
+<h3 id="2-2-网格投影的基本原理"><a href="#2-2-网格投影的基本原理" class="headerlink" title="2.2 网格投影的基本原理"></a>2.2 网格投影的基本原理</h3><h4 id="2-2-1-基本概念"><a href="#2-2-1-基本概念" class="headerlink" title="2.2.1 基本概念"></a>2.2.1 基本概念</h4><p>它的基本思想就是，将一个在剪裁空间中的，正对相机的网格，投影到世界空间中的海平面上。</p>
 <p>其直观的算法为：</p>
 <ul>
 <li>在剪裁空间中，创建一个正对摄像机的，正方形的网格。</li>
@@ -479,53 +443,36 @@ $$</p>
 <li>渲染这个平面。</li>
 </ul>
 <p><img src="http://static.zybuluo.com/HandY/4vublgn8yr591hexyi1e5em0/image_1btpf5df0125f1eh61j2ralu12es4c.png" alt="简易的投影后的网格"></p>
-<h4>2.2.2 一些定义</h4>
-<p><img src="http://static.zybuluo.com/HandY/rmxa687sik1hl2mirrmfj2sw/image_1bttn10e04531nhhagfqci16lr2j.png" alt="2D视角展示定义"></p>
+<h4 id="2-2-2-一些定义"><a href="#2-2-2-一些定义" class="headerlink" title="2.2.2 一些定义"></a>2.2.2 一些定义</h4><p><img src="http://static.zybuluo.com/HandY/rmxa687sik1hl2mirrmfj2sw/image_1bttn10e04531nhhagfqci16lr2j.png" alt="2D视角展示定义"></p>
 <p><img src="http://static.zybuluo.com/HandY/k2ztcfqa3y6cltavaldx03lk/image_1bttn1cuh1utl3he1s831asud1h30.png" alt="2D视角展示定义"></p>
 <p><img src="http://static.zybuluo.com/HandY/2dki733xlpzn0jqvkomyc3e9/image_1bttne9g51in3114k19r81icm5ng3q.png" alt="2D视角展示定义"></p>
 <ul>
-<li>
-<p>$S_{base}$：世界坐标系中，被替换前的海面。这个海面上的每个点都将会被$f_{HF}$替换为对应的高度。</p>
+<li><p>$S<em>{base}$：世界坐标系中，被替换前的海面。这个海面上的每个点都将会被$f</em>{HF}$替换为对应的高度。</p>
 </li>
-<li>
-<p>$S_{upper}$：整个海面被替换后的最高点所在的平面。</p>
+<li><p>$S_{upper}$：整个海面被替换后的最高点所在的平面。 </p>
 </li>
-<li>
-<p>$S_{lower}$：整个海面被替换后的最低点所在的平面。</p>
-</li>
-<li>
-<p>$f_{HF}$：将海面上每个点替换为对应点的函数。$f_{HF} = f(x, y)$。</p>
-</li>
-<li>
-<p>$V_{displaceable}$：在最高面和最低面之间的长方体。</p>
-</li>
-<li>
-<p>$V_{camera}$：视锥体所形成的平截椎体。</p>
-</li>
-<li>
-<p>$V_{visible}$：视锥体可以看到的体积。其实就是视锥体与海体的相交的部分。</p>
-</li>
+<li>$S_{lower}$：整个海面被替换后的最低点所在的平面。</li>
+<li>$f<em>{HF}$：将海面上每个点替换为对应点的函数。$f</em>{HF} = f(x, y)$。</li>
+<li>$V_{displaceable}$：在最高面和最低面之间的长方体。</li>
+<li>$V_{camera}$：视锥体所形成的平截椎体。</li>
+<li>$V_{visible}$：视锥体可以看到的体积。其实就是视锥体与海体的相交的部分。</li>
 </ul>
-<h4>2.2.3 具体算法</h4>
-<p>生成投影网格的具体算法如下：</p>
+<h4 id="2-2-3-具体算法"><a href="#2-2-3-具体算法" class="headerlink" title="2.2.3 具体算法"></a>2.2.3 具体算法</h4><p>生成投影网格的具体算法如下：</p>
 <ol>
 <li>获得摄像机 camera 的位置和方向，以及其他必要的属性。</li>
-<li>确定 $V_{camera}$ 与 $V_{displaceable}$ 是否有交集。如果没有交集，那么说明相机看不到海面，停止一切工作。具体算法在 <em>2.2.3.2</em> 节有。</li>
-<li>重新计算相机 newCam 的位置和方向（这个新相机和实际的相机会有一点点不同），计算得到 newCam 的从世界空间转化到相机空间的矩阵 $M_{pview}$，还有从相机空间转化到剪裁空间的矩阵 $M_{pclip}$。
-我们就可以得到从剪裁空间到相机空间的矩阵 $M_{projector}$：
-$$M_{projector} = [M_{pclip} * M_{pview}] ^ {-1}$$</li>
-<li>考虑到实际的体积 $V_{visible}$ 是 $V_{displaceable}$ 和 $V_{camera}$ 的相交的部分，所以需要计算 $V_{visible}$ 在剪裁空间中的 x 和 y 方向的扩张的部分。构造这样一个矩阵 $M_{range}$，它可以将 [0, 1] 转换到这个扩张的部分。更新投影矩阵 $M_{projector}$：
-<span>$$M_{range} = \begin{pmatrix}
+<li>确定 $V<em>{camera}$ 与 $V</em>{displaceable}$ 是否有交集。如果没有交集，那么说明相机看不到海面，停止一切工作。具体算法在 <em>2.2.3.2</em> 节有。</li>
+<li>重新计算相机 newCam 的位置和方向（这个新相机和实际的相机会有一点点不同），计算得到 newCam 的从世界空间转化到相机空间的矩阵 $M<em>{pview}$，还有从相机空间转化到剪裁空间的矩阵 $M</em>{pclip}$。<br>我们就可以得到从剪裁空间到相机空间的矩阵 $M<em>{projector}$：<br> $$M</em>{projector} = [M<em>{pclip} * M</em>{pview}] ^ {-1}$$</li>
+<li>考虑到实际的体积 $V<em>{visible}$ 是 $V</em>{displaceable}$ 和 $V<em>{camera}$ 的相交的部分，所以需要计算 $V</em>{visible}$ 在剪裁空间中的 x 和 y 方向的扩张的部分。构造这样一个矩阵 $M<em>{range}$，它可以将 [0, 1] 转换到这个扩张的部分。更新投影矩阵 $M</em>{projector}$：<span>$$M_{range} = \begin{pmatrix}
 \frac{xMax - xMin}{2} &amp; 0 &amp; 0 &amp; xMin\\\
 0 &amp; \frac{yMax - yMin}{2} &amp; 0 &amp; yMin\\\
 0 &amp; 0 &amp; 1 &amp; 0 \\\
-0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}$$</span><!-- Has MathJax --></li>
+0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}$$</span><!-- Has MathJax -->
+</li>
 </ol>
-<p>$$M_{projector} = M_{range} * [M_{pclip} * M_{pview}] ^ {-1}$$</p>
-<ol start="5">
-<li>创建一个x、y都在 $[0, 1]$的网格。
-6.将网格中的每个点，首先投影到世界空间下，视锥体的近剪裁面上，然后投影到视锥体的远剪裁面上，最终的点就是这两个点组成的线与海平面 $S_{base}$的交点。</li>
-<li>将这个在 $S_{base}$ 上的点，根据高度函数 $f_{HF}$，替换为最终的点。</li>
+<p>$$M<em>{projector} = M</em>{range} <em> [M_{pclip} </em> M_{pview}] ^ {-1}$$</p>
+<ol>
+<li>创建一个x、y都在 $[0, 1]$的网格。<br>6.将网格中的每个点，首先投影到世界空间下，视锥体的近剪裁面上，然后投影到视锥体的远剪裁面上，最终的点就是这两个点组成的线与海平面 $S_{base}$的交点。</li>
+<li>将这个在 $S<em>{base}$ 上的点，根据高度函数 $f</em>{HF}$，替换为最终的点。</li>
 </ol>
 
       
@@ -741,7 +688,7 @@ $$M_{projector} = [M_{pclip} * M_{pview}] ^ {-1}$$</li>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">1 背景知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">2. 网格投影法的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 渲染中的空间变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 模型空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 世界空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.3.</span> <span class="nav-text">2.1.3 观察空间（摄像机空间）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.4.</span> <span class="nav-text">2.1.4 裁剪空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.5.</span> <span class="nav-text">2.1.5 屏幕空间</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 网格投影的基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 一些定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 具体算法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-背景知识"><span class="nav-number">1.</span> <span class="nav-text">1 背景知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-简介"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-网格投影法的基本概念"><span class="nav-number">2.</span> <span class="nav-text">2. 网格投影法的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-渲染中的空间变换"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 渲染中的空间变换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-模型空间"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 模型空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-世界空间"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 世界空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-3-观察空间（摄像机空间）"><span class="nav-number">2.1.3.</span> <span class="nav-text">2.1.3 观察空间（摄像机空间）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-4-裁剪空间"><span class="nav-number">2.1.4.</span> <span class="nav-text">2.1.4 裁剪空间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-5-屏幕空间"><span class="nav-number">2.1.5.</span> <span class="nav-text">2.1.5 屏幕空间</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-网格投影的基本原理"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 网格投影的基本原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-基本概念"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.2.1 基本概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-一些定义"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2.2 一些定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-具体算法"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.2.3 具体算法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
