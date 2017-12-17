@@ -258,6 +258,187 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/17/Shader学习：特效和程式生成/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡东明">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="东明的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/17/Shader学习：特效和程式生成/" itemprop="url">Shader学习：特效和程式生成</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-17T14:40:45+08:00">
+                2017-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2017-12/" itemprop="url" rel="index">
+                    <span itemprop="name">2017-12</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/17/Shader学习：特效和程式生成/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/17/Shader学习：特效和程式生成/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Shader学习：特效和程式生成"><a href="#Shader学习：特效和程式生成" class="headerlink" title="Shader学习：特效和程式生成"></a>Shader学习：特效和程式生成</h1><p>标签（空格分隔）： 未分类</p>
+<hr>
+<h3 id="1-闲聊这两周做了什么"><a href="#1-闲聊这两周做了什么" class="headerlink" title="1. 闲聊这两周做了什么"></a>1. 闲聊这两周做了什么</h3><ul>
+<li><p>项目<br>  最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。<br>  我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。</p>
+</li>
+<li><p>Shader学习<br>  感觉自己也不能总是写写逻辑什么的，正好最近需要写写特效，所以开始学习各种Shader的编写。同时，为了在周末的组会上分享一点新的东西，我也开始学习起了程式生成的Shader编写。</p>
+</li>
+<li><p>游戏<br>  游戏的话，这两周玩的时间不多，通关了《堡垒》，感觉挺棒的，下次有时间的单独写一篇文章来聊聊这个游戏。</p>
+</li>
+<li><p>课业<br>  课业仍然非常可怕。主要是华科有各种各样的实验报告，可怕可怕。我的计网实验报告还没开始写呢，大后天交，好害怕…….<br>  我们最近还考了C++，C++还是挺难的呀。考试考得我对C++都没有信心了…….几乎裸考，不知道结果如何…….<br>  还有英语六级考试是昨天考完的，裸考。不行呀，下次要好好准备了！<br>  要开始好好学习了！</p>
+</li>
+</ul>
+<h3 id="2-特效展示"><a href="#2-特效展示" class="headerlink" title="2. 特效展示"></a>2. 特效展示</h3><h4 id="2-1-护盾特效："><a href="#2-1-护盾特效：" class="headerlink" title="2.1 护盾特效："></a>2.1 护盾特效：</h4><p><img src="http://static.zybuluo.com/HandY/9r3lwshomy6lcurw1clzgz7d/%E6%8A%A4%E7%9B%BE%E7%89%B9%E6%95%88.gif" alt="护盾特效"></p>
+<p>这个特效的边缘高亮是用 Fresnel 做的。</p>
+<p>中间的机体模糊是用的高斯模糊做的。</p>
+<p>六边形的隐约的轮廓是用的贴图。</p>
+<h4 id="2-2-光圈扩散效果："><a href="#2-2-光圈扩散效果：" class="headerlink" title="2.2 光圈扩散效果："></a>2.2 光圈扩散效果：</h4><p><img src="http://static.zybuluo.com/HandY/vxkly8hxwq45gpeswd506qsg/%E5%85%89%E5%9C%88%E6%89%A9%E6%95%A3%E6%95%88%E6%9E%9C.gif" alt="光圈扩散效果"></p>
+<p>这个图显然是网上随便找的图……</p>
+<p>光彩流过的效果，是第二张图，根据第一张图的亮度进行叠加 – </p>
+<p>亮度为0的地方不叠加，亮度为1的地方叠加程度最大。</p>
+<p>消隐效果是通过参数，控制半径为圆的透明度平滑变化，这样就消隐了。</p>
+<h4 id="2-3-屏幕扭曲"><a href="#2-3-屏幕扭曲" class="headerlink" title="2.3 屏幕扭曲"></a>2.3 屏幕扭曲</h4><iframe height="480" width="400" src="http://player.youku.com/embed/XMTQ2MjU2NTU2OA" frameborder="0" allowfullscreen></iframe>
+<p>屏幕扭曲的话，这个是用了后处理。</p>
+<p>首先将这个屏幕用一个 GrabPass 抓下来，然后在一个圆环上进行扭曲，其他地方不变。</p>
+<p>然后用脚本控制扭曲区域的圆心，和半径变化，这样最终形成这样的效果。</p>
+<h4 id="2-4-半兰伯特消隐-护盾"><a href="#2-4-半兰伯特消隐-护盾" class="headerlink" title="2.4 半兰伯特消隐 + 护盾"></a>2.4 半兰伯特消隐 + 护盾</h4><p><img src="http://static.zybuluo.com/HandY/bb8xgwf027fxff2snpj1h1k3/%E5%8D%8A%E5%85%B0%E4%BC%AF%E7%89%B9%E6%B6%88%E9%9A%90+%E6%8A%A4%E7%9B%BE.gif" alt="半兰伯特消隐+护盾"></p>
+<p>可以看到，这个特效结合了之前的护盾特效，只不过加入了消隐效果。</p>
+<p>这个消隐效果其实是使用了半兰伯特光照模型，对护盾的 Alpha 值进行处理，然后，光照强的地方 Alpha 接近1，光照弱的地方 Alpha 值接近 0。用脚本控制光照角度不停地变化，就可以实现这种效果了。</p>
+<h3 id="3-程式生成-Shader"><a href="#3-程式生成-Shader" class="headerlink" title="3. 程式生成 Shader"></a>3. 程式生成 Shader</h3><p>ShaderToy 是我很早以前就知道的一个写 fragment shader 的网站了。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/“晶体管”游戏分析-射击Demo展示/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1336,163 +1517,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/03/程式生成mesh/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="胡东明">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="东明的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/03/程式生成mesh/" itemprop="url">程式生成mesh</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-03T23:21:23+08:00">
-                2017-07-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2017-07/" itemprop="url" rel="index">
-                    <span itemprop="name">2017-07</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/07/03/程式生成mesh/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/07/03/程式生成mesh/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="网站："><a href="#网站：" class="headerlink" title="网站："></a>网站：</h4><ul>
-<li>Procedural Mesh Examples: <a href="https://github.com/parahunter/mesh-presentation" target="_blank" rel="external">https://github.com/parahunter/mesh-presentation</a></li>
-<li>Unity’s Procedural Mesh Examples: <a href="https://www.assetstore.unity3d.com/en/#!/content/5141" target="_blank" rel="external">https://www.assetstore.unity3d.com/en/#!/content/5141</a></li>
-<li>Triangle.NET for Unity : <a href="https://github.com/parahunter/triangle-net-for-unity" target="_blank" rel="external">https://github.com/parahunter/triangle-net-for-unity</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1547,7 +1571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1569,7 +1593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
