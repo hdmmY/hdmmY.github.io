@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：">
+<meta name="description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!-- more --&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Defau">
 <meta name="keywords" content="杂谈">
 <meta property="og:type" content="article">
 <meta property="og:title" content="学习二三事">
 <meta property="og:url" content="http://yoursite.com/2017/10/05/学习二三事/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：">
+<meta property="og:description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!-- more --&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Defau">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/dwo2acht4vdvrz3x4d5lie5z/image_1br1su8jt159q7c173sbb6rdam.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/eeaso70fnv5xrdniid8aaj9j/image_1br1t20nh1tcrm4u12rli8lir41g.png">
@@ -93,7 +93,7 @@
 <meta property="og:updated_time" content="2018-01-08T11:42:52.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习二三事">
-<meta name="twitter:description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：">
+<meta name="twitter:description" content="最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下： 1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。 轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：    &amp;lt;!-- more --&amp;gt; 在实现过程中，我顺便学习了 Unity Sprite Defau">
 <meta name="twitter:image" content="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png">
 
 
@@ -357,21 +357,25 @@
 
       
         <p>最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下：</p>
-<h4 id="1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。"><a href="#1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。" class="headerlink" title="1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。"></a>1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</h4><p>轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：</p>
+<h4>1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</h4>
+<p>轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：</p>
 <p><img src="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png" alt="原始图案"> <img src="http://static.zybuluo.com/HandY/dwo2acht4vdvrz3x4d5lie5z/image_1br1su8jt159q7c173sbb6rdam.png" alt="描绘整个图形的轮廓"> <img src="http://static.zybuluo.com/HandY/eeaso70fnv5xrdniid8aaj9j/image_1br1t20nh1tcrm4u12rli8lir41g.png" alt="描绘物体的线条"></p>
-<a id="more"></a>
+<p>&lt;!-- more --&gt;</p>
 <p>在实现过程中，我顺便学习了 Unity Sprite Default Shader 的源码，了解了 PerRendererData 这个属性，还有采用高斯核进行轮廓判断的方法。</p>
 <p>还有消融效果，感觉实现起来蛮简单的，就是噪声图+AlphaTest嘛。但我实现的是随机点的消融，如果要实现特定的消融效果应该还是蛮难的，比如沿着一条线扩散消融这种。最近项目好像也不需要这种效果，暂时先放着吧。</p>
-<h4 id="2-纪念碑谷的简单实现"><a href="#2-纪念碑谷的简单实现" class="headerlink" title="2. 纪念碑谷的简单实现"></a>2. 纪念碑谷的简单实现</h4><p>因为我们组的新人实习任务中有实现纪念碑谷这道题，加之我认为纪念碑谷的逻辑应该不是很复杂，就想着实现一下。</p>
+<h4>2. 纪念碑谷的简单实现</h4>
+<p>因为我们组的新人实习任务中有实现纪念碑谷这道题，加之我认为纪念碑谷的逻辑应该不是很复杂，就想着实现一下。</p>
 <p>现在做了简单的，不含楼梯、曲面的路径规划。</p>
 <p>我是这么想的：将每个正方体分解为六个面，每个面有着“是否可以行走”和“当前玩家是否可以到达”这两个属性。对于这个面是否可以行走，这个在我们设计关卡的时候就预先设置好（见图中灰色圆圈，代表可以行走）；对于玩家是否可以到达这个面，这个在玩家进行移动的时候进行动态更新（见图中蓝色图标，代表这个面玩家可以到达）。</p>
 <p>做这个的时候参考了纪念碑谷团队在GDC上面的演讲（可以在Youtobe上找到）。</p>
 <p><img src="http://static.zybuluo.com/HandY/6mliomml5bpszgy617l5qe75/image_1br1tpt6oqtn19q21vu498kb29.png" alt="纪念碑谷编辑器视图"></p>
 <p>纪念碑谷的带曲面的寻路逻辑我还没有做，而且纪念碑谷还有很多Shader实现得挺好的，这个以后再写吧。应该是过一两个星期的样子，等我作业做完，JI的每周开发任务、种子杯结束，再写。</p>
-<h4 id="3-学习噪声函数、Geometry-Shader的编写"><a href="#3-学习噪声函数、Geometry-Shader的编写" class="headerlink" title="3. 学习噪声函数、Geometry Shader的编写"></a>3. 学习噪声函数、Geometry Shader的编写</h4><p>最近看了一篇陈嘉栋的关于大规模草的模拟的文章，我自己尝试实现了一下。</p>
+<h4>3. 学习噪声函数、Geometry Shader的编写</h4>
+<p>最近看了一篇陈嘉栋的关于大规模草的模拟的文章，我自己尝试实现了一下。</p>
 <p>首先遇到的困难是，我需要一张噪声图来生成地形。因为我自己对噪声函数也不是很了解，所以顺便学习了噪声函数。学习了什么是噪声函数，如何进行噪声的叠加以产生分形效果，几种常用的插值函数，几种常用的平滑噪声的方法。</p>
 <p>生成了大地图后，我接下来看了看别人的 Geometry Shader 的代码，学习了一下 Geometry Shader 的书写格式和在渲染流程中的作用。</p>
-<h4 id="4-买了很多书"><a href="#4-买了很多书" class="headerlink" title="4. 买了很多书"></a>4. 买了很多书</h4><p>这一周买了：《游戏编程模式》、《Doom启示录》、《Unity 5 实战》。</p>
+<h4>4. 买了很多书</h4>
+<p>这一周买了：《游戏编程模式》、《Doom启示录》、《Unity 5 实战》。</p>
 <p>其中《游戏编程模式》是我以前就在网上看了电子版的，当时没有看完，最近出笔试题的时候又学习了一下其中的“游戏循环”这一章，感觉还是需要买回来，做做笔记，仔细阅读的。</p>
 <p>《Doom启示录》这本书，我在大二上学期的时候就读过两遍，这次买来，还没来得及阅读完。每次读卡马克和罗梅洛这两个人的传奇经历，都让我特别兴奋。</p>
 <p>卡马克在我脑海中的形象是无比冷静、刻苦、自学成才。他没有接受过正规的计算机教育，所有关于编程方面的知识都是通过看书和每天令人难以置信的编程实践得来。他的天分，完全是因为他的自律、刻苦而得来。</p>
@@ -522,7 +526,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -533,7 +537,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -608,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。"><span class="nav-text">1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-纪念碑谷的简单实现"><span class="nav-text">2. 纪念碑谷的简单实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-学习噪声函数、Geometry-Shader的编写"><span class="nav-text">3. 学习噪声函数、Geometry Shader的编写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-买了很多书"><span class="nav-text">4. 买了很多书</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">2. 纪念碑谷的简单实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">3. 学习噪声函数、Geometry Shader的编写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">4. 买了很多书</span></a></li></ol></div>
             
 
           </div>
