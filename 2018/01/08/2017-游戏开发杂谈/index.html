@@ -99,7 +99,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -323,7 +323,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2018/01/08/2017-游戏开发杂谈/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2018/01/08/2017-游戏开发杂谈/" itemprop="commentCount">0</span> comments
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/08/2017-游戏开发杂谈/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -355,13 +356,13 @@
 <p>先说说我怎么开始进入计算机领域的吧。我接触编程比较晚，大一暑假才开始接触编程。（之前只会书本上的简单的C语言）而到了大二上的时候，有次参加学校的一个编程比赛，意外的到了决赛，最后差一名就可以获奖。从那以后，我就对编程有了兴趣。</p>
 <p>既然要开始认真学习编程了，那么自然是要选择一个方向了。那时，我因为做数据结构课设，想挑战一下自己，写个图形界面，用纯C语言写，而且那时根本不知道UI为何物，用纯像素点画，写得死去活来的。那时我就想：游戏这么复杂而精巧的图形界面，是怎么做出来的呢？我试试这方面吧。于是就这样，开始接触游戏开发。</p>
 <p>决定要开始了解游戏领域后，在看完<a href="https://www.bilibili.com/video/av13112651/" target="_blank" rel="external">《独立游戏大电影》</a>、<a href="http://files.cnblogs.com/files/TV9/DOOM.pdf" target="_blank" rel="external">《Doom启示录》</a>这些超级燃的影视和书籍后，一时间想把自己全部身心投入到游戏开发中，认为这是一项非常非常有意思的事。之后，我大量浏览各种游戏社区，同时也玩/买了许多Steam游戏，愈发觉得游戏开发真是太棒了。</p>
-<p>&lt;!--more--&gt;</p>
+<a id="more"></a>
 <p>那么在2016年年底，我开始学习Unity这个游戏引擎。学习制作了上面的<a href="https://unity3d.com/cn/learn/tutorials/s/tanks-tutorial" target="_blank" rel="external">“坦克大战”</a>、<a href="https://unity3d.com/cn/learn/tutorials/s/survival-shooter-tutorial" target="_blank" rel="external">“噩梦猎手”</a>、<a href="https://unity3d.com/cn/learn/tutorials/s/2d-roguelike-tutorial" target="_blank" rel="external">2D RogueLike</a>这些官方Demo之后，就开始入门了。</p>
-<p>2017年一月份，我和两个朋友一起去广州参加了 <a href="https://globalgamejam.org/" target="_blank" rel="external">Global Game Jam</a> -- 一个48小时游戏开发活动。那时我真是什么都不知道啊。做了一个最最简单了<a href="https://globalgamejam.org/2017/games/lightener" target="_blank" rel="external">平台跳跃游戏</a>，再加上了一点点 Stencil Shader 的效果。不过，在经历了这次比赛后，我觉得自己有能力去和其他人一起做点东西了。</p>
+<p>2017年一月份，我和两个朋友一起去广州参加了 <a href="https://globalgamejam.org/" target="_blank" rel="external">Global Game Jam</a> – 一个48小时游戏开发活动。那时我真是什么都不知道啊。做了一个最最简单了<a href="https://globalgamejam.org/2017/games/lightener" target="_blank" rel="external">平台跳跃游戏</a>，再加上了一点点 Stencil Shader 的效果。不过，在经历了这次比赛后，我觉得自己有能力去和其他人一起做点东西了。</p>
 <p>我开始有意识的去关注学校里各个游戏社团，先是加入了一个叫蜃楼的社团，不过之后很快又退出了。那时还答应和一个大四设计系的学姐一起做她的毕业设计游戏（这个之后会说）。不过我觉得最重要的，还是报名了冰岩和联创的游戏组。</p>
 <p>那时我通过了这两个游戏社团的之前的测试，都只剩下最后的组长面/群面了。不过通过之前的了解，我发现冰岩游戏组的每个人都是游戏方面的nerd，都是非常棒的游戏玩家；而联创的游戏组的不少人都只是喜欢钻研游戏技术，对游戏本身的热爱却是不够。所以最后我还是选择了去冰岩（不过联创最后也不一定要招我，毕竟最后组长面的结果是未知的）。</p>
 <p>进入冰岩游戏组真是我觉得最重要的一件事了！！！这里有游戏死宅，有硬核玩家，有游戏学术领域专家，有强大的开发者。进入的前一两个月，我都比较难过：为什么我玩过的游戏这么少！！为什么他们什么游戏都玩过！！为什么我听不懂他们在聊什么游戏！！正是因为有了他们，我变成了一个更加纯粹的游戏玩家，而且，因为这里的每个开发者都对游戏设计领域知道得很多，所以这也督促我去学习游戏设计相关。我想，我们组里每个开发都是往独立游戏开发者方向去的吧，大家都没有专精哪一门，而是各方面兼顾，需要什么学什么，并且在开发的同时也要思考游戏设计。</p>
-<p>在大二下学期，除了加入冰岩游戏组，另一件值得一提的事就是和学姐一起开发<a href="http://v.youku.com/v_show/id_XMjgxMjYyNjgzMg==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="external">《Running Bear》</a>了。这是一个2D平台跳跃游戏，借鉴了《Alto's Adventure》这个游戏。我们当初做这个游戏的时候是希望玩的人能感受到美和心灵的平静。很遗憾最后差了很远......这是我第一次和别人合作做一个比较大的东西。虽然只有两个人，但仍有许多沟通上的问题。沟通影响进度，最终导致要交的时候疯狂的肝。我记得那时候我四五天没有在床上睡过，都是在椅子和桌子上睡的。</p>
+<p>在大二下学期，除了加入冰岩游戏组，另一件值得一提的事就是和学姐一起开发<a href="http://v.youku.com/v_show/id_XMjgxMjYyNjgzMg==.html?spm=a2hzp.8244740.0.0" target="_blank" rel="external">《Running Bear》</a>了。这是一个2D平台跳跃游戏，借鉴了《Alto’s Adventure》这个游戏。我们当初做这个游戏的时候是希望玩的人能感受到美和心灵的平静。很遗憾最后差了很远……这是我第一次和别人合作做一个比较大的东西。虽然只有两个人，但仍有许多沟通上的问题。沟通影响进度，最终导致要交的时候疯狂的肝。我记得那时候我四五天没有在床上睡过，都是在椅子和桌子上睡的。</p>
 <p>做这个小游戏也涉及了许多东西：曲线的碰撞检测、人物控制器、Mesh形变、2D动态天气、无限场景生成。果然开发游戏还是需要实践啊。</p>
 
       
@@ -450,139 +451,6 @@
 
         </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="胡东明" />
-            
-              <p class="site-author-name" itemprop="name">胡东明</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/hdmmY" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:2439846178@qq.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.codingnow.com/" title="云风的Blog" target="_blank">云风的Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://weathfold.github.io/" title="板少的Blog" target="_blank">板少的Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://mondogao.github.io/" title="麦冬的Blog" target="_blank">麦冬的Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.iquilezles.org/www/index.htm" title="iq的Blog" target="_blank">iq的Blog</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
       </div>
     </main>
 
@@ -601,8 +469,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 

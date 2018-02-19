@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="游戏制作,杂谈," />
+  <meta name="keywords" content="杂谈,游戏制作," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="1. 闲聊这两周做了什么   项目 最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。 我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。   Shader学习 感觉自己也不能总是写写逻辑什么的，正好最近需要写">
-<meta name="keywords" content="游戏制作,杂谈">
+<meta name="description" content="1. 闲聊这两周做了什么 项目  最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。  我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。  Shader学习  感觉自己也不能总是写写逻辑什么的，正好最近需要写">
+<meta name="keywords" content="杂谈,游戏制作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shader学习：特效和程式生成">
 <meta property="og:url" content="http://yoursite.com/2017/12/17/Shader学习：特效和程式生成/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="1. 闲聊这两周做了什么   项目 最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。 我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。   Shader学习 感觉自己也不能总是写写逻辑什么的，正好最近需要写">
+<meta property="og:description" content="1. 闲聊这两周做了什么 项目  最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。  我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。  Shader学习  感觉自己也不能总是写写逻辑什么的，正好最近需要写">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/ypq5ld3me26v40x5w4p4v7u3/image_1c1hqn18u1a7h1qa31eq3jr41a3s17.png">
 <meta property="og:updated_time" content="2017-12-25T15:57:54.691Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Shader学习：特效和程式生成">
-<meta name="twitter:description" content="1. 闲聊这两周做了什么   项目 最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。 我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。   Shader学习 感觉自己也不能总是写写逻辑什么的，正好最近需要写">
+<meta name="twitter:description" content="1. 闲聊这两周做了什么 项目  最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。  我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。  Shader学习  感觉自己也不能总是写写逻辑什么的，正好最近需要写">
 <meta name="twitter:image" content="http://static.zybuluo.com/HandY/ypq5ld3me26v40x5w4p4v7u3/image_1c1hqn18u1a7h1qa31eq3jr41a3s17.png">
 
 
@@ -101,7 +101,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '5.1.3',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
@@ -325,7 +325,8 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/12/17/Shader学习：特效和程式生成/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count fb-comments-count" data-href="http://yoursite.com/2017/12/17/Shader学习：特效和程式生成/" itemprop="commentCount">0</span> comments
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/17/Shader学习：特效和程式生成/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -353,85 +354,60 @@
       
 
       
-        <h3>1. 闲聊这两周做了什么</h3>
-<ul>
-<li>
-<p>项目
-最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。
-我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。</p>
+        <h3 id="1-闲聊这两周做了什么"><a href="#1-闲聊这两周做了什么" class="headerlink" title="1. 闲聊这两周做了什么"></a>1. 闲聊这两周做了什么</h3><ul>
+<li><p>项目<br>  最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。<br>  我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。</p>
 </li>
-<li>
-<p>Shader学习<br>
-感觉自己也不能总是写写逻辑什么的，正好最近需要写写特效，所以开始学习各种Shader的编写。同时，为了在周末的组会上分享一点新的东西，同时也为了能给我们的极写写特效，我开始学习起了程式生成的Shader编写。</p>
+<li><p>Shader学习<br>  感觉自己也不能总是写写逻辑什么的，正好最近需要写写特效，所以开始学习各种Shader的编写。同时，为了在周末的组会上分享一点新的东西，同时也为了能给我们的极写写特效，我开始学习起了程式生成的Shader编写。</p>
 </li>
-<li>
-<p>游戏
-游戏的话，这两周玩的时间不多，通关了《堡垒》，感觉挺棒的，下次有时间的单独写一篇文章来聊聊这个游戏。</p>
+<li><p>游戏<br>  游戏的话，这两周玩的时间不多，通关了《堡垒》，感觉挺棒的，下次有时间的单独写一篇文章来聊聊这个游戏。</p>
 </li>
-<li>
-<p>课业
-课业仍然非常可怕。主要是华科有各种各样的实验报告，可怕可怕。我的计网实验报告还没开始写呢，大后天交，好害怕.......
-我们最近还考了C++，C++还是挺难的呀。考试考得我对C++都没有信心了.......几乎裸考，不知道结果如何.......
-还有英语六级考试是昨天考完的，裸考。不行呀，下次要好好准备了！
-要开始好好学习了！</p>
+<li><p>课业<br>  课业仍然非常可怕。主要是华科有各种各样的实验报告，可怕可怕。我的计网实验报告还没开始写呢，大后天交，好害怕…….<br>  我们最近还考了C++，C++还是挺难的呀。考试考得我对C++都没有信心了…….几乎裸考，不知道结果如何…….<br>  还有英语六级考试是昨天考完的，裸考。不行呀，下次要好好准备了！<br>  要开始好好学习了！</p>
 </li>
 </ul>
-<h3>2. 特效展示</h3>
-<h4>2.1 护盾特效：</h4>
-<p>&lt;!-- more --&gt;</p>
-<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExOTMyOA" frameborder="0" allowfullscreen></iframe></p>
+<h3 id="2-特效展示"><a href="#2-特效展示" class="headerlink" title="2. 特效展示"></a>2. 特效展示</h3><h4 id="2-1-护盾特效："><a href="#2-1-护盾特效：" class="headerlink" title="2.1 护盾特效："></a>2.1 护盾特效：</h4><a id="more"></a>
+<iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExOTMyOA" frameborder="0" allowfullscreen></iframe>
 <ul>
 <li>这个特效的边缘高亮是用 Fresnel 做的。</li>
 <li>中间的机体模糊是用的高斯模糊做的。</li>
 <li>六边形的隐约的轮廓是用的贴图。</li>
 </ul>
-<h4>2.2 光圈扩散效果：</h4>
-<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDEzNTg3Mg" frameborder="0" allowfullscreen></iframe></p>
-<p>这个图显然是网上随便找的图......</p>
+<h4 id="2-2-光圈扩散效果："><a href="#2-2-光圈扩散效果：" class="headerlink" title="2.2 光圈扩散效果："></a>2.2 光圈扩散效果：</h4><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDEzNTg3Mg" frameborder="0" allowfullscreen></iframe>
+<p>这个图显然是网上随便找的图……</p>
 <ul>
-<li>光彩流过的效果，是第二张图，根据第一张图的亮度进行叠加 --</li>
+<li>光彩流过的效果，是第二张图，根据第一张图的亮度进行叠加 – </li>
 <li>亮度为0的地方不叠加，亮度为1的地方叠加程度最大。</li>
 <li>消隐效果是通过参数，控制半径为圆的透明度平滑变化，这样就消隐了。</li>
 </ul>
-<h4>2.3 屏幕扭曲</h4>
-<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExODEwNA" frameborder="0" allowfullscreen></iframe></p>
+<h4 id="2-3-屏幕扭曲"><a href="#2-3-屏幕扭曲" class="headerlink" title="2.3 屏幕扭曲"></a>2.3 屏幕扭曲</h4><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExODEwNA" frameborder="0" allowfullscreen></iframe>
 <p>屏幕扭曲的话，这个是用了后处理。</p>
 <ul>
 <li>首先将这个屏幕用一个 GrabPass 抓下来，然后在一个圆环上进行扭曲，其他地方不变。</li>
 <li>然后用脚本控制扭曲区域的圆心，和半径变化，这样最终形成这样的效果。</li>
 </ul>
-<h4>2.4 半兰伯特消隐 + 护盾</h4>
-<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExODgyMA" frameborder="0" allowfullscreen></iframe></p>
+<h4 id="2-4-半兰伯特消隐-护盾"><a href="#2-4-半兰伯特消隐-护盾" class="headerlink" title="2.4 半兰伯特消隐 + 护盾"></a>2.4 半兰伯特消隐 + 护盾</h4><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExODgyMA" frameborder="0" allowfullscreen></iframe>
 <ul>
 <li>可以看到，这个特效结合了之前的护盾特效，只不过加入了消隐效果。</li>
 <li>这个消隐效果其实是使用了半兰伯特光照模型，对护盾的 Alpha 值进行处理，然后，光照强的地方 Alpha 接近1，光照弱的地方 Alpha 值接近 0。用脚本控制光照角度不停地变化，就可以实现这种效果了。</li>
 </ul>
-<h3>3. 程式生成 Shader</h3>
-<p>ShaderToy 是我很早以前就知道的一个写 fragment shader 的网站了。不过以前是因为完全不懂程式生成的 Shader 应该怎么写，所以并看不懂 ShaderToy 里面的各种很好看的 Shader 实现的方法。</p>
+<h3 id="3-程式生成-Shader"><a href="#3-程式生成-Shader" class="headerlink" title="3. 程式生成 Shader"></a>3. 程式生成 Shader</h3><p>ShaderToy 是我很早以前就知道的一个写 fragment shader 的网站了。不过以前是因为完全不懂程式生成的 Shader 应该怎么写，所以并看不懂 ShaderToy 里面的各种很好看的 Shader 实现的方法。</p>
 <p>直到最近我找到了这本 Fragment Shader 的教程：<a href="https://thebookofshaders.com/?lan=ch" target="_blank" rel="external">The Book of Shaders</a>。这本书里详细的告诉了你怎么从一个最简单的几何图形，一步一步画出好看的图形。</p>
 <p>我不打算讲其中的原理，原理真正想学的话，可以看看这本书，里面都有，我主要在这里展示一下我目前的学习成果。</p>
 <p>以下展示的所有 shader 效果，都没有用到任何材质什么的东西，全部都是代码写 Fragment Shader 写出来的。</p>
-<h4>3.1 造型函数 + 移动 相关Shader</h4>
-<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE1NzczMg" frameborder="0" allowfullscreen></iframe></p>
+<h4 id="3-1-造型函数-移动-相关Shader"><a href="#3-1-造型函数-移动-相关Shader" class="headerlink" title="3.1 造型函数 + 移动 相关Shader"></a>3.1 造型函数 + 移动 相关Shader</h4><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE1NzczMg" frameborder="0" allowfullscreen></iframe>
 <p>这里的 Shader 主要是展示不同的形状如何用函数写出，并且在屏幕上表现出来。比如各种函数曲线啦，圆啦，长方形啦，之类的。</p>
 <p>造型函数是程式生成的基础，脚手架。</p>
 <p>这里有许许多多的造型函数的函数表达式：<a href="https://thebookofshaders.com/05/?lan=ch" target="_blank" rel="external">造型函数进阶</a></p>
-<h4>3.2 颜色</h4>
-<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE2OTEyNA" frameborder="0" allowfullscreen></iframe></p>
+<h4 id="3-2-颜色"><a href="#3-2-颜色" class="headerlink" title="3.2 颜色"></a>3.2 颜色</h4><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE2OTEyNA" frameborder="0" allowfullscreen></iframe>
 <p>关于颜色的 Shader 主要是展示许许多多的不同颜色混合的效果，以及 HSB 和 RGB 空间的相互转化的效果。颜色可以通过不同的造型函数进行混合以产生有趣的效果。</p>
-<h4>3.3 图案</h4>
-<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE3MTU4MA" frameborder="0" allowfullscreen></iframe></p>
+<h4 id="3-3-图案"><a href="#3-3-图案" class="headerlink" title="3.3 图案"></a>3.3 图案</h4><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE3MTU4MA" frameborder="0" allowfullscreen></iframe>
 <p>以下引自 <a href="https://thebookofshaders.com/09/?lan=ch" target="_blank" rel="external">Patricio Gonzalez Vivo &amp; Jen Lowe</a></p>
 <pre><code>制作程序图案就像是种寻找最小可重复元素的古老练习（灵修）。我们长时间使用网格和图案来装饰织物、地面和物品的镶边物种：从古希腊的弯曲图案，到中国的窗栅设计，重复和变化的愉悦吸引我们的想象。
-</code></pre>
-<p><img src="http://static.zybuluo.com/HandY/ypq5ld3me26v40x5w4p4v7u3/image_1c1hqn18u1a7h1qa31eq3jr41a3s17.png" alt="Franz Sales Meyer - A handbook of ornament (1920)"></p>
-<h4>3.4 噪声</h4>
-<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE4Njc2OA" frameborder="0" allowfullscreen></iframe></p>
+</code></pre><p><img src="http://static.zybuluo.com/HandY/ypq5ld3me26v40x5w4p4v7u3/image_1c1hqn18u1a7h1qa31eq3jr41a3s17.png" alt="Franz Sales Meyer - A handbook of ornament (1920)"></p>
+<h4 id="3-4-噪声"><a href="#3-4-噪声" class="headerlink" title="3.4 噪声"></a>3.4 噪声</h4><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE4Njc2OA" frameborder="0" allowfullscreen></iframe>
 <p>噪声真是一种很神奇的东西，它可以生成很多很多精美的图案，下面展示的东西大多是我从网上学习后编写的很基础的噪声函数生成图。</p>
 <p>它们包括了：随机模拟、噪声模拟、分形布朗运动。</p>
-<p>以后还要学习更多噪声相关的东西呢 -- 不过接下来几天先把实验报告搞定吧.......</p>
-<h4>3.5 其他 blabla</h4>
-<p>学习了一些程序生成的相关知识后，我也能够慢慢理解 ShaderToy 里的相关代码了，以后在需要用到一些特效的时候也能够在 ShaderToy 上借鉴借鉴，然后移植到 Unity 中来了 :)</p>
+<p>以后还要学习更多噪声相关的东西呢 – 不过接下来几天先把实验报告搞定吧…….</p>
+<h4 id="3-5-其他-blabla"><a href="#3-5-其他-blabla" class="headerlink" title="3.5 其他 blabla"></a>3.5 其他 blabla</h4><p>学习了一些程序生成的相关知识后，我也能够慢慢理解 ShaderToy 里的相关代码了，以后在需要用到一些特效的时候也能够在 ShaderToy 上借鉴借鉴，然后移植到 Unity 中来了 :)</p>
 
       
     </div>
@@ -449,9 +425,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/游戏制作/" rel="tag"># 游戏制作</a>
-          
             <a href="/tags/杂谈/" rel="tag"># 杂谈</a>
+          
+            <a href="/tags/游戏制作/" rel="tag"># 游戏制作</a>
           
         </div>
       
@@ -521,164 +497,6 @@
 
         </div>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="胡东明" />
-            
-              <p class="site-author-name" itemprop="name">胡东明</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          <div class="links-of-author motion-element">
-            
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/hdmmY" target="_blank" title="GitHub">
-                    
-                      <i class="fa fa-fw fa-github"></i>GitHub</a>
-                </span>
-              
-                <span class="links-of-author-item">
-                  <a href="mailto:2439846178@qq.com" target="_blank" title="E-Mail">
-                    
-                      <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                </span>
-              
-            
-          </div>
-
-          
-          
-
-          
-          
-            <div class="links-of-blogroll motion-element links-of-blogroll-block">
-              <div class="links-of-blogroll-title">
-                <i class="fa  fa-fw fa-link"></i>
-                Links
-              </div>
-              <ul class="links-of-blogroll-list">
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://blog.codingnow.com/" title="云风的Blog" target="_blank">云风的Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://weathfold.github.io/" title="板少的Blog" target="_blank">板少的Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://mondogao.github.io/" title="麦冬的Blog" target="_blank">麦冬的Blog</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="http://www.iquilezles.org/www/index.htm" title="iq的Blog" target="_blank">iq的Blog</a>
-                  </li>
-                
-              </ul>
-            </div>
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">1. 闲聊这两周做了什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">2. 特效展示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">2.1 护盾特效：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">2.2 光圈扩散效果：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">2.3 屏幕扭曲</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">2.4 半兰伯特消隐 + 护盾</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-text">3. 程式生成 Shader</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">3.1 造型函数 + 移动 相关Shader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">3.2 颜色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">3.3 图案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">3.4 噪声</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-text">3.5 其他 blabla</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
       </div>
     </main>
 
@@ -697,8 +515,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
 
 
 
