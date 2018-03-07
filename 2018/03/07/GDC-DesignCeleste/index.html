@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="算法," />
+  <meta name="keywords" content="GDC," />
 
 
 
@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="1. 起源 我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
-<meta name="keywords" content="算法">
+<meta name="description" content="Celeste 是一款 2D 平台跳跃解谜游戏，IGN 评分满分。 今天我看了 Celeste 的制作人在 GDC 上的演讲。他主要讲的是 Celeste 的设计思路。看完之后，感觉收获了不少。 &amp;lt;!-- more --&amp;gt; 1. 整体和部分  整个游戏有一个大的故事，这个大故事又可分为几个阶段，每个阶段又可以再次细分。 Celeste 一共有近 400 个关卡，每个或者多个相邻的关卡">
+<meta name="keywords" content="GDC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Raft 一致性算法">
-<meta property="og:url" content="http://yoursite.com/2018/01/03/Raft-一致性算法/index.html">
+<meta property="og:title" content="GDC -- Celeste 的设计">
+<meta property="og:url" content="http://yoursite.com/2018/03/07/GDC-DesignCeleste/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="1. 起源 我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
-<meta property="og:updated_time" content="2018-01-08T11:43:29.930Z">
+<meta property="og:description" content="Celeste 是一款 2D 平台跳跃解谜游戏，IGN 评分满分。 今天我看了 Celeste 的制作人在 GDC 上的演讲。他主要讲的是 Celeste 的设计思路。看完之后，感觉收获了不少。 &amp;lt;!-- more --&amp;gt; 1. 整体和部分  整个游戏有一个大的故事，这个大故事又可分为几个阶段，每个阶段又可以再次细分。 Celeste 一共有近 400 个关卡，每个或者多个相邻的关卡">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/k7u6pb8ksq32ku2qg8clzh98/9e486bfec23d56101dd36f40b5a9011e.jpg">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/yvqe336fzu8zqgysk1ali5zb/image_1c80djn3cm365rg1ijhbre1b7l25.png">
+<meta property="og:updated_time" content="2018-03-07T15:44:23.946Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Raft 一致性算法">
-<meta name="twitter:description" content="1. 起源 我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
+<meta name="twitter:title" content="GDC -- Celeste 的设计">
+<meta name="twitter:description" content="Celeste 是一款 2D 平台跳跃解谜游戏，IGN 评分满分。 今天我看了 Celeste 的制作人在 GDC 上的演讲。他主要讲的是 Celeste 的设计思路。看完之后，感觉收获了不少。 &amp;lt;!-- more --&amp;gt; 1. 整体和部分  整个游戏有一个大的故事，这个大故事又可分为几个阶段，每个阶段又可以再次细分。 Celeste 一共有近 400 个关卡，每个或者多个相邻的关卡">
+<meta name="twitter:image" content="http://static.zybuluo.com/HandY/k7u6pb8ksq32ku2qg8clzh98/9e486bfec23d56101dd36f40b5a9011e.jpg">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/01/03/Raft-一致性算法/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/07/GDC-DesignCeleste/"/>
 
 
 
 
 
-  <title>Raft 一致性算法 | 东明的Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>GDC -- Celeste 的设计 | 东明的Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -252,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/03/Raft-一致性算法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/GDC-DesignCeleste/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="胡东明">
@@ -269,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Raft 一致性算法</h1>
+          <h1 class="post-title" itemprop="name headline">GDC -- Celeste 的设计</h1>
         
 
         <div class="post-meta">
@@ -281,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-03T12:04:16+08:00">
-                2018-01-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T20:00:26+08:00">
+                2018-03-07
               </time>
             
 
@@ -304,8 +307,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2018-01/" itemprop="url" rel="index">
-                    <span itemprop="name">2018-01</span>
+                  <a href="/categories/2018-03/" itemprop="url" rel="index">
+                    <span itemprop="name">2018-03</span>
                   </a>
                 </span>
 
@@ -322,9 +325,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/01/03/Raft-一致性算法/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/07/GDC-DesignCeleste/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/01/03/Raft-一致性算法/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/07/GDC-DesignCeleste/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,40 +355,25 @@
       
 
       
-        <h3>1. 起源</h3>
-<p>我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。</p>
-<p>教授上完课后，给我们布置了一些可选的编程作业。我选择的是：<em>Implement crash-tolerant consensus</em>。</p>
-<p>在选择这个作业后，我上网查了查相关资料，很快就发现了 Raft 这个解决分布式中一致性问题的算法。因为我自己对 Unity 熟悉，所以就用 Unity 把这个算法实现了一遍，做成了一个小 Demo，总共花了大概25个小时，就算是完成这个作业了。</p>
+        <p><img src="http://static.zybuluo.com/HandY/k7u6pb8ksq32ku2qg8clzh98/9e486bfec23d56101dd36f40b5a9011e.jpg" alt="celeste"></p>
+<p>Celeste 是一款 2D 平台跳跃解谜游戏，IGN 评分满分。</p>
+<p>今天我看了 Celeste 的制作人在 <a href="https://www.youtube.com/watch?v=4RlpMhBKNr0&amp;feature=youtu.be" target="_blank" rel="external">GDC 上的演讲</a>。他主要讲的是 Celeste 的设计思路。看完之后，感觉收获了不少。</p>
 <p>&lt;!-- more --&gt;</p>
-<h3>2. 链接</h3>
-<p>首先介绍一下学习 Raft 的相关资料：（我自己就是照着那篇论文实现的）</p>
-<ul>
-<li>Raft 算法的官网：https://raft.github.io/</li>
-<li>详细讲解 Raft 算法的文章：https://www.usenix.org/conference/atc14/technical-sessions/presentation/ongaro</li>
-</ul>
-<p>再放上我自己实现 Raft 算法的源码和简单演示视频：</p>
-<ul>
-<li>源码：https://github.com/hdmmY/Raft-Unity/releases/tag/v1.0</li>
-<li>简单演示视频：
-<iframe height="150" width="300" src="http://player.youku.com/embed/XMzI4NTg5NzExNg" frameborder="0" allowfullscreen></iframe></li>
-</ul>
-<h3>3. 我自己的理解</h3>
-<p>Raft 算法是用来解决这样一个问题的：分布式系统中，有时候主机会崩掉，有时候网络会有延时、会掉包，但是仍然希望来自高层的指令能够在各个主机里依照相同的次序执行。</p>
-<p>Raft 算法和其他解决这一问题的算法比起来，其优势在于高可理解性。依照我看的论文所说，在 Raft 算法之前，业内解决这个问题通常用的是 Paxos 算法。但是 Paxos 算法非常非常的复杂，论文的作者，斯坦福大学的学者，花了近一年的努力来理解和实现这个算法，最后仍以失败告终。而 Raft 算法，对于我这个对此领域没有任何前置经验的大三学生来说，在经过七、八个小时的阅读后，也能理解不少了。</p>
-<p>Raft 算法中的主要流程是这样的。</p>
-<ul>
-<li>在一开始，所有的主机都是普通身份的“追随者”。如果“追随者”在一定时间内没有接收到“候选者”或“领导者”发送来的消息后，它会自动升级为“候选者”。</li>
-<li>“候选者”会周期性的向其他所有主机发出请求，接收到请求的主机会依照自身情况和候选者情况进行投票。如果“候选者”获得了大部分主机的投票，它会升级为“领导者”。如果“候选者”接收到了满足一定条件的“领导者”的消息时，它会降级成为“追随者”。</li>
-<li>“领导者”负责接收来自上层的所有指令。当此时没有上层的指令要执行时，“领导者”会周期性的发送消息给其他主机来维护自己“领导者”的地位。当有上层的指令要执行时，它会将这个指令发给其他主机。当大部分主机执行了这个指令的之后，它告诉上层这个指令已被执行。</li>
-</ul>
-<p>“追随者”、“候选者”、“领导者”相当于一台主机的三个状态，可以采用状态机的方式来实现这个算法。可以每次单独考虑一个状态的所有操作。这样就使得实现这个算法变得简单起来。我自己就是这么做的：分别编写各个状态的初始化（Initialize）、更新方法（UpdateState）、状态转换（Transition），就实现了这个算法。</p>
-<p>而算法的细节，根据论文所说，可以将其看为<em>独立</em>的三个过程：</p>
-<ul>
-<li>选举阶段：“候选者”申请选举以成为“领导者”。通过一系列方法和限制，保证了同一轮选举中，哪怕有多个“候选者”，最终也只会产生至多一个的“领导者”。</li>
-<li>广播命令阶段：“领导者”向其他各个主机广播来自上层的命令。通过一系列方法和限制，保证了：1. 只有大多数主机都收到并执行了这个命令，才会告诉上层该命令已被执行。 2. 任意两台主机的相同编号的命令，其内容一定是一样的。</li>
-<li>容错性：当任意一台主机崩掉，再重启时，经过一些方法和限制后，其命令队列仍能跟上“领导者”的命令队列。</li>
-</ul>
-<p>其具体实现我就不在这里说了，感兴趣的可以看看我上面列出的论文。</p>
+<h3>1. 整体和部分</h3>
+<p><img src="http://static.zybuluo.com/HandY/yvqe336fzu8zqgysk1ali5zb/image_1c80djn3cm365rg1ijhbre1b7l25.png" alt="image_1c80djn3cm365rg1ijhbre1b7l25.png-61.4kB"></p>
+<p>整个游戏有一个大的故事，这个大故事又可分为几个阶段，每个阶段又可以再次细分。</p>
+<p>Celeste 一共有近 400 个关卡，每个或者多个相邻的关卡总是连续的。这个连续应该可以理解为游戏风格、机制、故事性上的连续。在设计关卡的时候，制作者常常会把各个相邻关卡放在一起，从更高的角度去看这些关卡，以保持关卡之间的连续性。</p>
+<h3>2. 多种实现方式</h3>
+<p>Celeste 是一个讲述了攀岩登山故事的平台跳跃游戏。同现实生活中的攀岩一样 -- 通向终点的路径不止一条。</p>
+<p>在设计关卡的时候，制作者的一个基本思路就是：允许玩家以不同的方式到达终点。但是在具体实现中，如果提供了太多的路径供玩家选择的话，那么这个游戏又会变得过于简单 -- 而且玩家几乎总是会选择最简单的那一条路。</p>
+<p>在 Celeste 中，通常会有一条比较明显的路径，也是普通玩家也能一眼发现的路径。但是，往往也会有一条比较隐晦/艰难的路径，只有高手才能发现。这种路径通常会给予玩家一些奖励：能更快通关、或者奖励道具、或者隐藏关卡。同时，在玩家第一次打通关以后，再次来到这一关时，会发现仍然有许多挑战在等着他，从而再次激发他们的挑战欲望。</p>
+<h3>3. 关卡设计技巧 -- 安全性</h3>
+<p>作为一个平台跳跃游戏，在设计关卡的时候，加入安全性这个思路便能延伸出很多关卡。</p>
+<p>比如：站上去一会儿后就会消失的平台；动态危险区域，碰到就会死掉；站上去一会儿就会变得危险的平台；</p>
+<h3>4. 关卡长度</h3>
+<p>关卡长度也是 Celeste 的一个很重要的问题。由于这是一个高难度的游戏，所以不可避免的，玩家总是会死亡很多次。所以大部分关卡都是很短的。</p>
+<p>制作者会谨慎的制作长的关卡 -- 通常用于计时/追逐关卡中。这样能让玩家保持紧张的心情。</p>
+<p>这个我觉得极也可以学习。虽然一般来说，弹幕游戏在玩家死亡后都会重新开始，但是这样成本未免也太高了。暂时想的是设置一些保存点，让玩家不要每次死亡后重开。</p>
 
       
     </div>
@@ -403,7 +391,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/GDC/" rel="tag"># GDC</a>
           
         </div>
       
@@ -416,8 +404,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/26/极-中期开发进度说明/" rel="next" title="极 中期开发进度说明">
-                <i class="fa fa-chevron-left"></i> 极 中期开发进度说明
+              <a href="/2018/02/10/寒假二三事/" rel="next" title="寒假二三事">
+                <i class="fa fa-chevron-left"></i> 寒假二三事
               </a>
             
           </div>
@@ -425,10 +413,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/03/2018-技术书籍阅读计划/" rel="prev" title="2018 技术书籍阅读计划">
-                2018 技术书籍阅读计划 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -622,9 +606,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/01/03/Raft-一致性算法/';
-          this.page.identifier = '2018/01/03/Raft-一致性算法/';
-          this.page.title = 'Raft 一致性算法';
+          this.page.url = 'http://yoursite.com/2018/03/07/GDC-DesignCeleste/';
+          this.page.identifier = '2018/03/07/GDC-DesignCeleste/';
+          this.page.title = 'GDC -- Celeste 的设计';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Hdmmy.disqus.com/embed.js';

@@ -248,6 +248,237 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/17/Shader学习：特效和程式生成/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡东明">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="东明的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/17/Shader学习：特效和程式生成/" itemprop="url">Shader学习：特效和程式生成</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-17T14:40:45+08:00">
+                2017-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2017-12/" itemprop="url" rel="index">
+                    <span itemprop="name">2017-12</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/17/Shader学习：特效和程式生成/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/17/Shader学习：特效和程式生成/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3>1. 闲聊这两周做了什么</h3>
+<ul>
+<li>
+<p>项目
+最近两周感觉我们的项目“极”的进度还不错，但是我新写的代码量不多，主要是美术方面的进度比较多。
+我们打算给每个BOSS一个AI，现在正在写第二关BOSS的AI。上次团队大会，我们承诺 12.24 号的时候出第一版Demo，其实就是三个完整的关卡。感觉这个星期写完实验后需要肝了，不然搞不定呀。</p>
+</li>
+<li>
+<p>Shader学习<br>
+感觉自己也不能总是写写逻辑什么的，正好最近需要写写特效，所以开始学习各种Shader的编写。同时，为了在周末的组会上分享一点新的东西，同时也为了能给我们的极写写特效，我开始学习起了程式生成的Shader编写。</p>
+</li>
+<li>
+<p>游戏
+游戏的话，这两周玩的时间不多，通关了《堡垒》，感觉挺棒的，下次有时间的单独写一篇文章来聊聊这个游戏。</p>
+</li>
+<li>
+<p>课业
+课业仍然非常可怕。主要是华科有各种各样的实验报告，可怕可怕。我的计网实验报告还没开始写呢，大后天交，好害怕.......
+我们最近还考了C++，C++还是挺难的呀。考试考得我对C++都没有信心了.......几乎裸考，不知道结果如何.......
+还有英语六级考试是昨天考完的，裸考。不行呀，下次要好好准备了！
+要开始好好学习了！</p>
+</li>
+</ul>
+<h3>2. 特效展示</h3>
+<h4>2.1 护盾特效：</h4>
+<p>&lt;!-- more --&gt;</p>
+<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExOTMyOA" frameborder="0" allowfullscreen></iframe></p>
+<ul>
+<li>这个特效的边缘高亮是用 Fresnel 做的。</li>
+<li>中间的机体模糊是用的高斯模糊做的。</li>
+<li>六边形的隐约的轮廓是用的贴图。</li>
+</ul>
+<h4>2.2 光圈扩散效果：</h4>
+<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDEzNTg3Mg" frameborder="0" allowfullscreen></iframe></p>
+<p>这个图显然是网上随便找的图......</p>
+<ul>
+<li>光彩流过的效果，是第二张图，根据第一张图的亮度进行叠加 --</li>
+<li>亮度为0的地方不叠加，亮度为1的地方叠加程度最大。</li>
+<li>消隐效果是通过参数，控制半径为圆的透明度平滑变化，这样就消隐了。</li>
+</ul>
+<h4>2.3 屏幕扭曲</h4>
+<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExODEwNA" frameborder="0" allowfullscreen></iframe></p>
+<p>屏幕扭曲的话，这个是用了后处理。</p>
+<ul>
+<li>首先将这个屏幕用一个 GrabPass 抓下来，然后在一个圆环上进行扭曲，其他地方不变。</li>
+<li>然后用脚本控制扭曲区域的圆心，和半径变化，这样最终形成这样的效果。</li>
+</ul>
+<h4>2.4 半兰伯特消隐 + 护盾</h4>
+<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDExODgyMA" frameborder="0" allowfullscreen></iframe></p>
+<ul>
+<li>可以看到，这个特效结合了之前的护盾特效，只不过加入了消隐效果。</li>
+<li>这个消隐效果其实是使用了半兰伯特光照模型，对护盾的 Alpha 值进行处理，然后，光照强的地方 Alpha 接近1，光照弱的地方 Alpha 值接近 0。用脚本控制光照角度不停地变化，就可以实现这种效果了。</li>
+</ul>
+<h3>3. 程式生成 Shader</h3>
+<p>ShaderToy 是我很早以前就知道的一个写 fragment shader 的网站了。不过以前是因为完全不懂程式生成的 Shader 应该怎么写，所以并看不懂 ShaderToy 里面的各种很好看的 Shader 实现的方法。</p>
+<p>直到最近我找到了这本 Fragment Shader 的教程：<a href="https://thebookofshaders.com/?lan=ch" target="_blank" rel="external">The Book of Shaders</a>。这本书里详细的告诉了你怎么从一个最简单的几何图形，一步一步画出好看的图形。</p>
+<p>我不打算讲其中的原理，原理真正想学的话，可以看看这本书，里面都有，我主要在这里展示一下我目前的学习成果。</p>
+<p>以下展示的所有 shader 效果，都没有用到任何材质什么的东西，全部都是代码写 Fragment Shader 写出来的。</p>
+<h4>3.1 造型函数 + 移动 相关Shader</h4>
+<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE1NzczMg" frameborder="0" allowfullscreen></iframe></p>
+<p>这里的 Shader 主要是展示不同的形状如何用函数写出，并且在屏幕上表现出来。比如各种函数曲线啦，圆啦，长方形啦，之类的。</p>
+<p>造型函数是程式生成的基础，脚手架。</p>
+<p>这里有许许多多的造型函数的函数表达式：<a href="https://thebookofshaders.com/05/?lan=ch" target="_blank" rel="external">造型函数进阶</a></p>
+<h4>3.2 颜色</h4>
+<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE2OTEyNA" frameborder="0" allowfullscreen></iframe></p>
+<p>关于颜色的 Shader 主要是展示许许多多的不同颜色混合的效果，以及 HSB 和 RGB 空间的相互转化的效果。颜色可以通过不同的造型函数进行混合以产生有趣的效果。</p>
+<h4>3.3 图案</h4>
+<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE3MTU4MA" frameborder="0" allowfullscreen></iframe></p>
+<p>以下引自 <a href="https://thebookofshaders.com/09/?lan=ch" target="_blank" rel="external">Patricio Gonzalez Vivo &amp; Jen Lowe</a></p>
+<pre><code>制作程序图案就像是种寻找最小可重复元素的古老练习（灵修）。我们长时间使用网格和图案来装饰织物、地面和物品的镶边物种：从古希腊的弯曲图案，到中国的窗栅设计，重复和变化的愉悦吸引我们的想象。
+</code></pre>
+<p><img src="http://static.zybuluo.com/HandY/ypq5ld3me26v40x5w4p4v7u3/image_1c1hqn18u1a7h1qa31eq3jr41a3s17.png" alt="Franz Sales Meyer - A handbook of ornament (1920)"></p>
+<h4>3.4 噪声</h4>
+<p><iframe height="150" width="300" src="http://player.youku.com/embed/XMzI0MDE4Njc2OA" frameborder="0" allowfullscreen></iframe></p>
+<p>噪声真是一种很神奇的东西，它可以生成很多很多精美的图案，下面展示的东西大多是我从网上学习后编写的很基础的噪声函数生成图。</p>
+<p>它们包括了：随机模拟、噪声模拟、分形布朗运动。</p>
+<p>以后还要学习更多噪声相关的东西呢 -- 不过接下来几天先把实验报告搞定吧.......</p>
+<h4>3.5 其他 blabla</h4>
+<p>学习了一些程序生成的相关知识后，我也能够慢慢理解 ShaderToy 里的相关代码了，以后在需要用到一些特效的时候也能够在 ShaderToy 上借鉴借鉴，然后移植到 Unity 中来了 :)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/05/“晶体管”游戏分析-射击Demo展示/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -351,17 +582,68 @@
 
       
         
-          <p>最近一周，因为我们的项目“极”的几个开发人员都要忙于考试，我也乐得清闲，打了不少游戏。</p>
+          
+            <p>最近一周，因为我们的项目“极”的几个开发人员都要忙于考试，我也乐得清闲，打了不少游戏。</p>
 <p>主要是玩了一下“刺客信条-枭雄”和“晶体管”，其中“晶体管”我现在是二周目通关了，对这个游戏十分喜爱，接下来我就简单分析一下晶体管这个游戏吧。</p>
-<h3 id="1-晶体管的分析"><a href="#1-晶体管的分析" class="headerlink" title="1. 晶体管的分析"></a>1. 晶体管的分析</h3><p><img src="http://static.zybuluo.com/HandY/l0juq3zwaexdzfrvevpqwqok/201704241648276195.jpg" alt="晶体管"></p>
+<h3>1. 晶体管的分析</h3>
+<p><img src="http://static.zybuluo.com/HandY/l0juq3zwaexdzfrvevpqwqok/201704241648276195.jpg" alt="晶体管"></p>
 <p>晶体管是一款赛博朋克风格的、动作类的角色扮演游戏。这款游戏是线性流程的，分为许多个小关卡，玩家只能以按照次序通过各个关卡。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/05/“晶体管”游戏分析-射击Demo展示/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!-- more --&gt;</p>
+<h4>1.1 战斗系统 -- 时间</h4>
+<p>你操控的主人公Red有一个特殊能力：时间暂停。当你开启这个能力的时候，时间会突然暂停，在此期间，你可以移动、攻击。当你结束时间暂停的时候，玩家会以极快的速度执行你在时间暂停期间的所做的所有动作。</p>
+<p>当然，这个时间暂停也是有代价的 -- 之后的2-3秒时间内你的技能会处于冷却状态。不过一般来说，你在时间暂停期间就已经消灭大部分敌人、或者说已经逃离到安全位置了，这个时候，技能冷却又有什么关系呢？</p>
+<p>我认为时间暂停这个设定是战斗系统的核心，因为它极大的增加了玩家的可选择性。比如，利用时间暂停，你可以埋下一个炸弹，然后将附近的敌人拉扯过来，然后再引爆炸弹，从而快速消灭大量敌人。比如，在你血量不多的时候，你可以利用时间暂停，先快速闪现到敌人面前，做出一次强力攻击，然后再闪现出敌人的攻击范围。</p>
+<p>由于这个游戏中有十几种技能，同时不同的技能组合可以产生新技能，所以在不同的玩家手中，有不同的一套时间暂停期间的攻击策略。如果你厌倦了这种攻击方式，你也可以换另一种攻击方式。让这个快节奏的动作游戏有了极强的策略性。</p>
+<h4>1.2 战斗系统 -- 技能组合</h4>
+<p>在晶体管中，你根据等级的提升，会陆续得到16个技能，而最棒的是，你可以将不同技能组合起来，得到一个新的技能。</p>
+<p>比如魅惑技能：<img src="http://static.zybuluo.com/HandY/76rtm0bs3e5dmiwxdy7f9c7i/image_1c0i3bvrmakv1m1rnc01bna115jl.png" alt="魅惑技能">，你可以将这个技能作为和“分裂”技能组合，从而可以一次性发出三个魅惑技能；你还可以将它和“闪现”技能组合，从而可以在闪现期间魅惑周围的敌人；你还可以将它和“召唤”技能组合，从而使你的召唤物能够魅惑敌人.......</p>
+<p>总之，这十六个技能，任意三个技能都可以进行组合，从而得到一个新的技能。这样，也减少了玩家的学习成本。试想，如果直接给玩家20-30个技能，玩家很快就会被弄的晕晕乎乎的，但是如果让玩家用少量的技能进行技能组合，玩家就会很容易明白新技能的效果是什么：就是那几个技能的效果叠加嘛（大致是如此）。</p>
+<h4>1.3 叙事方式 -- 旁白</h4>
+<p>在晶体管的游戏剧情中，主角原来是一个歌女，但之后遭人陷害，以至于失去了发声的能力，而他的男友为了保护她而死，不过灵魂被保存在主角的战斗武器 -- 晶体管中。</p>
+<p>所以在游戏推进的过程中，始终会有一个男声的旁白和你说话。想想在游戏设定中男声是女主人公的男友，所以其说的话大多是一些关心、调侃、恋人之间的情话。其声音也很好听，不禁让人有许多好感，战斗也不再单调了。</p>
+<h4>1.4 其他 -- 美术、音乐</h4>
+<p>晶体管的美术是赛博朋克的风格，其场景的灯光做得很棒，很有科幻感。音乐也十分好听。</p>
+<p>其获得了 <em>IGN 2014 最佳美术奖</em> 和 <em>IGN 2014大奖中音乐相关奖项的提名</em></p>
+<h3>2. 射击Demo展示</h3>
+<p>因为对晶体管中时间控制的机制很感兴趣，所以我做了有这个机制的一个类似的射击Demo。同时我也做了一下灯光效果和运动模糊，算是学习了一下Unity Shader吧。</p>
+<h4>2.1 时间控制系统</h4>
+<p>先来看看时间控制的效果展示：</p>
+<p><img src="http://static.zybuluo.com/HandY/v2kf3p4835ezn8cfqove14ds/%E6%97%B6%E9%97%B4%E6%8E%A7%E5%88%B6%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA.gif" alt="时间控制效果展示"></p>
+<p>在这个Demo中，当玩家按下空格键的时候，时间会暂停，玩家可以在这期间进行一系列操作，这些操作也可以回退。当你再次按下这个操作的时候，你会以极快的速度执行你刚刚所做的操作。</p>
+<p>我是这么实现的：</p>
+<ul>
+<li>
+<p>将每个Action抽象成一系列数据。</p>
+<ul>
+<li>比如射击Action：
+<img src="http://static.zybuluo.com/HandY/9e9tvgc2ziqrdtz7kyzpypir/image_1c0ib19v01mtk1pjdktl1d9b1cc01f.png" alt="射击动作相关的数据"></li>
+<li>比如移动Action：
+<img src="http://static.zybuluo.com/HandY/97b8497lmqqkj2qc2hrv9cdp/image_1c0ib4prg1g4s1a4q1gp8g001ddg1s.png" alt="移动动作数据"></li>
+</ul>
+</li>
+<li>
+<p>将Action用双向链表连接。当添加一个Action时，在链表尾加入这个Action的数据；当要回退一个Action时，在链表尾删除这个数据；当要执行整套Action时，从链表头开始顺序执行所有Action。最后销毁链表。
+<img src="http://static.zybuluo.com/HandY/n8s9a0gnc30yrv3dq767e5q4/image_1c0ib9sunfd7cm4u9d1ctqvdg29.png" alt="动作">
+上图是我 Inspector 面板中的示意图。从示意图中可以看到，Player 先执行了一个移动动作、再射击、再移动、最后转换状态动作。</p>
+</li>
+<li>
+<p>每个Action都继承自基类BaseAction，拥有一个读入的方法，一个执行的方法，一个回退的方法。这里是借鉴了游戏编程模式中的命令模式。</p>
+</li>
+</ul>
+<h4>2.2 闪光效果</h4>
+<p>先看看这个闪光的效果展示：</p>
+<p><img src="http://static.zybuluo.com/HandY/0mz6u4ai4byvgoc0zx0e6hvl/%E9%97%AA%E5%85%89%E6%95%88%E6%9E%9C%E5%B1%95%E7%A4%BA.gif" alt="闪光效果展示"></p>
+<p>这个闪光效果是这样实现的：</p>
+<ol>
+<li>专用相机拍下所有子弹的闪光图，保存到RenderTexture中：
+<img src="http://static.zybuluo.com/HandY/0782pnw7h4k71itoa3c4sn91/image_1c0ie5lisbu914pifofmnh2n733.png" alt="子弹闪光图"></li>
+<li>对闪光图进行高斯模糊，让其边缘变得平滑：
+<img src="http://static.zybuluo.com/HandY/dnyq0nlrhkecbnwsgyzgazpq/image_1c0ieri77ld71eepi6e1jt5qnd9.png" alt="模糊之后的闪光图"></li>
+<li>根据闪光图的亮度（luminance = 0.2125 * r + 0.7154 * g + 0.0721 * b)，混合子弹图和背景图，得出最终效果：
+<img src="http://static.zybuluo.com/HandY/pgbdoprqu8pqx6u3q84odnei/image_1c0ievlsab491mle1nbh13p51n6hm.png" alt="最终效果"></li>
+</ol>
+
+          
         
       
     </div>
@@ -511,7 +793,10 @@
 
       
         
-          <h2 id="1-背景知识"><a href="#1-背景知识" class="headerlink" title="1 背景知识"></a>1 背景知识</h2><h3 id="1-1-简介"><a href="#1-1-简介" class="headerlink" title="1.1 简介"></a>1.1 简介</h3><p>实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。</p>
+          
+            <h2>1 背景知识</h2>
+<h3>1.1 简介</h3>
+<p>实时的海面渲染是我最近一个星期在思考与试图解决的一个问题。不纯粹是理论上的，也是实际的项目需要。</p>
 <p>在实现实时海面渲染的时候，最直接的想法就是将海面当做一个四边形的面，每帧动态改变其顶点，从而实现实时渲染。但这个方法在海面很大的时候，对计算机的性能要求很大，而且也很难做到真实。</p>
 <p>相比于其他物体的渲染，海面渲染有这样一些与众不同的特征：</p>
 <ul>
@@ -521,13 +806,159 @@
 </ul>
 <p>由于海面渲染是如此之复杂，所以很多游戏中对它进行了简化处理。如：减小海面的表面积，甚至将海面改为水池或水缸。如：简化海面的与其他的物体的交互，甚至根本没有交互。如：简化海面的波浪多少，甚至到海面根本没有波浪，仅仅只由shader实现波纹效果。</p>
 <p>这一节的下面部分会大致介绍海面渲染是如何实现的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/31/网格投影法的海面的生成/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!-- more --&gt;</p>
+<h3>1.2 渲染管线简介</h3>
+<p>blabla</p>
+<h3>1.3 高度图简介</h3>
+<p>blabla</p>
+<h3>1.4 LOD 简介</h3>
+<p>blabla</p>
+<h3>1.5 波浪生成简介</h3>
+<p>blabla</p>
+<h3>1.6 水面光学效果简介</h3>
+<p>blabla</p>
+<h2>2. 网格投影法的基本概念</h2>
+<h3>2.1 渲染中的空间变换</h3>
+<p>这一节中的概念是我参考了《Unity Shader入门精要》[^footnote1]一书中第四章的内容。</p>
+<p>在渲染流水线中，一个顶点要经历许多坐标空间变化才能被最终画在屏幕上。这个顶点首先在它自己的模型空间中，最终变换到屏幕上的像素点坐标上。</p>
+<h4>2.1.1 模型空间</h4>
+<p>模型空间以模型的中心为原点的坐标空间。</p>
+<p><img src="http://static.zybuluo.com/HandY/lswilumf3xt5dw91a65g3pjo/image_1btotrqfc1ko1r7hdg81iumrpu9.png" alt="image_1btotrqfc1ko1r7hdg81iumrpu9.png-7.7kB"></p>
+<p>如上图这个正方体，其8个顶点在模型空间的坐标，就是相对正方体的中心（图中坐标轴的原点）的坐标。</p>
+<h4>2.1.2 世界空间</h4>
+<p>世界空间是我们最熟悉的空间，每个点在世界空间中的坐标可以直接通过查看<em>Unity</em>的<em>Transfrom</em>组件中的<em>position</em>来查看。</p>
+<p><img src="http://static.zybuluo.com/HandY/r1mwvpt38h84vmpka62hyoei/image_1btou4020si71sa929s18h9b4m13.png" alt="image_1btou4020si71sa929s18h9b4m13.png-6.4kB"></p>
+<p>将物体从模型空间变换到世界空间的矩阵通常叫 $M_{model}$。其变化的公式为：
+$$P_{world} = M_{model}P_{model}$$</p>
+<p>其中 $P_{model}$ 为(列向量)：
+$$P_{model} = \begin{pmatrix}
+x \<br>
+y \<br>
+z \<br>
+1
+\end{pmatrix}
+$$</p>
+<h4>2.1.3 观察空间（摄像机空间）</h4>
+<p>观察空间顾名思义，就是以观察者为原点的空间。在游戏中，它指的是以摄像机为原点，摄像机的前、右、上三个方向为坐标轴的空间。</p>
+<p><img src="http://static.zybuluo.com/HandY/j6gu0yskf2jqrtvdvrm5kvrm/image_1btoum48mkge8o8l031t7c8ni9.png" alt="image_1btoum48mkge8o8l031t7c8ni9.png-7.7kB"></p>
+<p>需要注意的是，在Unity中，观察空间是右手坐标系，所以观察空间中，x+是摄像机的右方，y+是摄像机的上方，但z+是摄像机的后方。</p>
+<p>如果已知摄像机的三个方向的方向向量在世界坐标系下的表示（可以根据 transfrom.up、tranform.right 和 transfrom.forward 得到），那么可以求出 <em>将物体从世界空间到观察空间的矩阵</em> $M_{view}$:</p>
+<ul>
+<li>
+<p>假设观察空间坐标系方向向量在世界坐标系中分别为（单位向量）: $\overrightarrow {Up}、\overrightarrow {Right}、\overrightarrow {Forward}$
+摄像机在世界空间中的坐标为：$O_{origin}$</p>
+</li>
+<li>
+<p>则：
+$$M_{view} = M_{negate} * Inverse(M_{viewtoworld})$$</p>
+</li>
+<li>
+<p>其中，$M_{negate}$ 为因为观察空间是右手坐标系，所以需要对 Z 取反：
+$$M_{negate} = \begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \<br>
+0 &amp; 1 &amp; 0 &amp; 0 \<br>
+0 &amp; 0 &amp; -1 &amp; 0 \<br>
+0 &amp; 0 &amp; 0 &amp;1
+\end{pmatrix}
+$$</p>
+</li>
+<li>
+<p>其中，$M_{viewtoworld}$ 为将物体从观察空间转化到世界坐标系的矩阵：
+<span>$$M_{viewtoworld} = \begin{pmatrix} 
+    \overrightarrow {Up}.x &amp; \overrightarrow {Up}.y &amp;
+    \overrightarrow {Up}.z &amp; 0\\
+    \overrightarrow {Right}.x &amp; \overrightarrow {Right}.y &amp;
+    \overrightarrow {Right}.z &amp; 0\\
+    \overrightarrow {Forward}.x &amp; \overrightarrow {Forward}.y &amp;
+    \overrightarrow {Forward}.z &amp; 0\\
+    {O_{origin}}.x &amp; {O_{origin}}.y &amp;
+    {O_{origin}}.z &amp; 0
+    \end{pmatrix}$$</span><!-- Has MathJax --></p>
+</li>
+<li>
+<p>其中，$Inverse()$ 的功能是求一个矩阵的逆</p>
+</li>
+</ul>
+<h4>2.1.4 裁剪空间</h4>
+<p>顶点接下来需要从观察空间转化到裁剪空间中，裁剪空间的作用是为了方便剔除渲染图元：完全在这个空间内部的图元会被保留，完全不在这个空间内部的图元会被剔除，和这个空间相交的图元会被剪裁。</p>
+<p>裁剪空间实际上就是一个视锥体：</p>
+<p><img src="http://static.zybuluo.com/HandY/0grfom6r5mw35dl3qydjmuaj/image_1btp6cb0318j91mtv69e18hokbb1j.png" alt="视锥体示意图"></p>
+<p>这个视锥体实际上可以由<em>近剪裁平面距离Near</em>、<em>远剪裁平面距离Far</em>、<em>FOV</em>、*Aspect（宽高比）*这几个参数决定。</p>
+<p><img src="http://static.zybuluo.com/HandY/kw7e54z7x8er0hat9qzhecfx/image_1btp6gqjotkqdu3q3bbqh15s73i.png" alt="视锥体的侧视图"></p>
+<p>将物体从观察空间转换到剪裁空间中的矩阵 $M_{frustum}$ 如下：
+<span>$$M_{frustum} = \begin{pmatrix}
+    \frac{cot(\frac{FOV}{2})}{Aspect} &amp; 0 &amp; 0 &amp; 0\\
+    0 &amp; cot(\frac{FOV}{2}) &amp; 0 &amp; 0\\
+    0 &amp; 0 &amp; - \frac{Far+Near}{Far-Near} &amp; - \frac{2*Near*Far}{Far-Near} \\
+    0 &amp; 0 &amp; -1 &amp; 0
+    \end{pmatrix}$$</span><!-- Has MathJax --></p>
+<p>转换公式如下：</p>
+<p>$$P_{clip} = M_{frustum} * P_{view}$$</p>
+<p><img src="http://static.zybuluo.com/HandY/6o6nuj18xr134fy7mlfba8b9/image_1btp6j80corg13761k4s1e1o1tv13v.png" alt="观察空间下的视锥体坐标点和剪裁空间下的视锥体坐标点"></p>
+<p>上面的左图，是在观察空间的视锥体的四个顶点。上面的右图，经过变换后的视锥体的四个顶点。由图中可以看到，这个转换实际上就是对观察空间中的点做了一次平移+缩放的变换。</p>
+<h4>2.1.5 屏幕空间</h4>
+<p>将顶点从剪裁空间变换到屏幕空间后，就可以得到这个点在屏幕上对应的像素坐标了。由于这个变换在接下来的程序中不是很重要，所以在这里就不过多讲述了。</p>
+<h3>2.2 网格投影的基本原理</h3>
+<h4>2.2.1 基本概念</h4>
+<p>它的基本思想就是，将一个在剪裁空间中的，正对相机的网格，投影到世界空间中的海平面上。</p>
+<p>其直观的算法为：</p>
+<ul>
+<li>在剪裁空间中，创建一个正对摄像机的，正方形的网格。</li>
+<li>将这个网格投影到世界空间的一个平面上。这个平面就是海平面$S_{base}$。</li>
+<li>将这个世界空间中的点，根据高度图（$f_{HF}$），替换为对应的点。</li>
+<li>渲染这个平面。</li>
+</ul>
+<p><img src="http://static.zybuluo.com/HandY/4vublgn8yr591hexyi1e5em0/image_1btpf5df0125f1eh61j2ralu12es4c.png" alt="简易的投影后的网格"></p>
+<h4>2.2.2 一些定义</h4>
+<p><img src="http://static.zybuluo.com/HandY/rmxa687sik1hl2mirrmfj2sw/image_1bttn10e04531nhhagfqci16lr2j.png" alt="2D视角展示定义"></p>
+<p><img src="http://static.zybuluo.com/HandY/k2ztcfqa3y6cltavaldx03lk/image_1bttn1cuh1utl3he1s831asud1h30.png" alt="2D视角展示定义"></p>
+<p><img src="http://static.zybuluo.com/HandY/2dki733xlpzn0jqvkomyc3e9/image_1bttne9g51in3114k19r81icm5ng3q.png" alt="2D视角展示定义"></p>
+<ul>
+<li>
+<p>$S_{base}$：世界坐标系中，被替换前的海面。这个海面上的每个点都将会被$f_{HF}$替换为对应的高度。</p>
+</li>
+<li>
+<p>$S_{upper}$：整个海面被替换后的最高点所在的平面。</p>
+</li>
+<li>
+<p>$S_{lower}$：整个海面被替换后的最低点所在的平面。</p>
+</li>
+<li>
+<p>$f_{HF}$：将海面上每个点替换为对应点的函数。$f_{HF} = f(x, y)$。</p>
+</li>
+<li>
+<p>$V_{displaceable}$：在最高面和最低面之间的长方体。</p>
+</li>
+<li>
+<p>$V_{camera}$：视锥体所形成的平截椎体。</p>
+</li>
+<li>
+<p>$V_{visible}$：视锥体可以看到的体积。其实就是视锥体与海体的相交的部分。</p>
+</li>
+</ul>
+<h4>2.2.3 具体算法</h4>
+<p>生成投影网格的具体算法如下：</p>
+<ol>
+<li>获得摄像机 camera 的位置和方向，以及其他必要的属性。</li>
+<li>确定 $V_{camera}$ 与 $V_{displaceable}$ 是否有交集。如果没有交集，那么说明相机看不到海面，停止一切工作。具体算法在 <em>2.2.3.2</em> 节有。</li>
+<li>重新计算相机 newCam 的位置和方向（这个新相机和实际的相机会有一点点不同），计算得到 newCam 的从世界空间转化到相机空间的矩阵 $M_{pview}$，还有从相机空间转化到剪裁空间的矩阵 $M_{pclip}$。
+我们就可以得到从剪裁空间到相机空间的矩阵 $M_{projector}$：
+$$M_{projector} = [M_{pclip} * M_{pview}] ^ {-1}$$</li>
+<li>考虑到实际的体积 $V_{visible}$ 是 $V_{displaceable}$ 和 $V_{camera}$ 的相交的部分，所以需要计算 $V_{visible}$ 在剪裁空间中的 x 和 y 方向的扩张的部分。构造这样一个矩阵 $M_{range}$，它可以将 [0, 1] 转换到这个扩张的部分。更新投影矩阵 $M_{projector}$：
+<span>$$M_{range} = \begin{pmatrix}
+\frac{xMax - xMin}{2} &amp; 0 &amp; 0 &amp; xMin\\\
+0 &amp; \frac{yMax - yMin}{2} &amp; 0 &amp; yMin\\\
+0 &amp; 0 &amp; 1 &amp; 0 \\\
+0 &amp; 0 &amp; 0 &amp; 1 \end{pmatrix}$$</span><!-- Has MathJax --></li>
+</ol>
+<p>$$M_{projector} = M_{range} * [M_{pclip} * M_{pview}] ^ {-1}$$</p>
+<ol start="5">
+<li>创建一个x、y都在 $[0, 1]$的网格。
+6.将网格中的每个点，首先投影到世界空间下，视锥体的近剪裁面上，然后投影到视锥体的远剪裁面上，最终的点就是这两个点组成的线与海平面 $S_{base}$的交点。</li>
+<li>将这个在 $S_{base}$ 上的点，根据高度函数 $f_{HF}$，替换为最终的点。</li>
+</ol>
+
+          
         
       
     </div>
@@ -677,16 +1108,35 @@
 
       
         
-          <p>最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下：</p>
-<h4 id="1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。"><a href="#1-实现了Unity-Shader中对2D图形的轮廓描绘和消融效果。" class="headerlink" title="1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。"></a>1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</h4><p>轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：</p>
+          
+            <p>最近一个多星期(9.20 - 9.27)来，我没有很专注于我的游戏项目：JI，反而是做了很多很杂的东西，现在记录如下：</p>
+<h4>1. 实现了Unity Shader中对2D图形的轮廓描绘和消融效果。</h4>
+<p>轮廓描绘分为描绘整个图像的轮廓和描绘物体的线条，只是这么说大家可能不理解，下面就上图给大家看看：</p>
 <p><img src="http://static.zybuluo.com/HandY/nzlvre9u2upl5t0votd7v3nu/image_1br1snsqrt21t76pi11uad13t49.png" alt="原始图案"> <img src="http://static.zybuluo.com/HandY/dwo2acht4vdvrz3x4d5lie5z/image_1br1su8jt159q7c173sbb6rdam.png" alt="描绘整个图形的轮廓"> <img src="http://static.zybuluo.com/HandY/eeaso70fnv5xrdniid8aaj9j/image_1br1t20nh1tcrm4u12rli8lir41g.png" alt="描绘物体的线条"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/10/05/学习二三事/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!-- more --&gt;</p>
+<p>在实现过程中，我顺便学习了 Unity Sprite Default Shader 的源码，了解了 PerRendererData 这个属性，还有采用高斯核进行轮廓判断的方法。</p>
+<p>还有消融效果，感觉实现起来蛮简单的，就是噪声图+AlphaTest嘛。但我实现的是随机点的消融，如果要实现特定的消融效果应该还是蛮难的，比如沿着一条线扩散消融这种。最近项目好像也不需要这种效果，暂时先放着吧。</p>
+<h4>2. 纪念碑谷的简单实现</h4>
+<p>因为我们组的新人实习任务中有实现纪念碑谷这道题，加之我认为纪念碑谷的逻辑应该不是很复杂，就想着实现一下。</p>
+<p>现在做了简单的，不含楼梯、曲面的路径规划。</p>
+<p>我是这么想的：将每个正方体分解为六个面，每个面有着“是否可以行走”和“当前玩家是否可以到达”这两个属性。对于这个面是否可以行走，这个在我们设计关卡的时候就预先设置好（见图中灰色圆圈，代表可以行走）；对于玩家是否可以到达这个面，这个在玩家进行移动的时候进行动态更新（见图中蓝色图标，代表这个面玩家可以到达）。</p>
+<p>做这个的时候参考了纪念碑谷团队在GDC上面的演讲（可以在Youtobe上找到）。</p>
+<p><img src="http://static.zybuluo.com/HandY/6mliomml5bpszgy617l5qe75/image_1br1tpt6oqtn19q21vu498kb29.png" alt="纪念碑谷编辑器视图"></p>
+<p>纪念碑谷的带曲面的寻路逻辑我还没有做，而且纪念碑谷还有很多Shader实现得挺好的，这个以后再写吧。应该是过一两个星期的样子，等我作业做完，JI的每周开发任务、种子杯结束，再写。</p>
+<h4>3. 学习噪声函数、Geometry Shader的编写</h4>
+<p>最近看了一篇陈嘉栋的关于大规模草的模拟的文章，我自己尝试实现了一下。</p>
+<p>首先遇到的困难是，我需要一张噪声图来生成地形。因为我自己对噪声函数也不是很了解，所以顺便学习了噪声函数。学习了什么是噪声函数，如何进行噪声的叠加以产生分形效果，几种常用的插值函数，几种常用的平滑噪声的方法。</p>
+<p>生成了大地图后，我接下来看了看别人的 Geometry Shader 的代码，学习了一下 Geometry Shader 的书写格式和在渲染流程中的作用。</p>
+<h4>4. 买了很多书</h4>
+<p>这一周买了：《游戏编程模式》、《Doom启示录》、《Unity 5 实战》。</p>
+<p>其中《游戏编程模式》是我以前就在网上看了电子版的，当时没有看完，最近出笔试题的时候又学习了一下其中的“游戏循环”这一章，感觉还是需要买回来，做做笔记，仔细阅读的。</p>
+<p>《Doom启示录》这本书，我在大二上学期的时候就读过两遍，这次买来，还没来得及阅读完。每次读卡马克和罗梅洛这两个人的传奇经历，都让我特别兴奋。</p>
+<p>卡马克在我脑海中的形象是无比冷静、刻苦、自学成才。他没有接受过正规的计算机教育，所有关于编程方面的知识都是通过看书和每天令人难以置信的编程实践得来。他的天分，完全是因为他的自律、刻苦而得来。</p>
+<p>我十分推崇他的思想：“如果你想动手开发什么全新的技术，不需要几百万美元的资金，只需要在冰箱里放满披萨和可乐，再有一台便宜的计算机和为之献身的决心。”我自开始编程以来（大一下），几乎所有现在所掌握的知识，都是我通过书本、网络自学而来，我也认为，要学好计算机的唯一方法就是多敲代码，多练。</p>
+<p>我也欣赏id的风格：“我们是风！”想要做好一件事，实现一项新的技术，直接开始做就行了，比他人更快的学习能力才是我们的优势所在，要像风一样迅速的开始行动，即使是自己陌生的领域。</p>
+<p>与卡神相比，我的刻苦和自律水平太差了。这一方面是我要重点改变的地方。我决定增加我的学习时间，增加我连续学习的时间（中间不中断）。</p>
+
+          
         
       
     </div>
@@ -836,16 +1286,23 @@
 
       
         
-          <p>很早就想做一个又会画画，又会代码的程序员了。</p>
+          
+            <p>很早就想做一个又会画画，又会代码的程序员了。</p>
 <p>这样的话，2D 小 demo 不就可以自己做了吗？没事的时候还可以画画美女，消磨时光、陶冶情操。</p>
 <p>下面就开始记录记录自己的绘画作品吧。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/23/自学绘画二三事/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!-- more --&gt;</p>
+<hr>
+<h3>2017.09.23</h3>
+<p><img src="http://static.zybuluo.com/HandY/mvxsmyrkh6h5veiasccu0hsv/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170923195226.jpg" alt="时简和兔女郎"></p>
+<p>第一幅作品~~~</p>
+<p>感觉自己多人脸的把握太差了/(ㄒoㄒ)/~~
+时简：一个帅气的男孩子，脸却被我画歪了，左手感觉也很僵硬。</p>
+<hr>
+<h3>2017.09.23</h3>
+<p><img src="http://static.zybuluo.com/HandY/81n4ge82ygeeyi1wrlo7cfzc/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20170923195746.jpg" alt="R姐"></p>
+<p>这次画的是 R姐 （其实我是第一次知道这个人），感觉脸型、眼睛、嘴巴没哟画好。同时，胸也画的不够**。</p>
+
+          
         
       
     </div>
@@ -995,16 +1452,37 @@
 
       
         
-          <p>临近冰岩招新，没想到这次我也能负责出题 :)。</p>
+          
+            <p>临近冰岩招新，没想到这次我也能负责出题 :)。</p>
 <p>关于新人们的实习任务，我出了一道参考了 Super Meat Boy 的游戏制作题。SMB 是在2D平台跳跃游戏中难得的佳作。其操作手感良好，关卡设计精妙。在实习任务中，我给出了详细的制作方法，但考虑到他们只有8天时间，而且有些新人还没有学习过游戏编程，所以这对于他们来说难度也是很大的。</p>
 <p>我自己也十分喜欢这个游戏，也想写写平台跳跃游戏。我想，在做完“JI”之后，我会尝试着自己做做的。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/09/20/开发方向实习任务-Super-Meat-Boy/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!-- more --&gt;</p>
+<p>在这里我列出实习任务的内容，以供我之后自己制作：</p>
+<hr>
+<p>参考<em>超级肉食男孩</em>，制作一个类似的2D平台跳跃类游戏。</p>
+<p><strong>基本点</strong></p>
+<ul>
+<li>玩家可以在2D地图上行走，跳跃。</li>
+<li>玩家的跳跃分为普通跳跃和冲刺跳跃两种。</li>
+<li>玩家可以依附在墙壁上。</li>
+<li>在经过危险区域（如转轮）时，玩家会死亡</li>
+</ul>
+<p><strong>加分点</strong></p>
+<ul>
+<li>跳跃、移动手感良好。</li>
+<li>有“鲜血四溅”的效果。</li>
+<li>有回放系统。</li>
+<li>摄像机跟随平滑。</li>
+</ul>
+<p><strong>参考资料</strong></p>
+<ul>
+<li>Super Meat Boy 的所有美术资源（仅供学习使用）：https://www.spriters-resource.com/pc_computer/supermeatboy/sheet/37356/</li>
+<li>2D 横版游戏中的摄像机的运镜原理：https://www.indienova.com/indie-game-development/scroll_back_the_theory_and_practice_of_cameras_in_sidescrollers-ph/</li>
+<li>2D 平台跳跃游戏中的碰撞检测方法和基本的跳跃实现方法：http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/</li>
+<li>用Unity制作2D平台跳跃游戏（教学）：https://www.youtube.com/watch?v=oK_NzdVSxaQ&amp;list=PLq3pyCh4J1B2va_ftIthSpUaQH0LycRA-</li>
+</ul>
+
+          
         
       
     </div>
@@ -1154,15 +1632,47 @@
 
       
         
-          <p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
+          
+            <p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
 <p>这篇文章里介绍了几种 2D 平台跳跃的碰撞检测的实现方法。包括：基于网格的碰撞、基于图像位掩码的检测方法、基于向量的碰撞检测、基于包围体的碰撞检测。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/07/31/2D-平台游戏的碰撞检测方法/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+<p>&lt;!-- more --&gt;</p>
+<p><strong>声明：</strong> 我大部分内容是参考了这篇文章 <a href="http://higherorderfun.com/blog/2012/05/20/the-guide-to-implementing-2d-platformers/" target="_blank" rel="external">这里</a>，再加上我自己的理解。对于其中一些游戏的实现方式可能不是文中说的那样，因为这是由反向推断得到的。</p>
+<h3>第一种：基于网格（简单）</h3>
+<p>在基于网格的2D场景中，人物移动受限于网格，人物永远不可能站在两个网格的中间。动画能使人物的移动看起来更平滑。</p>
+<p>这是最简单的一种平台游戏的实现方式，但是这种方式对于人物控制有着很多限制，所以它不适合大多是基于动作的游戏，但是它很适合解谜类的平台游戏。</p>
+<p><img src="http://static.zybuluo.com/HandY/bfqhml63t9j2c9rnkd8l0prp/image_1bmbpq1ngrm11ojq4ai6sa1n3u9.png" alt="“闪回”，以网格形式展示"></p>
+<p>例子：波斯王子、闪回、淘金者（Lode Runner）、小鸡快跑</p>
+<h3>它是如何实现的</h3>
+<p>整个游戏地图是由一系列的网格组成，每个网格都储存了一系列的信息，比如说：这是否是一个障碍物，它所使用的贴图是什么，行走在这上面的声音是什么，诸如此类。</p>
+<p>玩家和其他人物由一系列的网格组成。例如，在<a href="https://en.wikipedia.org/wiki/Lode_Runner" target="_blank" rel="external">淘金者</a>中，玩家是一个单独的网格。在<a href="http://store.steampowered.com/app/38700/Toki_Tori/" target="_blank" rel="external">小鸡快跑</a>中，玩家是由一个 2X2 的网格组成的。在闪回中，玩家站着的时候，是两个网格宽，五个网格高（看上面的图片）；玩家蹲下的时候，是三个网格高。</p>
+<p>在这类游戏中，玩家几乎不会沿着对角线移动，但是如果他要沿着对角线移动的话，整个移动可以别分解为两个独立的步骤 -- 分别沿着水平和竖直方向移动。同样的，玩家一次性只能移动一个网格，如果要移动多个网格的话，就要分解为多次的一个网格的移动。算法在下面展示出来了：</p>
+<ol>
+<li>在目的地创建一个人物的复制体。例如：要向右移动一个格子的话，你就将玩家所属的每个格子向右移动一格的位置制造一个玩家的复制体。</li>
+<li>在复制体上检查复制体和背景还有其他人物体的碰撞。</li>
+<li>如果检测到一个交互，那么玩家的移动就停止，执行相应的动作。</li>
+<li>否则，将玩家移至目的地，同时做出动画来使得玩家的移动看起来更加平滑。</li>
+</ol>
+<p>这种移动方式非常不适合一般的弧形跳跃 -- 所以在这种游戏中，玩家通常无法跳跃 （小鸡快跑、淘金者）或者只能在竖直方向上跳跃（闪回、波斯王子）。</p>
+<p>这种方式的优点在于其容易实现，而且也很精确。因为场景的确定性很高，所以因碰撞产生的抖动或其他的小故障几乎不会发生，游戏体验能得到更好的控制 -- 因为不太需要基于不同环境去调整数值。尤其是相较于其他复杂的移动方式时， 这种方法在实现一些特定的物理学运动的时候（比如抓住墙壁，单方向的平台）变得十分简单  -- 你需要做的一切就是检查玩家是否以一种特定的方式接近一个特殊的网格，以此来触发一个特殊的动作。</p>
+<p>从理论上来说，这种方式不允许玩家移动的距离小于一个网格，但是我们有一些方法来减轻这个限制。比如：网格大小可以小于玩家大小（就像：玩家是 2X6 大小）；或者，你可以用一种仅仅只是视觉上的表现去让玩家站在格子中间，而不影响碰撞逻辑。</p>
+<h3>第二种：基于网格（平滑）</h3>
+<p>碰撞仍然由网格进行检测，但是人物可以在游戏世界中进行平滑移动（一般来说一次移动是以像素为基本单位的，由整数控制，但是在文章最后会介绍一种平滑移动的方式）。这种移动方式通常是实现 8-bit 或 16-bit 的平台游戏的实现方式，但是在现在仍然很受欢迎，因为它的实现十分简单，而且能够使关卡编辑简化。它也允许斜坡和平滑的跳跃轨迹。</p>
+<p>如果你不太确定你想要实现什么种类的平台游戏，但你想做一个动作游戏，那么这种方法是一个很好的选择。它非常灵活，也很容易实现。在介绍的四种方式中，这种方式会给你最多的控制权。毫无疑问，大部分的动作游戏都是基于这种类型的。</p>
+<p><img src="http://static.zybuluo.com/HandY/xuh418s4x7mflubm0cwp0nbp/image_1bmdulkgp13d71q187kmq2i13gk9.png" alt="“洛克人”， 展示了网格边框和玩家的碰撞盒"></p>
+<p>例子：超级马里奥、刺猬索尼克、洛克人、超级银河战士、魂斗罗、合金弹头、还有几乎所有的 16-bit 的平台游戏。</p>
+<h3>它是如何实现的</h3>
+<p>和简单的基于网格的碰撞一样，它的地图信息也是储存于一个二维数组里的，唯一的不同之处就是玩家和背景的交互方式。 玩家的碰撞盒现在是一个 AABB 包围盒（Axis-Aligned Bounding Box, 一个无法旋转的矩形)，而且，一般来说，是网格大小的整数倍。通常的大小有一个网格宽，加上一个网格（小马里奥，变形的球型的银河战士）、两个网格（大马里奥，洛克人，蹲下的银河战士）、或者三个网格（站着的银河战士）高。大多数情况下，人物精灵的大小会比碰撞盒大。在上面的图片中，你会发现，角色精灵的在 X 方向上的大小是两个网格宽，但是它的包围盒是一个网格宽。</p>
+<p>假设现在没有斜坡和单向平台（one-way platform），移动的算法很直接：</p>
+<ol>
+<li>将移动分解为水平方向的移动和竖直方向的移动，一次移动一个方向。如果你想要实现沿着斜坡移动的话，先向水平方向上移动，然后是竖直方向。否则的话，移动次序没有要求。 然后，在每个方向上：</li>
+<li>得到面向前方的碰撞盒边缘的点的坐标。例如：如果向左走，那么就是碰撞盒的左边那条线的 X 坐标。如果向右边走，就是右边那条线的 X 坐标。如果向上走，就是上面那条线的 Y 坐标。</li>
+<li>确定碰撞盒会与哪些网格相交。例如，如果我们在向左边走，有可能玩家会与水平方向上的第32、33、34 个网格相交（也就是说，Y 轴坐标为 32 * TS、33 * TS、34 * TS 的网格，其中 TS = 网格大小）。</li>
+<li>沿着移动方向遍历这些网格，找到一个离你最近的的静态碰撞体。然后遍历所有的移动的碰撞体。最后确定离你最近的，而且在你的移动方向上的碰撞体。</li>
+<li>玩家的最终沿着该方向的移动距离就是：玩家到最近碰撞体的距离和玩家想要移动的距离的最小值。</li>
+<li>将玩家移动到一个新位置。在到了进行下一个方向上的移动。</li>
+</ol>
+
+          
         
       
     </div>
@@ -1313,177 +1823,14 @@
       
         
           
-            <h4 id="网站："><a href="#网站：" class="headerlink" title="网站："></a>网站：</h4><ul>
-<li>Procedural Mesh Examples: <a href="https://github.com/parahunter/mesh-presentation" target="_blank" rel="external">https://github.com/parahunter/mesh-presentation</a></li>
-<li>Unity’s Procedural Mesh Examples: <a href="https://www.assetstore.unity3d.com/en/#!/content/5141" target="_blank" rel="external">https://www.assetstore.unity3d.com/en/#!/content/5141</a></li>
-<li>Triangle.NET for Unity : <a href="https://github.com/parahunter/triangle-net-for-unity" target="_blank" rel="external">https://github.com/parahunter/triangle-net-for-unity</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/30/暑假-TOFEL-学习计划/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="胡东明">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="东明的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/30/暑假-TOFEL-学习计划/" itemprop="url">暑假 TOFEL 学习计划</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-30T10:47:46+08:00">
-                2017-06-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2017-06/" itemprop="url" rel="index">
-                    <span itemprop="name">2017-06</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/30/暑假-TOFEL-学习计划/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/30/暑假-TOFEL-学习计划/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这个暑假打算好好学习学习英语，将 TOFEL 考试给考过，以下是我暑假 7-8 月的一个月时间的英语学习计划。</p>
-<h3 id="考试和题型"><a href="#考试和题型" class="headerlink" title="考试和题型"></a>考试和题型</h3><p>考试由四部分组成：阅读（Reading）、听力（Listening）、口语（Speaking)、写作（Writing）</p>
+            <h4>网站：</h4>
 <ul>
-<li>每部分满分30分，整个试题满分120分，考试时间3-4个小时，阅读约为1个小时，听力时间50分钟，口试时间20分钟，写作时间1个小时。</li>
-<li>阅读和听力可能遇到加试，口语和写作没有加试。</li>
-<li>考试时应提前半个小时到考场，一般是8点半进场，9点开考。</li>
-<li>考试时携带有效证件和从官网打印的报名确认回执。</li>
+<li>Procedural Mesh Examples: https://github.com/parahunter/mesh-presentation</li>
+<li>Unity's Procedural Mesh Examples: https://www.assetstore.unity3d.com/en/#!/content/5141</li>
+<li>Triangle.NET for Unity : https://github.com/parahunter/triangle-net-for-unity</li>
 </ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/30/暑假-TOFEL-学习计划/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+
+          
         
       
     </div>
