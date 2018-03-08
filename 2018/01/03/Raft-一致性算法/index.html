@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="1. 起源 我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
+<meta name="description" content="1. 起源我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Raft 一致性算法">
 <meta property="og:url" content="http://yoursite.com/2018/01/03/Raft-一致性算法/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="1. 起源 我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
+<meta property="og:description" content="1. 起源我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
 <meta property="og:updated_time" content="2018-01-08T11:43:29.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Raft 一致性算法">
-<meta name="twitter:description" content="1. 起源 我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
+<meta name="twitter:description" content="1. 起源我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。 教授上完课后，给我们布置了一些可选的编程作业。我选择的是：Implement crash-tolerant consensus。 在选择这个作业后，我上网查了查相关资料，很快就发现了">
 
 
 
@@ -352,25 +352,22 @@
       
 
       
-        <h3>1. 起源</h3>
-<p>我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。</p>
+        <h3 id="1-起源"><a href="#1-起源" class="headerlink" title="1. 起源"></a>1. 起源</h3><p>我们计算机网络这门课，有两个星期是外教给我们上的课，他主要讲的是分布式系统中信息一致性的问题。教授讲课挺好的，就是有一些听不懂，23333。然后那段时间我有些颓废，所以就去听了两次课，现在想想还是很可惜。</p>
 <p>教授上完课后，给我们布置了一些可选的编程作业。我选择的是：<em>Implement crash-tolerant consensus</em>。</p>
 <p>在选择这个作业后，我上网查了查相关资料，很快就发现了 Raft 这个解决分布式中一致性问题的算法。因为我自己对 Unity 熟悉，所以就用 Unity 把这个算法实现了一遍，做成了一个小 Demo，总共花了大概25个小时，就算是完成这个作业了。</p>
-<p>&lt;!-- more --&gt;</p>
-<h3>2. 链接</h3>
-<p>首先介绍一下学习 Raft 的相关资料：（我自己就是照着那篇论文实现的）</p>
+<a id="more"></a>
+<h3 id="2-链接"><a href="#2-链接" class="headerlink" title="2. 链接"></a>2. 链接</h3><p>首先介绍一下学习 Raft 的相关资料：（我自己就是照着那篇论文实现的）</p>
 <ul>
-<li>Raft 算法的官网：https://raft.github.io/</li>
-<li>详细讲解 Raft 算法的文章：https://www.usenix.org/conference/atc14/technical-sessions/presentation/ongaro</li>
+<li>Raft 算法的官网：<a href="https://raft.github.io/" target="_blank" rel="external">https://raft.github.io/</a></li>
+<li>详细讲解 Raft 算法的文章：<a href="https://www.usenix.org/conference/atc14/technical-sessions/presentation/ongaro" target="_blank" rel="external">https://www.usenix.org/conference/atc14/technical-sessions/presentation/ongaro</a></li>
 </ul>
 <p>再放上我自己实现 Raft 算法的源码和简单演示视频：</p>
 <ul>
-<li>源码：https://github.com/hdmmY/Raft-Unity/releases/tag/v1.0</li>
-<li>简单演示视频：
-<iframe height="150" width="300" src="http://player.youku.com/embed/XMzI4NTg5NzExNg" frameborder="0" allowfullscreen></iframe></li>
+<li>源码：<a href="https://github.com/hdmmY/Raft-Unity/releases/tag/v1.0" target="_blank" rel="external">https://github.com/hdmmY/Raft-Unity/releases/tag/v1.0</a></li>
+<li>简单演示视频：<iframe height="150" width="300" src="http://player.youku.com/embed/XMzI4NTg5NzExNg" frameborder="0" allowfullscreen></iframe>
+</li>
 </ul>
-<h3>3. 我自己的理解</h3>
-<p>Raft 算法是用来解决这样一个问题的：分布式系统中，有时候主机会崩掉，有时候网络会有延时、会掉包，但是仍然希望来自高层的指令能够在各个主机里依照相同的次序执行。</p>
+<h3 id="3-我自己的理解"><a href="#3-我自己的理解" class="headerlink" title="3. 我自己的理解"></a>3. 我自己的理解</h3><p>Raft 算法是用来解决这样一个问题的：分布式系统中，有时候主机会崩掉，有时候网络会有延时、会掉包，但是仍然希望来自高层的指令能够在各个主机里依照相同的次序执行。</p>
 <p>Raft 算法和其他解决这一问题的算法比起来，其优势在于高可理解性。依照我看的论文所说，在 Raft 算法之前，业内解决这个问题通常用的是 Paxos 算法。但是 Paxos 算法非常非常的复杂，论文的作者，斯坦福大学的学者，花了近一年的努力来理解和实现这个算法，最后仍以失败告终。而 Raft 算法，对于我这个对此领域没有任何前置经验的大三学生来说，在经过七、八个小时的阅读后，也能理解不少了。</p>
 <p>Raft 算法中的主要流程是这样的。</p>
 <ul>
