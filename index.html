@@ -248,6 +248,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/弹幕游戏的性能优化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡东明">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="东明的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/18/弹幕游戏的性能优化/" itemprop="url">弹幕游戏的性能优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T23:15:49+08:00">
+                2018-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2018-03/" itemprop="url" rel="index">
+                    <span itemprop="name">2018-03</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/18/弹幕游戏的性能优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/18/弹幕游戏的性能优化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>我自己也在做弹幕游戏，最近看到了一个非常优秀的弹幕游戏开源库 <a href="https://github.com/james7132/DanmakU" target="_blank" rel="external">DanmakU</a>，我学习了一下，然后将其加入到了我自己的项目中，在这里就讲一下那个库里一些设计上比较好的地方。</p>
+<h3 id="1-说说开学之后的生活"><a href="#1-说说开学之后的生活" class="headerlink" title="1. 说说开学之后的生活"></a>1. 说说开学之后的生活</h3><p>开学到现在是刚好三周，在这三周里，我自己感觉自己的学习状态有很大进步。</p>
+<p>首先体现在作息时间上。开学以来，除了周末，我平时都是 11.30 左右睡觉，早上 7.20 起床，很规律。</p>
+<p>然后呢，平时的学习也很好。每天都是在学习，看书。课余时间看书比较多，所以游戏就玩得少了，之后的两周，应该会画比较多的时间在玩游戏上，比较少的时间在看书上。</p>
+<p>看书方面的话，看了《雍正王朝 上中下》，花了三周，终于断断续续的看完了这本大部头，其中第三部还读了两遍，还是很有收获的吧。</p>
+<p>玩游戏的话，倒是没有玩什么新游戏，平时都是很闲的时候玩玩大型开发世界游戏养老，没什么好说的。</p>
+<h3 id="2-初始设计-–-对象池"><a href="#2-初始设计-–-对象池" class="headerlink" title="2. 初始设计 – 对象池"></a>2. 初始设计 – 对象池</h3><p>弹幕游戏的一个重要的特点是会在同一时刻生成大量的子弹，也会在同一时间销毁大量子弹。就像粒子一样。如果处理不当的话，会一下子造成许多内存碎片。</p>
+<p>我最初的实现方法，就是用到了对象池。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/18/弹幕游戏的性能优化/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/GDC-DesignCeleste/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1317,166 +1481,6 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/03/Raft-一致性算法/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/26/极-中期开发进度说明/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="胡东明">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="东明的Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/26/极-中期开发进度说明/" itemprop="url">极 中期开发进度说明</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T14:48:03+08:00">
-                2017-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/2017-12/" itemprop="url" rel="index">
-                    <span itemprop="name">2017-12</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/12/26/极-中期开发进度说明/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/12/26/极-中期开发进度说明/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="http://static.zybuluo.com/HandY/5la3woekfrsaauvhd0ne1rk5/asdf.png" alt="第二关实机画面"></p>
-<h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1 简介"></a>1 简介</h3><p>“极”是我以开发身份参与制作的一款游戏。</p>
-<p>它是一款纵卷轴弹幕射击的游戏。玩家操纵一架机体，需要躲避数量惊人的敌机子弹发射而形成的弹幕，同时需要击败敌人。其游戏玩法类似“东方”系列和“斑鸠”。</p>
-<p>“极”的核心玩法是<strong>黑白</strong>状态。自机、敌机、子弹统统都有黑白两种类型。玩家通过按键可以切换自机状态。敌方弹幕对于同色的自机会造成一定血量的伤害，而异色自机则会被直接消灭。我方弹幕在面对异色敌机会有伤害加成。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/12/26/极-中期开发进度说明/" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>

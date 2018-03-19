@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="GDC," />
+  <meta name="keywords" content="杂谈,游戏制作," />
 
 
 
@@ -79,20 +79,17 @@
 
 
 
-<meta name="description" content="Celeste 是一款 2D 平台跳跃解谜游戏，IGN 评分满分。 今天我看了 Celeste 的制作人在 GDC 上的演讲。他主要讲的是 Celeste 的设计思路。看完之后，感觉收获了不少。">
-<meta name="keywords" content="GDC">
+<meta name="description" content="我自己也在做弹幕游戏，最近看到了一个非常优秀的弹幕游戏开源库 DanmakU，我学习了一下，然后将其加入到了我自己的项目中，在这里就讲一下那个库里一些设计上比较好的地方。 1. 说说开学之后的生活开学到现在是刚好三周，在这三周里，我自己感觉自己的学习状态有很大进步。 首先体现在作息时间上。开学以来，除了周末，我平时都是 11.30 左右睡觉，早上 7.20 起床，很规律。 然后呢，平时的学习也很好">
+<meta name="keywords" content="杂谈,游戏制作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="GDC -- Celeste 的设计">
-<meta property="og:url" content="http://yoursite.com/2018/03/07/GDC-DesignCeleste/index.html">
+<meta property="og:title" content="弹幕游戏的性能优化">
+<meta property="og:url" content="http://yoursite.com/2018/03/18/弹幕游戏的性能优化/index.html">
 <meta property="og:site_name" content="东明的Blog">
-<meta property="og:description" content="Celeste 是一款 2D 平台跳跃解谜游戏，IGN 评分满分。 今天我看了 Celeste 的制作人在 GDC 上的演讲。他主要讲的是 Celeste 的设计思路。看完之后，感觉收获了不少。">
-<meta property="og:image" content="http://static.zybuluo.com/HandY/k7u6pb8ksq32ku2qg8clzh98/9e486bfec23d56101dd36f40b5a9011e.jpg">
-<meta property="og:image" content="http://static.zybuluo.com/HandY/yvqe336fzu8zqgysk1ali5zb/image_1c80djn3cm365rg1ijhbre1b7l25.png">
-<meta property="og:updated_time" content="2018-03-07T15:44:23.946Z">
+<meta property="og:description" content="我自己也在做弹幕游戏，最近看到了一个非常优秀的弹幕游戏开源库 DanmakU，我学习了一下，然后将其加入到了我自己的项目中，在这里就讲一下那个库里一些设计上比较好的地方。 1. 说说开学之后的生活开学到现在是刚好三周，在这三周里，我自己感觉自己的学习状态有很大进步。 首先体现在作息时间上。开学以来，除了周末，我平时都是 11.30 左右睡觉，早上 7.20 起床，很规律。 然后呢，平时的学习也很好">
+<meta property="og:updated_time" content="2018-03-19T15:53:55.500Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="GDC -- Celeste 的设计">
-<meta name="twitter:description" content="Celeste 是一款 2D 平台跳跃解谜游戏，IGN 评分满分。 今天我看了 Celeste 的制作人在 GDC 上的演讲。他主要讲的是 Celeste 的设计思路。看完之后，感觉收获了不少。">
-<meta name="twitter:image" content="http://static.zybuluo.com/HandY/k7u6pb8ksq32ku2qg8clzh98/9e486bfec23d56101dd36f40b5a9011e.jpg">
+<meta name="twitter:title" content="弹幕游戏的性能优化">
+<meta name="twitter:description" content="我自己也在做弹幕游戏，最近看到了一个非常优秀的弹幕游戏开源库 DanmakU，我学习了一下，然后将其加入到了我自己的项目中，在这里就讲一下那个库里一些设计上比较好的地方。 1. 说说开学之后的生活开学到现在是刚好三周，在这三周里，我自己感觉自己的学习状态有很大进步。 首先体现在作息时间上。开学以来，除了周末，我平时都是 11.30 左右睡觉，早上 7.20 起床，很规律。 然后呢，平时的学习也很好">
 
 
 
@@ -122,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/07/GDC-DesignCeleste/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/18/弹幕游戏的性能优化/"/>
 
 
 
 
 
-  <title>GDC -- Celeste 的设计 | 东明的Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>弹幕游戏的性能优化 | 东明的Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -255,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/07/GDC-DesignCeleste/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/弹幕游戏的性能优化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="胡东明">
@@ -272,7 +269,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">GDC -- Celeste 的设计</h1>
+          <h1 class="post-title" itemprop="name headline">弹幕游戏的性能优化</h1>
         
 
         <div class="post-meta">
@@ -284,8 +281,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-07T20:00:26+08:00">
-                2018-03-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T23:15:49+08:00">
+                2018-03-18
               </time>
             
 
@@ -325,9 +322,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/07/GDC-DesignCeleste/#comments" itemprop="discussionUrl">
+                <a href="/2018/03/18/弹幕游戏的性能优化/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018/03/07/GDC-DesignCeleste/" itemprop="commentCount"></span>
+                        data-disqus-identifier="2018/03/18/弹幕游戏的性能优化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -355,21 +352,41 @@
       
 
       
-        <p><img src="http://static.zybuluo.com/HandY/k7u6pb8ksq32ku2qg8clzh98/9e486bfec23d56101dd36f40b5a9011e.jpg" alt="celeste"></p>
-<p>Celeste 是一款 2D 平台跳跃解谜游戏，IGN 评分满分。</p>
-<p>今天我看了 Celeste 的制作人在 <a href="https://www.youtube.com/watch?v=4RlpMhBKNr0&amp;feature=youtu.be" target="_blank" rel="external">GDC 上的演讲</a>。他主要讲的是 Celeste 的设计思路。看完之后，感觉收获了不少。</p>
+        <p>我自己也在做弹幕游戏，最近看到了一个非常优秀的弹幕游戏开源库 <a href="https://github.com/james7132/DanmakU" target="_blank" rel="external">DanmakU</a>，我学习了一下，然后将其加入到了我自己的项目中，在这里就讲一下那个库里一些设计上比较好的地方。</p>
+<h3 id="1-说说开学之后的生活"><a href="#1-说说开学之后的生活" class="headerlink" title="1. 说说开学之后的生活"></a>1. 说说开学之后的生活</h3><p>开学到现在是刚好三周，在这三周里，我自己感觉自己的学习状态有很大进步。</p>
+<p>首先体现在作息时间上。开学以来，除了周末，我平时都是 11.30 左右睡觉，早上 7.20 起床，很规律。</p>
+<p>然后呢，平时的学习也很好。每天都是在学习，看书。课余时间看书比较多，所以游戏就玩得少了，之后的两周，应该会画比较多的时间在玩游戏上，比较少的时间在看书上。</p>
+<p>看书方面的话，看了《雍正王朝 上中下》，花了三周，终于断断续续的看完了这本大部头，其中第三部还读了两遍，还是很有收获的吧。</p>
+<p>玩游戏的话，倒是没有玩什么新游戏，平时都是很闲的时候玩玩大型开发世界游戏养老，没什么好说的。</p>
+<h3 id="2-初始设计-–-对象池"><a href="#2-初始设计-–-对象池" class="headerlink" title="2. 初始设计 – 对象池"></a>2. 初始设计 – 对象池</h3><p>弹幕游戏的一个重要的特点是会在同一时刻生成大量的子弹，也会在同一时间销毁大量子弹。就像粒子一样。如果处理不当的话，会一下子造成许多内存碎片。</p>
+<p>我最初的实现方法，就是用到了对象池。</p>
 <a id="more"></a>
-<h3 id="1-整体和部分"><a href="#1-整体和部分" class="headerlink" title="1. 整体和部分"></a>1. 整体和部分</h3><p><img src="http://static.zybuluo.com/HandY/yvqe336fzu8zqgysk1ali5zb/image_1c80djn3cm365rg1ijhbre1b7l25.png" alt="image_1c80djn3cm365rg1ijhbre1b7l25.png-61.4kB"></p>
-<p>整个游戏有一个大的故事，这个大故事又可分为几个阶段，每个阶段又可以再次细分。</p>
-<p>Celeste 一共有近 400 个关卡，每个或者多个相邻的关卡总是连续的。这个连续应该可以理解为游戏风格、机制、故事性上的连续。在设计关卡的时候，制作者常常会把各个相邻关卡放在一起，从更高的角度去看这些关卡，以保持关卡之间的连续性。</p>
-<h3 id="2-多种实现方式"><a href="#2-多种实现方式" class="headerlink" title="2. 多种实现方式"></a>2. 多种实现方式</h3><p>Celeste 是一个讲述了攀岩登山故事的平台跳跃游戏。同现实生活中的攀岩一样 – 通向终点的路径不止一条。</p>
-<p>在设计关卡的时候，制作者的一个基本思路就是：允许玩家以不同的方式到达终点。但是在具体实现中，如果提供了太多的路径供玩家选择的话，那么这个游戏又会变得过于简单 – 而且玩家几乎总是会选择最简单的那一条路。</p>
-<p>在 Celeste 中，通常会有一条比较明显的路径，也是普通玩家也能一眼发现的路径。但是，往往也会有一条比较隐晦/艰难的路径，只有高手才能发现。这种路径通常会给予玩家一些奖励：能更快通关、或者奖励道具、或者隐藏关卡。同时，在玩家第一次打通关以后，再次来到这一关时，会发现仍然有许多挑战在等着他，从而再次激发他们的挑战欲望。</p>
-<h3 id="3-关卡设计技巧-–-安全性"><a href="#3-关卡设计技巧-–-安全性" class="headerlink" title="3. 关卡设计技巧 – 安全性"></a>3. 关卡设计技巧 – 安全性</h3><p>作为一个平台跳跃游戏，在设计关卡的时候，加入安全性这个思路便能延伸出很多关卡。</p>
-<p>比如：站上去一会儿后就会消失的平台；动态危险区域，碰到就会死掉；站上去一会儿就会变得危险的平台；</p>
-<h3 id="4-关卡长度"><a href="#4-关卡长度" class="headerlink" title="4. 关卡长度"></a>4. 关卡长度</h3><p>关卡长度也是 Celeste 的一个很重要的问题。由于这是一个高难度的游戏，所以不可避免的，玩家总是会死亡很多次。所以大部分关卡都是很短的。</p>
-<p>制作者会谨慎的制作长的关卡 – 通常用于计时/追逐关卡中。这样能让玩家保持紧张的心情。</p>
-<p>这个我觉得极也可以学习。虽然一般来说，弹幕游戏在玩家死亡后都会重新开始，但是这样成本未免也太高了。暂时想的是设置一些保存点，让玩家不要每次死亡后重开。</p>
+<ul>
+<li>每当要生成一个新的子弹的时候，现在池中找，如果没有找到，就 Instance 一个，然后把这个新生成的子弹放入池中；如果找到了，就把池中的那个子弹拿出来，SetActive(true)。</li>
+<li>每当要销毁一个子弹时，将这个子弹 SetActive(false) ，然后把这个子弹放入池子中。</li>
+</ul>
+<p>这样的池子显然不太好。首先，如果池子里初始是空的话，要一瞬间大量生成子弹的话，就会在一瞬间大量 Instance 很多子弹，会比较卡。其次，因为每个子弹都有其独特的脚本、属性，因此在生成子弹的时候，无法批量生成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 批量生成，这里的 bullet 是 struct 类型</div><div class="line">bullets = new bullets[count];</div><div class="line"></div><div class="line">// 单个生成，这里的 bullet 是 class 类型</div><div class="line">bullets = new bullets[count];</div><div class="line">for(int i = 0; i &lt; count; i++)</div><div class="line">&#123;</div><div class="line">    bullets[i] = new Bullet();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面展示了批量生成和单个生成的不同。批量生成的话，是在内存中拿出一块连续的空间，因此就会相当快。单个生成的话，相当于在内存中分配 count 次单个子弹的内存空间，就会很慢，同时也会造成不少内存碎片。</p>
+<h3 id="3-初始设计-–-子弹移动脚本"><a href="#3-初始设计-–-子弹移动脚本" class="headerlink" title="3. 初始设计 – 子弹移动脚本"></a>3. 初始设计 – 子弹移动脚本</h3><p>在我之前的设计中，每个子弹由一个协程来控制其运动轨迹。似乎大部分弹幕游戏都是这样设计的（包括但不限于）：</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Touhou_Project" target="_blank" rel="external">东方(Touhou)</a></li>
+<li><a href="http://www.asahi-net.or.jp/~cs8k-cyu/bulletml/index_e.html" target="_blank" rel="external">BulletML</a></li>
+<li><a href="https://assetstore.unity.com/packages/tools/integration/uni-bullet-hell-19088" target="_blank" rel="external">UbhBulletHell</a></li>
+<li><a href="https://assetstore.unity.com/packages/templates/systems/danmaku-engine-29855" target="_blank" rel="external">DamakU Engine</a></li>
+<li><a href="https://assetstore.unity.com/packages/tools/bulletml-for-unity-16206" target="_blank" rel="external">BulletML for Unity</a></li>
+</ul>
+<p>每个子弹一个协程来控制，这样显然就会有性能上的问题。</p>
+<h3 id="4-初始设计-–-子弹渲染"><a href="#4-初始设计-–-子弹渲染" class="headerlink" title="4. 初始设计 – 子弹渲染"></a>4. 初始设计 – 子弹渲染</h3><p>一般来说，每个子弹都是一个 SpriteRenderer 来渲染，如果用的 SpriteRenderer 有一点点不一样的话，那么就是不能在同一个 DrawCall 里处理的。这样，如果子弹多了、复杂了，就会有很多 DrawCall，会对 GPU 造成很大影响。</p>
+<h3 id="5-优化"><a href="#5-优化" class="headerlink" title="5. 优化"></a>5. 优化</h3><p>主要的优化手段就是三个：内存连续的对象池、多线程处理子弹移动、GPU Instance 去进行子弹渲染。</p>
+<p>首先，子弹不用使用 GameObject 了，而是将子弹的各个信息拿出来，单独做成一个对象池。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NativeArray&lt;Vector2&gt; Positions = new NativeArray&lt;Vector2&gt;(capacity);</div><div class="line">NativeArray&lt;Vector4&gt; Colors = new NativeArray&lt;Vector4&gt;(capacity);</div><div class="line">NativeArray&lt;float&gt; Rotations = new NativeArray&lt;float&gt;(capacity);</div><div class="line">NativeArray&lt;float&gt; Speeds = new NativeArray&lt;float&gt;(capacity);</div><div class="line">// and more and more ...</div></pre></td></tr></table></figure>
+<p>这样，使用了值类型的数组，在内存中就一定是连续的了。然后，如果保证前 Active 个数据都是可使用的话，那么添加和删除一个数据都是十分简单的：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// Add</div><div class="line">Positions[Active++] = value;</div><div class="line"></div><div class="line">// Delete</div><div class="line">Positions[DeletePos] = Positions[Active--];</div></pre></td></tr></table></figure>
+<p>完全不产生任何内存碎片，而且时间空间复杂度均为 O(1)！</p>
+<p>在渲染的时候，利用子弹的这些数据（位置、旋转、颜色），直接强制 Unity 用 GPU-Instance 去渲染子弹，这样也可以大大减少 DrawCall。</p>
+<p>最后，在控制子弹移动的时候，可以利用 Unity 2018.1 的多线程 API，对于同一发射点的子弹用多线程进行统一更新。由于子弹的信息在内存中是连续排布的（对象池），因此更新时，除了能够利用多线程的多核去跑之外，还可以提高 CPU 的缓存命中率，这样，大大提高了运算速度。</p>
+<p>我自己在测试的时候，同时跑 400,000 个子弹，帧率大概在30帧左右，CPU 占用率是 50%。</p>
 
       
     </div>
@@ -387,7 +404,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/GDC/" rel="tag"># GDC</a>
+            <a href="/tags/杂谈/" rel="tag"># 杂谈</a>
+          
+            <a href="/tags/游戏制作/" rel="tag"># 游戏制作</a>
           
         </div>
       
@@ -400,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/10/寒假二三事/" rel="next" title="寒假二三事">
-                <i class="fa fa-chevron-left"></i> 寒假二三事
+              <a href="/2018/03/07/GDC-DesignCeleste/" rel="next" title="GDC -- Celeste 的设计">
+                <i class="fa fa-chevron-left"></i> GDC -- Celeste 的设计
               </a>
             
           </div>
@@ -409,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/18/弹幕游戏的性能优化/" rel="prev" title="弹幕游戏的性能优化">
-                弹幕游戏的性能优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -606,9 +621,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/03/07/GDC-DesignCeleste/';
-          this.page.identifier = '2018/03/07/GDC-DesignCeleste/';
-          this.page.title = 'GDC -- Celeste 的设计';
+          this.page.url = 'http://yoursite.com/2018/03/18/弹幕游戏的性能优化/';
+          this.page.identifier = '2018/03/18/弹幕游戏的性能优化/';
+          this.page.title = '弹幕游戏的性能优化';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://Hdmmy.disqus.com/embed.js';

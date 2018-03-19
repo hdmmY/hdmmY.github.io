@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://static.zybuluo.com/HandY/3zpc94jbieek5o4m2axlzhrb/image_1bjkq21pk17ahhj425doh2u7v2d.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/4ky28ye285dinbtqn382ba6q/image_1bjkqtvac14v01vjd13viivrrrj3p.png">
 <meta property="og:image" content="http://static.zybuluo.com/HandY/twfzz786lhr57nalj5e6wd8k/image_1bjkrk8tn13vm1ahml9tv8913du46.png">
-<meta property="og:updated_time" content="2017-11-04T13:13:13.489Z">
+<meta property="og:updated_time" content="2018-03-15T02:50:09.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A* 寻路算法">
 <meta name="twitter:description" content="因为要学习英语，所以我在这里就翻译翻译文章。这样既提高了我的英语水平，也可以学习一点编程方面的知识。 这次要介绍的是 A* 算法, 它包括了算法的由来、通用算法和计算过程，最后给出了在 Unity 中的实现。">
@@ -389,7 +389,7 @@
 <p>令人悲伤的是，猫咪不能直接从他目前的位置走到骨头所在的位置，因为有一面墙挡住了路，而他在游戏中也不是一个无实体的鬼魂！</p>
 <p>我们游戏里的这只猫也很懒，所以他一般来说想要找到一条最短的路径，这样当他回家面对他的妻子的时候就不会很疲倦了。</p>
 <p>那么现在我们怎么才能写出一个算法去找到猫咪应该走的最短路径呢？ A* 就是解救方法。</p>
-<h3 id="将搜索区域简单化"><a href="#将搜索区域简单化" class="headerlink" title="将搜索区域简单化"></a>将搜索区域简单化</h3><p>在寻路过程中，我们要做的第一步就是讲搜索区域简化为一些我们能够很荣易管理的东西。</p>
+<h3 id="将搜索区域简单化"><a href="#将搜索区域简单化" class="headerlink" title="将搜索区域简单化"></a>将搜索区域简单化</h3><p>在寻路过程中，我们要做的第一步就是将搜索区域简化为一些我们能够很容易管理的东西。</p>
 <p>具体怎么去做这个取决于你的游戏。例如：我们可以将搜索区域分隔成一个一个的像素，但是这个对于我们这种基于瓷砖（tile）的游戏来说，像素这个单位太小了。</p>
 <p>所以，我们将用瓷砖（正方形）作为基本单位在寻路算法中使用。其他形状的也可以（例如三角形或六边形），但是正方形是最符合我们需要的，而且也是最简单的。</p>
 <p>像这样分隔开来，我们的搜索区域就可以被简单的表示为一个二维数组。所以当我们的关卡有 25x25 的瓷砖时，我们的搜索区域就是一个有着625个正方形的数组。如果我们将我们的地图以像素分隔开来时，我们的搜索区域就将会是一个有着 6400,000 个正方形的数组（一个瓷砖有 32x32 个像素）！</p>
