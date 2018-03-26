@@ -86,10 +86,13 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/18/弹幕游戏的性能优化/index.html">
 <meta property="og:site_name" content="东明的Blog">
 <meta property="og:description" content="我自己也在做弹幕游戏，最近看到了一个非常优秀的弹幕游戏开源库 DanmakU，我学习了一下，然后将其加入到了我自己的项目中，在这里就讲一下那个库里一些设计上比较好的地方。 1. 说说开学之后的生活开学到现在是刚好三周，在这三周里，我自己感觉自己的学习状态有很大进步。 首先体现在作息时间上。开学以来，除了周末，我平时都是 11.30 左右睡觉，早上 7.20 起床，很规律。 然后呢，平时的学习也很好">
-<meta property="og:updated_time" content="2018-03-19T15:53:55.500Z">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/day7sjgvs8xou0ewedqabdzu/Huge-amout-of-bullets.gif">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/wg9qidv0qh3h7e38p8m92rhd/Bullets.gif">
+<meta property="og:updated_time" content="2018-03-26T03:37:36.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="弹幕游戏的性能优化">
 <meta name="twitter:description" content="我自己也在做弹幕游戏，最近看到了一个非常优秀的弹幕游戏开源库 DanmakU，我学习了一下，然后将其加入到了我自己的项目中，在这里就讲一下那个库里一些设计上比较好的地方。 1. 说说开学之后的生活开学到现在是刚好三周，在这三周里，我自己感觉自己的学习状态有很大进步。 首先体现在作息时间上。开学以来，除了周末，我平时都是 11.30 左右睡觉，早上 7.20 起床，很规律。 然后呢，平时的学习也很好">
+<meta name="twitter:image" content="http://static.zybuluo.com/HandY/day7sjgvs8xou0ewedqabdzu/Huge-amout-of-bullets.gif">
 
 
 
@@ -378,7 +381,7 @@
 </ul>
 <p>每个子弹一个协程来控制，这样显然就会有性能上的问题。</p>
 <h3 id="4-初始设计-–-子弹渲染"><a href="#4-初始设计-–-子弹渲染" class="headerlink" title="4. 初始设计 – 子弹渲染"></a>4. 初始设计 – 子弹渲染</h3><p>一般来说，每个子弹都是一个 SpriteRenderer 来渲染，如果用的 SpriteRenderer 有一点点不一样的话，那么就是不能在同一个 DrawCall 里处理的。这样，如果子弹多了、复杂了，就会有很多 DrawCall，会对 GPU 造成很大影响。</p>
-<h3 id="5-优化"><a href="#5-优化" class="headerlink" title="5. 优化"></a>5. 优化</h3><p>主要的优化手段就是三个：内存连续的对象池、多线程处理子弹移动、GPU Instance 去进行子弹渲染。</p>
+<h3 id="5-优化"><a href="#5-优化" class="headerlink" title="5. 优化"></a>5. 优化</h3><p>主要的优化手段就是三个：内存连续的<strong>对象池</strong>、<strong>多线程</strong>处理子弹移动、<strong>GPU Instance</strong> 去进行子弹渲染。</p>
 <p>首先，子弹不用使用 GameObject 了，而是将子弹的各个信息拿出来，单独做成一个对象池。例如：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">NativeArray&lt;Vector2&gt; Positions = new NativeArray&lt;Vector2&gt;(capacity);</div><div class="line">NativeArray&lt;Vector4&gt; Colors = new NativeArray&lt;Vector4&gt;(capacity);</div><div class="line">NativeArray&lt;float&gt; Rotations = new NativeArray&lt;float&gt;(capacity);</div><div class="line">NativeArray&lt;float&gt; Speeds = new NativeArray&lt;float&gt;(capacity);</div><div class="line">// and more and more ...</div></pre></td></tr></table></figure>
 <p>这样，使用了值类型的数组，在内存中就一定是连续的了。然后，如果保证前 Active 个数据都是可使用的话，那么添加和删除一个数据都是十分简单的：</p>
@@ -387,6 +390,7 @@
 <p>在渲染的时候，利用子弹的这些数据（位置、旋转、颜色），直接强制 Unity 用 GPU-Instance 去渲染子弹，这样也可以大大减少 DrawCall。</p>
 <p>最后，在控制子弹移动的时候，可以利用 Unity 2018.1 的多线程 API，对于同一发射点的子弹用多线程进行统一更新。由于子弹的信息在内存中是连续排布的（对象池），因此更新时，除了能够利用多线程的多核去跑之外，还可以提高 CPU 的缓存命中率，这样，大大提高了运算速度。</p>
 <p>我自己在测试的时候，同时跑 400,000 个子弹，帧率大概在30帧左右，CPU 占用率是 50%。</p>
+<p><img src="http://static.zybuluo.com/HandY/day7sjgvs8xou0ewedqabdzu/Huge-amout-of-bullets.gif" alt="Huge-amout-of-bullets.gif-5526.6kB"><br><img src="http://static.zybuluo.com/HandY/wg9qidv0qh3h7e38p8m92rhd/Bullets.gif" alt="Bullets.gif-5827.6kB"></p>
 
       
     </div>
@@ -428,6 +432,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/23/起风了/" rel="prev" title="《起风了》">
+                《起风了》 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
