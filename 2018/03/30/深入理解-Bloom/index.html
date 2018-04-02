@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="0. 写在之前的话  这两天，我深入的理解，并编写实现了 Bloom 效果。本来打算系统的写一下的，但是尝试了一下，发现太长了，所以打算以链接的方式给出学习路径。后面几节的内容都是学习路径。 我自己的感受： 因为这是第一次接触这种可以说是工业级别的渲染代码（Unity 官方后处理中的Bloom代码），我受到很大的震撼。在花了整整两天时间仔细深入学习了其中各个步骤渲染，为什么这么做，为什么不那么做的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解 Bloom">
+<meta property="og:url" content="http://yoursite.com/2018/03/30/深入理解-Bloom/index.html">
+<meta property="og:site_name" content="东明的Blog">
+<meta property="og:description" content="0. 写在之前的话  这两天，我深入的理解，并编写实现了 Bloom 效果。本来打算系统的写一下的，但是尝试了一下，发现太长了，所以打算以链接的方式给出学习路径。后面几节的内容都是学习路径。 我自己的感受： 因为这是第一次接触这种可以说是工业级别的渲染代码（Unity 官方后处理中的Bloom代码），我受到很大的震撼。在花了整整两天时间仔细深入学习了其中各个步骤渲染，为什么这么做，为什么不那么做的">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/vabj5dgogq93kfc1cidbsgau/Bloom.png">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/npx3z5smii7ilpt4x7752y1q/UnBloom.png">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/8irxd3s17d2sv1swkoexf2l0/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/b7857l3mlz08cig2g7bb4i0p/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/ehdsvuuifqvw2mkej304m3qv/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/ow6uvhuohzo5uq7soqtfzy8w/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/n4z85m7z27q8661k8lsd60w7/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/mod3rclz30zbhjryy1k1k31y/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:image" content="http://static.zybuluo.com/HandY/nni0lmikwnps06z5slxqzgjs/%E6%97%A0%E6%A0%87%E9%A2%98.png">
+<meta property="og:updated_time" content="2018-04-02T07:35:58.696Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解 Bloom">
+<meta name="twitter:description" content="0. 写在之前的话  这两天，我深入的理解，并编写实现了 Bloom 效果。本来打算系统的写一下的，但是尝试了一下，发现太长了，所以打算以链接的方式给出学习路径。后面几节的内容都是学习路径。 我自己的感受： 因为这是第一次接触这种可以说是工业级别的渲染代码（Unity 官方后处理中的Bloom代码），我受到很大的震撼。在花了整整两天时间仔细深入学习了其中各个步骤渲染，为什么这么做，为什么不那么做的">
+<meta name="twitter:image" content="http://static.zybuluo.com/HandY/vabj5dgogq93kfc1cidbsgau/Bloom.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"remove","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/30/深入理解-Bloom/"/>
+
+
+
+
+
+  <title>深入理解 Bloom | 东明的Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">东明的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">想到什么就写什么</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/30/深入理解-Bloom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="胡东明">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="东明的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">深入理解 Bloom</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-30T21:54:02+08:00">
+                2018-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/2018-03/" itemprop="url" rel="index">
+                    <span itemprop="name">2018-03</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/30/深入理解-Bloom/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/03/30/深入理解-Bloom/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="0-写在之前的话"><a href="#0-写在之前的话" class="headerlink" title="0. 写在之前的话"></a>0. 写在之前的话</h2><p><img src="http://static.zybuluo.com/HandY/vabj5dgogq93kfc1cidbsgau/Bloom.png" alt="JI Stage2 with Bloom"></p>
+<p><img src="http://static.zybuluo.com/HandY/npx3z5smii7ilpt4x7752y1q/UnBloom.png" alt="JI Stage2 without Bloom"></p>
+<p>这两天，我深入的理解，并编写实现了 Bloom 效果。本来打算系统的写一下的，但是尝试了一下，发现太长了，所以打算以链接的方式给出学习路径。后面几节的内容都是学习路径。</p>
+<p>我自己的感受：</p>
+<p>因为这是第一次接触这种可以说是工业级别的渲染代码（Unity 官方后处理中的Bloom代码），我受到很大的震撼。在花了整整两天时间仔细深入学习了其中各个步骤渲染，为什么这么做，为什么不那么做的原因后，我觉得我收获了非常非常多的东西。</p>
+<a id="more"></a>
+<h2 id="1-最好的学习模板"><a href="#1-最好的学习模板" class="headerlink" title="1. 最好的学习模板"></a>1. 最好的学习模板</h2><p>我最初是在 <a href="https://github.com/keijiro/KinoBloom" target="_blank" rel="external">keijiro/KinoBloom</a> 这个 Github 项目上看到 Bloom 的实现方式的。之后，在下载了 <a href="https://assetstore.unity.com/packages/essentials/post-processing-stack-83912" target="_blank" rel="external">Post Processing Stack</a> 这个 Unity 官方的后处理系统后，我认真的阅读、学习了其中关于实现 Bloom 部分的代码。（其实这两份代码都是 <a href="https://github.com/keijiro" target="_blank" rel="external">keijiro</a> 一个人写的）</p>
+<p>在看过这两份代码后，我发现 Post Processing Stack 的代码质量更高。在这里推荐给大家包含 Bloom 实现的几个文件。</p>
+<ul>
+<li>Resources/Shaders/Bloom.shader。包含了实现 Bloom 效果的具体各个的 Pass 的 Shader 代码。</li>
+<li>Resources/Shaders/Bloom.cginc。包含了各个 Pass 的 vertex 和 fragment 的 Shader 代码。</li>
+<li>Resources/Shaders/Common.cginc。包含了一些渲染所需的基础工具函数。</li>
+<li>Runtime/Components/BloomComponent.cs。包含了调用 Shader 进行后处理的代码。</li>
+</ul>
+<h2 id="2-初步了解-Bloom"><a href="#2-初步了解-Bloom" class="headerlink" title="2. 初步了解 Bloom"></a>2. 初步了解 Bloom</h2><ol>
+<li>Wiki 中关于 Bloom 的定义：<a href="https://en.wikipedia.org/wiki/Bloom_(shader_effect" target="_blank" rel="external">wiki_Bloom_shader_effect</a>)</li>
+<li>Wiki 中关于 HDR 的定义：<a href="https://en.wikipedia.org/wiki/High_dynamic_range" target="_blank" rel="external">wiki_High_dynamic_range</a></li>
+<li>朴素的关于实现 Bloom 的原理：<a href="http://harkal.sylphis3d.com/2006/05/20/how-to-do-good-bloom-for-hdr-rendering/" target="_blank" rel="external">how-to-do-good-bloom-for-hdr-rendering</a></li>
+</ol>
+<h2 id="3-亮度筛选-Light-Prefilter"><a href="#3-亮度筛选-Light-Prefilter" class="headerlink" title="3. 亮度筛选(Light Prefilter)"></a>3. 亮度筛选(Light Prefilter)</h2><p>这部分主要是关于 Bloom Shader（在上文中提到的Resources/Shaders/Bloom.shader）中第一个 Pass 的实现方法。</p>
+<p>代码部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">half4 frag_prefilter(v2f_img i) : SV_Target</div><div class="line">&#123;</div><div class="line">    float2 uv = i.uv;</div><div class="line"></div><div class="line">#if ANTI_FLICKER</div><div class="line">    float3 d = _MainTex_TexelSize.xyx * float3(1, 1, 0);</div><div class="line">    half4 s0 = SafeHDR(tex2D(_MainTex, uv));</div><div class="line">    half3 s1 = SafeHDR(tex2D(_MainTex, uv - d.xz)).rgb;</div><div class="line">    half3 s2 = SafeHDR(tex2D(_MainTex, uv + d.xz)).rgb;</div><div class="line">    half3 s3 = SafeHDR(tex2D(_MainTex, uv - d.yz)).rgb;</div><div class="line">    half3 s4 = SafeHDR(tex2D(_MainTex, uv + d.yz)).rgb;</div><div class="line">    half3 c = Median3(Median3(s0.rgb, s1, s2), s3, s4); // Roughly get the midient of s1, s2, s3, s4</div><div class="line">#else</div><div class="line">    half4 s0 = SafeHDR(tex2D(_MainTex, uv));</div><div class="line">    half3 c = s0.rgb;</div><div class="line">#endif</div><div class="line"></div><div class="line">#if UNITY_COLORSPACE_GAMMA</div><div class="line">    c = GammaToLinearSpace(c);</div><div class="line">#endif</div><div class="line"></div><div class="line">    half bright = Brightness(c);</div><div class="line"></div><div class="line">    half knee = _Curve.x * _Curve.y;</div><div class="line">    half soft = bright - (_Curve.x - knee);</div><div class="line">    soft = clamp(soft, 0, 2 * knee);</div><div class="line">    soft = soft * soft * 1 / (4 * knee + 0.00001);</div><div class="line"></div><div class="line">    c *= max(soft, bright - _Curve.x) / max(bright, 1e-5);</div><div class="line"></div><div class="line">    return half4(c, 0);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个 Pass 是用来对图片的亮度进行筛选：选出高亮度的像素，去掉低亮度的像素。</p>
+<p><strong>Gamma 空间和 Linear 空间：</strong></p>
+<ul>
+<li>什么是 Gamma 矫正（Gamma Correction）: <a href="https://en.wikipedia.org/wiki/Gamma_correction" target="_blank" rel="external">wiki_Gamma_correction</a></li>
+<li>Unity 在 Gamma 或 Linear 空间中的开发流程：<a href="https://docs.unity3d.com/Manual/LinearRendering-LinearOrGammaWorkflow.html" target="_blank" rel="external">LinearRendering-LinearOrGammaWorkflow</a></li>
+<li>在 Shader 中判断游戏当前是在 Gamma 空间中还是在 Linear 空间中：<a href="https://docs.unity3d.com/ScriptReference/Rendering.BuiltinShaderDefine.UNITY_COLORSPACE_GAMMA.html" target="_blank" rel="external">UNIYT_COLORSPACE_GAMMA</a></li>
+<li>什么是 sRGB 空间：<a href="https://en.wikipedia.org/wiki/SRGB" target="_blank" rel="external">wiki_sRGB</a></li>
+</ul>
+<p><strong>边缘柔和</strong></p>
+<ul>
+<li>如何在对亮度筛选时，让亮度边缘变得柔和：<a href="http://catlikecoding.com/unity/tutorials/advanced-rendering/bloom/" target="_blank" rel="external">catlike_bloom</a> 中的 Soft Threshold 一节</li>
+</ul>
+<p><strong>在对亮度筛选时，如何避免闪烁的斑点：</strong></p>
+<ul>
+<li>什么是闪烁的斑点：<a href="https://github.com/Unity-Technologies/PostProcessing/issues/219" target="_blank" rel="external">PostProcessing_issues_219</a></li>
+<li>什么是 Box Filter (Box卷积核)：<a href="https://en.wikipedia.org/wiki/Box_blur" target="_blank" rel="external">wiki_box_blur</a></li>
+<li>利用 Box Filter 来快速计算 Gaussian Filter (高斯卷积核) 的原理和方法是什么：<a href="https://web.archive.org/web/20060718054020/http://www.acm.uiuc.edu/siggraph/workshops/wjarosz_convolution_2001.pdf" target="_blank" rel="external">Fast Image Convolutions</a></li>
+<li>什么是 Bilinear Filtering : <a href="https://en.wikipedia.org/wiki/Bilinear_filtering" target="_blank" rel="external">wiki_Bilinear_filtering</a></li>
+</ul>
+<h2 id="4-模糊-Down-Sample"><a href="#4-模糊-Down-Sample" class="headerlink" title="4. 模糊(Down Sample)"></a>4. 模糊(Down Sample)</h2><p>代码部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">half4 frag_downsample(v2f_img i) : SV_Target</div><div class="line">&#123;</div><div class="line">    float4 d = _MainTex_TexelSize.xyxy * float4(-1.0, -1.0, 1.0, 1.0);</div><div class="line"></div><div class="line">    half3 s;</div><div class="line"></div><div class="line">    // Box filter</div><div class="line">    half3 s1 = tex2D(_MainTex, i.uv + d.xy).rgb;</div><div class="line">    half3 s2 = tex2D(_MainTex, i.uv + d.zy).rgb;</div><div class="line">    half3 s3 = tex2D(_MainTex, i.uv + d.xw).rgb;</div><div class="line">    half3 s4 = tex2D(_MainTex, i.uv + d.zw).rgb;</div><div class="line"></div><div class="line">#if ANTI_FLICKER</div><div class="line">    // ref : http://graphicrants.blogspot.com.br/2013/12/tone-mapping.html</div><div class="line">    // Karis&apos;s anti-flicker tonemapping</div><div class="line">    half s1w = 1.0 / (Brightness(s1) + 1.0);</div><div class="line">    half s2w = 1.0 / (Brightness(s2) + 1.0);</div><div class="line">    half s3w = 1.0 / (Brightness(s3) + 1.0);</div><div class="line">    half s4w = 1.0 / (Brightness(s4) + 1.0);</div><div class="line">    s = (s1 * s1w + s2 * s2w + s3 * s3w + s4 * s4w) / (s1w + s2w + s3w + s4w);</div><div class="line">#else</div><div class="line">    s = (s1 + s2 + s3 + s4) * 0.25;</div><div class="line">#endif </div><div class="line">    </div><div class="line">    return half4(s, 1.0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里的要点和前一节的差不多。所以就不细讲了。</p>
+<p>这个 Pass 的主要作用是：对图像采样并模糊。所以这里用到了 BoxFilter 对图像进行采样模糊。</p>
+<h2 id="5-扩大采样-Up-Sample"><a href="#5-扩大采样-Up-Sample" class="headerlink" title="5. 扩大采样(Up Sample)"></a>5. 扩大采样(Up Sample)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">half4 frag_upsample(MutiVertex i) : SV_Target</div><div class="line">&#123;</div><div class="line">    half3 base = tex2D(_BaseTex, i.uvBase);</div><div class="line"></div><div class="line">    float4 d = _MainTex_TexelSize.xyxy * float4(1.0, 1.0, -1.0, 0) * _SamplerScale;</div><div class="line"></div><div class="line">    // 9-tap bilinear unsampler(tent filter)</div><div class="line">    half3 s;</div><div class="line">    s = tex2D(_MainTex, i.uvMain - d.xy);</div><div class="line">    s += tex2D(_MainTex, i.uvMain - d.wy) * 2.0;</div><div class="line">    s += tex2D(_MainTex, i.uvMain - d.zy);</div><div class="line"></div><div class="line">    s += tex2D(_MainTex, i.uvMain + d.zw) * 2.0;</div><div class="line">    s += tex2D(_MainTex, i.uvMain) * 4.0;</div><div class="line">    s += tex2D(_MainTex, i.uvMain + d.xw) * 2.0;</div><div class="line"></div><div class="line">    s += tex2D(_MainTex, i.uvMain + d.zy);</div><div class="line">    s += tex2D(_MainTex, i.uvMain + d.wy) * 2.0;</div><div class="line">    s += tex2D(_MainTex, i.uvMain + d.xy);</div><div class="line"> </div><div class="line">    return half4(base + s * 1.0 / 16.0, 1);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这里采用的卷积核是 Tent 卷积核:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>这里的主要作用就是对小的图像进行采样，从而形成一张大的图像。</p>
+<h2 id="总流程概览"><a href="#总流程概览" class="headerlink" title="总流程概览"></a>总流程概览</h2><p><strong>初始：</strong></p>
+<p><img src="http://static.zybuluo.com/HandY/8irxd3s17d2sv1swkoexf2l0/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="初始"></p>
+<p><strong>亮度筛选：</strong></p>
+<p><img src="http://static.zybuluo.com/HandY/b7857l3mlz08cig2g7bb4i0p/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="亮度筛选"></p>
+<p><strong>缩小并模糊（2次）</strong></p>
+<p><img src="http://static.zybuluo.com/HandY/ehdsvuuifqvw2mkej304m3qv/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="第一次 DownSample"></p>
+<p><img src="http://static.zybuluo.com/HandY/ow6uvhuohzo5uq7soqtfzy8w/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="第二次 DownSample"></p>
+<p><strong>放大并叠加</strong></p>
+<p><img src="http://static.zybuluo.com/HandY/n4z85m7z27q8661k8lsd60w7/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="第一次 UpSample"></p>
+<p><img src="http://static.zybuluo.com/HandY/mod3rclz30zbhjryy1k1k31y/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="第二次 UpSample"></p>
+<p><strong>最后和原图叠加</strong></p>
+<p><img src="http://static.zybuluo.com/HandY/nni0lmikwnps06z5slxqzgjs/%E6%97%A0%E6%A0%87%E9%A2%98.png" alt="最终"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/弹幕游戏的性能优化/" rel="next" title="弹幕游戏的性能优化">
+                <i class="fa fa-chevron-left"></i> 弹幕游戏的性能优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">胡东明</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://Hdmmy.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://yoursite.com/2018/03/30/深入理解-Bloom/';
+          this.page.identifier = '2018/03/30/深入理解-Bloom/';
+          this.page.title = '深入理解 Bloom';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://Hdmmy.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+  
+
+
+  
+
+  
+
+</body>
+</html>
